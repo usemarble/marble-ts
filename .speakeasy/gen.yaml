@@ -31,7 +31,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.0
+  version: 1.0.1
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -78,6 +78,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@usemarble/sdk'
   preApplyUnionDiscriminators: true
+  preserveModelFieldNames: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
