@@ -8,24 +8,22 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import { Tag, Tag$inboundSchema } from "./tag.js";
 
-export type SingleTagResponse = {
+export type TagResponse = {
   tag: Tag;
 };
 
 /** @internal */
-export const SingleTagResponse$inboundSchema: z.ZodMiniType<
-  SingleTagResponse,
-  unknown
-> = z.object({
-  tag: Tag$inboundSchema,
-});
+export const TagResponse$inboundSchema: z.ZodMiniType<TagResponse, unknown> = z
+  .object({
+    tag: Tag$inboundSchema,
+  });
 
-export function singleTagResponseFromJSON(
+export function tagResponseFromJSON(
   jsonString: string,
-): SafeParseResult<SingleTagResponse, SDKValidationError> {
+): SafeParseResult<TagResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SingleTagResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SingleTagResponse' from JSON`,
+    (x) => TagResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TagResponse' from JSON`,
   );
 }

@@ -33,7 +33,7 @@ async function run() {
     limit: 10,
     page: 1,
     categories: "tech,news",
-    excludeCategories: "drafts",
+    excludeCategories: "changelog",
     tags: "javascript,react",
     excludeTags: "outdated",
     query: "nextjs",

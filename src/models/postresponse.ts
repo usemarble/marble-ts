@@ -8,24 +8,22 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import { Post, Post$inboundSchema } from "./post.js";
 
-export type SinglePostResponse = {
+export type PostResponse = {
   post: Post;
 };
 
 /** @internal */
-export const SinglePostResponse$inboundSchema: z.ZodMiniType<
-  SinglePostResponse,
-  unknown
-> = z.object({
-  post: Post$inboundSchema,
-});
+export const PostResponse$inboundSchema: z.ZodMiniType<PostResponse, unknown> =
+  z.object({
+    post: Post$inboundSchema,
+  });
 
-export function singlePostResponseFromJSON(
+export function postResponseFromJSON(
   jsonString: string,
-): SafeParseResult<SinglePostResponse, SDKValidationError> {
+): SafeParseResult<PostResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SinglePostResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SinglePostResponse' from JSON`,
+    (x) => PostResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostResponse' from JSON`,
   );
 }

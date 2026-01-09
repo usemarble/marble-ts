@@ -1,15 +1,15 @@
-# SingleAuthorResponse
+# AuthorResponse
 
 ## Example Usage
 
 ```typescript
-import { SingleAuthorResponse } from "@usemarble/sdk/models";
+import { AuthorResponse } from "@usemarble/sdk/models";
 
-let value: SingleAuthorResponse = {
+let value: AuthorResponse = {
   author: {
-    id: "clx123abc",
+    id: "cryitfjp3456lm06xfpzcgl0",
     name: "John Doe",
-    image: "https://cdn.example.com/avatar.jpg",
+    image: "https://media.marblecms.com/avatar.jpg",
     slug: "john-doe",
     bio: "Technical writer and developer",
     role: "Editor",

@@ -6,9 +6,9 @@
 import { AuthorRef } from "@usemarble/sdk/models";
 
 let value: AuthorRef = {
-  id: "clx123abc",
+  id: "cryitfjp1234jl04vdnycek8",
   name: "John Doe",
-  image: "https://cdn.example.com/avatar.jpg",
+  image: "https://media.marblecms.com/avatar.jpg",
   bio: "Technical writer and developer",
   role: "Editor",
   slug: "john-doe",
@@ -20,9 +20,9 @@ let value: AuthorRef = {
 
 | Field                                        | Type                                         | Required                                     | Description                                  | Example                                      |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `id`                                         | *string*                                     | :heavy_check_mark:                           | N/A                                          | clx123abc                                    |
+| `id`                                         | *string*                                     | :heavy_check_mark:                           | N/A                                          | cryitfjp1234jl04vdnycek8                     |
 | `name`                                       | *string*                                     | :heavy_check_mark:                           | N/A                                          | John Doe                                     |
-| `image`                                      | *string*                                     | :heavy_check_mark:                           | N/A                                          | https://cdn.example.com/avatar.jpg           |
+| `image`                                      | *string*                                     | :heavy_check_mark:                           | N/A                                          | https://media.marblecms.com/avatar.jpg       |
 | `bio`                                        | *string*                                     | :heavy_check_mark:                           | N/A                                          | Technical writer and developer               |
 | `role`                                       | *string*                                     | :heavy_check_mark:                           | N/A                                          | Editor                                       |
 | `slug`                                       | *string*                                     | :heavy_check_mark:                           | N/A                                          | john-doe                                     |

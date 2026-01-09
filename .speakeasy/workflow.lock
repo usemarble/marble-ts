@@ -2,20 +2,20 @@ speakeasyVersion: 1.684.0
 sources:
     Marble API:
         sourceNamespace: marble-api
-        sourceRevisionDigest: sha256:62aceb3f79c3ed73cec601befb173e4ebb438a2710eff847132911355a110838
-        sourceBlobDigest: sha256:7930b1bbb8458e622b5ecc348c0ca935da88c558e625d598dd3a4cc20c918247
+        sourceRevisionDigest: sha256:292f482e8c2db8e0e66ab2b96aabffa00c29b3c44ddc8e67fa86f34f87d30df3
+        sourceBlobDigest: sha256:1bb45ed274e5d907c5e46bde32b36ddc8e605fc75341fa0a08fed7e6fe2622a3
         tags:
             - latest
-            - speakeasy-sdk-regen-1767994678
+            - speakeasy-sdk-regen-1768000293
             - 1.0.0
 targets:
     marble:
         source: Marble API
         sourceNamespace: marble-api
-        sourceRevisionDigest: sha256:62aceb3f79c3ed73cec601befb173e4ebb438a2710eff847132911355a110838
-        sourceBlobDigest: sha256:7930b1bbb8458e622b5ecc348c0ca935da88c558e625d598dd3a4cc20c918247
+        sourceRevisionDigest: sha256:292f482e8c2db8e0e66ab2b96aabffa00c29b3c44ddc8e67fa86f34f87d30df3
+        sourceBlobDigest: sha256:1bb45ed274e5d907c5e46bde32b36ddc8e605fc75341fa0a08fed7e6fe2622a3
         codeSamplesNamespace: marble-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:abdc37d04ea5858ce5071b31b9201f4c1728d1927558b0230079393b1dcfd229
+        codeSamplesRevisionDigest: sha256:b841c540db27cdc449f6e4f2b7dd47e7cac98c3b621d11b9e83bc4baf50b741c
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

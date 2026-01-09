@@ -39,7 +39,7 @@ export function categoriesGet(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.SingleCategoryResponse,
+    models.CategoryResponse,
     | errors.NotFoundError
     | errors.ServerError
     | MarbleError
@@ -66,7 +66,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      models.SingleCategoryResponse,
+      models.CategoryResponse,
       | errors.NotFoundError
       | errors.ServerError
       | MarbleError
@@ -159,7 +159,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.SingleCategoryResponse,
+    models.CategoryResponse,
     | errors.NotFoundError
     | errors.ServerError
     | MarbleError
@@ -171,7 +171,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.SingleCategoryResponse$inboundSchema),
+    M.json(200, models.CategoryResponse$inboundSchema),
     M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),

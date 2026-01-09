@@ -6,7 +6,7 @@
 import { Category } from "@usemarble/sdk/models";
 
 let value: Category = {
-  id: "clx456def",
+  id: "cryitfjp2345kl05weoybfk9",
   name: "Technology",
   slug: "technology",
   description: "Tech news and tutorials",
@@ -20,7 +20,7 @@ let value: Category = {
 
 | Field                                              | Type                                               | Required                                           | Description                                        | Example                                            |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `id`                                               | *string*                                           | :heavy_check_mark:                                 | N/A                                                | clx456def                                          |
+| `id`                                               | *string*                                           | :heavy_check_mark:                                 | N/A                                                | cryitfjp2345kl05weoybfk9                           |
 | `name`                                             | *string*                                           | :heavy_check_mark:                                 | N/A                                                | Technology                                         |
 | `slug`                                             | *string*                                           | :heavy_check_mark:                                 | N/A                                                | technology                                         |
 | `description`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                | Tech news and tutorials                            |

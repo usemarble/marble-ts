@@ -26,7 +26,7 @@ async function run() {
     limit: 10,
     page: 1,
     categories: "tech,news",
-    excludeCategories: "drafts",
+    excludeCategories: "changelog",
     tags: "javascript,react",
     excludeTags: "outdated",
     query: "nextjs",
@@ -60,7 +60,7 @@ async function run() {
     limit: 10,
     page: 1,
     categories: "tech,news",
-    excludeCategories: "drafts",
+    excludeCategories: "changelog",
     tags: "javascript,react",
     excludeTags: "outdated",
     query: "nextjs",
@@ -168,7 +168,7 @@ run();
 
 ### Response
 
-**Promise\<[models.SinglePostResponse](../../models/singlepostresponse.md)\>**
+**Promise\<[models.PostResponse](../../models/postresponse.md)\>**
 
 ### Errors
 

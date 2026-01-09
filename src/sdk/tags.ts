@@ -37,7 +37,7 @@ export class Tags extends ClientSDK {
   async get(
     request: operations.GetV1TagsIdentifierRequest,
     options?: RequestOptions,
-  ): Promise<models.SingleTagResponse> {
+  ): Promise<models.TagResponse> {
     return unwrapAsync(tagsGet(
       this,
       request,

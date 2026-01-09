@@ -1,13 +1,13 @@
-# SingleCategoryResponse
+# CategoryResponse
 
 ## Example Usage
 
 ```typescript
-import { SingleCategoryResponse } from "@usemarble/sdk/models";
+import { CategoryResponse } from "@usemarble/sdk/models";
 
-let value: SingleCategoryResponse = {
+let value: CategoryResponse = {
   category: {
-    id: "clx456def",
+    id: "cryitfjp2345kl05weoybfk9",
     name: "Technology",
     slug: "technology",
     description: "Tech news and tutorials",

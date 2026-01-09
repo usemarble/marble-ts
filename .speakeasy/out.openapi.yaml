@@ -31,7 +31,7 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx000post"
+          example: "cryitfjp5678mn09qrstuvwx"
         "slug":
           type: "string"
           example: "getting-started-with-nextjs"
@@ -40,7 +40,6 @@ components:
           example: "Getting Started with Next.js"
         "content":
           type: "string"
-          nullable: true
           example: "<p>Hello world</p>"
         "featured":
           type: "boolean"
@@ -48,10 +47,9 @@ components:
         "coverImage":
           type: "string"
           nullable: true
-          example: "https://cdn.example.com/cover.jpg"
+          example: "https://media.marblecms.com/cover.jpg"
         "description":
           type: "string"
-          nullable: true
           example: "A beginner's guide to Next.js"
         "publishedAt":
           type: "string"
@@ -102,14 +100,14 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx123abc"
+          example: "cryitfjp1234jl04vdnycek8"
         "name":
           type: "string"
           example: "John Doe"
         "image":
           type: "string"
           nullable: true
-          example: "https://cdn.example.com/avatar.jpg"
+          example: "https://media.marblecms.com/avatar.jpg"
         "bio":
           type: "string"
           nullable: true
@@ -151,7 +149,7 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx456def"
+          example: "cryitfjp1234jl04vdnycek8"
         "name":
           type: "string"
           example: "Technology"
@@ -172,7 +170,7 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx789ghi"
+          example: "cryitfjp1234jl04vdnycek8"
         "name":
           type: "string"
           example: "JavaScript"
@@ -291,7 +289,7 @@ components:
         - "markdown"
       example: "html"
       description: "Content format (html or markdown)"
-    "SinglePostResponse":
+    "PostResponse":
       type: "object"
       properties:
         "post": {"$ref": "#/components/schemas/Post"}
@@ -324,7 +322,7 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx456def"
+          example: "cryitfjp2345kl05weoybfk9"
         "name":
           type: "string"
           example: "Technology"
@@ -350,7 +348,7 @@ components:
         - "slug"
         - "description"
         - "count"
-    "SingleCategoryResponse":
+    "CategoryResponse":
       type: "object"
       properties:
         "category": {"$ref": "#/components/schemas/Category"}
@@ -371,7 +369,7 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx789ghi"
+          example: "cryitfjp4567no07ygqadhm1"
         "name":
           type: "string"
           example: "JavaScript"
@@ -397,7 +395,7 @@ components:
         - "slug"
         - "description"
         - "count"
-    "SingleTagResponse":
+    "TagResponse":
       type: "object"
       properties:
         "tag": {"$ref": "#/components/schemas/Tag"}
@@ -418,14 +416,14 @@ components:
       properties:
         "id":
           type: "string"
-          example: "clx123abc"
+          example: "cryitfjp3456lm06xfpzcgl0"
         "name":
           type: "string"
           example: "John Doe"
         "image":
           type: "string"
           nullable: true
-          example: "https://cdn.example.com/avatar.jpg"
+          example: "https://media.marblecms.com/avatar.jpg"
         "slug":
           type: "string"
           example: "john-doe"
@@ -470,7 +468,7 @@ components:
       required:
         - "url"
         - "platform"
-    "SingleAuthorResponse":
+    "AuthorResponse":
       type: "object"
       properties:
         "author": {"$ref": "#/components/schemas/Author"}
@@ -522,7 +520,7 @@ paths:
           in: "query"
         - schema:
             type: "string"
-            example: "drafts"
+            example: "changelog"
             description: "Comma-separated category slugs to exclude"
           required: false
           description: "Comma-separated category slugs to exclude"
@@ -603,7 +601,7 @@ paths:
           description: "The requested post"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/SinglePostResponse"}
+              schema: {"$ref": "#/components/schemas/PostResponse"}
         "404":
           description: "Post not found"
           content:
@@ -685,7 +683,7 @@ paths:
           description: "The requested category"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/SingleCategoryResponse"}
+              schema: {"$ref": "#/components/schemas/CategoryResponse"}
         "404":
           description: "Category not found"
           content:
@@ -767,7 +765,7 @@ paths:
           description: "The requested tag"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/SingleTagResponse"}
+              schema: {"$ref": "#/components/schemas/TagResponse"}
         "404":
           description: "Tag not found"
           content:
@@ -849,7 +847,7 @@ paths:
           description: "The requested author"
           content:
             "application/json":
-              schema: {"$ref": "#/components/schemas/SingleAuthorResponse"}
+              schema: {"$ref": "#/components/schemas/AuthorResponse"}
         "404":
           description: "Author not found"
           content:

@@ -1,13 +1,13 @@
-# SingleTagResponse
+# TagResponse
 
 ## Example Usage
 
 ```typescript
-import { SingleTagResponse } from "@usemarble/sdk/models";
+import { TagResponse } from "@usemarble/sdk/models";
 
-let value: SingleTagResponse = {
+let value: TagResponse = {
   tag: {
-    id: "clx789ghi",
+    id: "cryitfjp4567no07ygqadhm1",
     name: "JavaScript",
     slug: "javascript",
     description: "JavaScript tutorials",

@@ -8,24 +8,24 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { Author, Author$inboundSchema } from "./author.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
-export type SingleAuthorResponse = {
+export type AuthorResponse = {
   author: Author;
 };
 
 /** @internal */
-export const SingleAuthorResponse$inboundSchema: z.ZodMiniType<
-  SingleAuthorResponse,
+export const AuthorResponse$inboundSchema: z.ZodMiniType<
+  AuthorResponse,
   unknown
 > = z.object({
   author: Author$inboundSchema,
 });
 
-export function singleAuthorResponseFromJSON(
+export function authorResponseFromJSON(
   jsonString: string,
-): SafeParseResult<SingleAuthorResponse, SDKValidationError> {
+): SafeParseResult<AuthorResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SingleAuthorResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SingleAuthorResponse' from JSON`,
+    (x) => AuthorResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthorResponse' from JSON`,
   );
 }

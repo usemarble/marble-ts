@@ -6,9 +6,9 @@
 import { Author } from "@usemarble/sdk/models";
 
 let value: Author = {
-  id: "clx123abc",
+  id: "cryitfjp3456lm06xfpzcgl0",
   name: "John Doe",
-  image: "https://cdn.example.com/avatar.jpg",
+  image: "https://media.marblecms.com/avatar.jpg",
   slug: "john-doe",
   bio: "Technical writer and developer",
   role: "Editor",
@@ -28,9 +28,9 @@ let value: Author = {
 
 | Field                                          | Type                                           | Required                                       | Description                                    | Example                                        |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `id`                                           | *string*                                       | :heavy_check_mark:                             | N/A                                            | clx123abc                                      |
+| `id`                                           | *string*                                       | :heavy_check_mark:                             | N/A                                            | cryitfjp3456lm06xfpzcgl0                       |
 | `name`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            | John Doe                                       |
-| `image`                                        | *string*                                       | :heavy_check_mark:                             | N/A                                            | https://cdn.example.com/avatar.jpg             |
+| `image`                                        | *string*                                       | :heavy_check_mark:                             | N/A                                            | https://media.marblecms.com/avatar.jpg         |
 | `slug`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            | john-doe                                       |
 | `bio`                                          | *string*                                       | :heavy_check_mark:                             | N/A                                            | Technical writer and developer                 |
 | `role`                                         | *string*                                       | :heavy_check_mark:                             | N/A                                            | Editor                                         |
