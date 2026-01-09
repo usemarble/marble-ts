@@ -1,10 +1,8 @@
+
+
 {
   "name": "@usemarble/sdk",
   "version": "1.0.3",
-  "imports": {
-    "zod": "npm:zod@^4.0.0",
-    "zod/v4-mini": "npm:zod@^4.0.0/v4-mini"
-  },
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    
