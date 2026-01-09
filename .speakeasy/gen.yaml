@@ -37,7 +37,14 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {}
+  additionalPackageJSON:
+    license: MIT
+    files:
+      - "dist/**/*"
+      - "FUNCTIONS.md"
+      - "RUNTIMES.md"
+      - "README.md"
+      - "LICENSE"
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
@@ -76,7 +83,7 @@ typescript:
   moduleFormat: dual
   multipartArrayFormat: standard
   outputModelSuffix: output
-  packageName: '@usemarble/sdk'
+  packageName: "@usemarble/sdk"
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   responseFormat: flat
