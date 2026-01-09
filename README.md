@@ -8,7 +8,8 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage _
 <!-- Start Summary [summary] -->
 ## Summary
 
-Marble API: Headless CMS API for content delivery. Use your API key in the Authorization header as a Bearer token.
+Marble API: A headless CMS API for managing and delivering content programmatically.
+
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
