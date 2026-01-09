@@ -27,7 +27,7 @@ export type Post = {
   featured: boolean;
   coverImage: string | null;
   description: string | null;
-  publishedAt: Date | null;
+  publishedAt: Date;
   updatedAt: Date;
   /**
    * Attribution to the original author when republishing content
@@ -64,7 +64,7 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   featured: types.boolean(),
   coverImage: types.nullable(types.string()),
   description: types.nullable(types.string()),
-  publishedAt: types.nullable(types.date()),
+  publishedAt: types.date(),
   updatedAt: types.date(),
   attribution: types.nullable(z.lazy(() => Attribution$inboundSchema)),
   authors: z.array(AuthorRef$inboundSchema),

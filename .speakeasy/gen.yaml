@@ -31,20 +31,20 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.3
+  version: 1.0.4
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON:
-    license: MIT
     files:
-      - "dist/**/*"
-      - "FUNCTIONS.md"
-      - "RUNTIMES.md"
-      - "README.md"
-      - "LICENSE"
+      - dist/**/*
+      - FUNCTIONS.md
+      - RUNTIMES.md
+      - README.md
+      - LICENSE
+    license: MIT
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
@@ -83,7 +83,7 @@ typescript:
   moduleFormat: dual
   multipartArrayFormat: standard
   outputModelSuffix: output
-  packageName: "@usemarble/sdk"
+  packageName: '@usemarble/sdk'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   responseFormat: flat
