@@ -3,19 +3,22 @@ id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
   docChecksum: e5c4e5073de7bfc43905088e054bf498
   docVersion: 1.0.0
-  speakeasyVersion: 1.682.0
-  generationVersion: 2.791.1
-  releaseVersion: 1.0.0
-  configChecksum: 15aa5f978d76bb9bc5f71629f6b685e4
+  speakeasyVersion: 1.683.2
+  generationVersion: 2.792.3
+  releaseVersion: 1.0.1
+  configChecksum: d485fd8a30865365246e9c3b57e97899
+  repoURL: https://github.com/usemarble/marble-ts.git
+  installationURL: https://github.com/usemarble/marble-ts
+  published: true
 persistentEdits:
-  generation_id: 4d529223-e4bc-40da-a8ec-5ff4d2579846
-  pristine_commit_hash: 73ca77c508a67565b4c97f6c82ee5a4c11bf7fb5
-  pristine_tree_hash: 86476617d02a6ad733711bd9fa916fa99b06c9c7
+  generation_id: b93bb04b-902d-4f33-a3b7-ba81f1c30a95
+  pristine_commit_hash: c37832c411534e84565c24e72e5d5113a04c255e
+  pristine_tree_hash: 6e03c17db8515dc331016f405b49f7148b323bb3
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.17
+    core: 3.26.19
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.1
     enumUnions: 0.1.0
@@ -36,8 +39,8 @@ features:
 trackedFiles:
   .devcontainer/README.md:
     id: b170c0f184ac
-    last_write_checksum: sha1:b6564d2a7c8ae764fff6d1b4666dcd787210a000
-    pristine_git_object: cdef18c30e383534a868742e1b9148f2670606f9
+    last_write_checksum: sha1:0ff13f770bc7ad1a75cbfb612260f9b215a77885
+    pristine_git_object: 3aa28063be25304a534df7237cc85863a90b5252
   .devcontainer/devcontainer.json:
     id: b34062a34eb1
     last_write_checksum: sha1:d0b15193202c961e7d1875864ddb15f9d17c84dd
@@ -300,12 +303,12 @@ trackedFiles:
     pristine_git_object: 892fe12bdccfe9c5d10612635d7b15dbd7313885
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:dc89a44e2d63a8188d4b2cc5aa79fe7cefc67f4d
-    pristine_git_object: 82a752934e19b00e8430179b121ce2220d53ed15
+    last_write_checksum: sha1:42afc06463c08661fdbbe12de2f9011e4e457c24
+    pristine_git_object: ad8438016db644c51e6bcb19d7082ae8cbf89c89
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:933005e15ad69a72699291fdeb6e62150a26aeb9
-    pristine_git_object: a0febe51967dcf7629fc4ed49531f788106197c8
+    last_write_checksum: sha1:b9b5d249a3755658db6d300a504793c53ddc7963
+    pristine_git_object: ffa9c1a8873f0ed61cd2e842bd1a5ee3db604e5e
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -364,8 +367,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:6ec1bc1a5a2fc95b03c7065e5bf9e648ae508037
-    pristine_git_object: 9c679e6922e6a23457dcfda4128c78ef88c1ac97
+    last_write_checksum: sha1:6888e46aa11f7a9ffa6c1739be1f6145228b054e
+    pristine_git_object: 1be1e281e4f987df6d9bab9eed38bae234a061c2
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -412,8 +415,8 @@ trackedFiles:
     pristine_git_object: 61d7649b3d804f5c3ce4b2e3f7cc7ab8d087c4e1
   src/lib/sdks.ts:
     id: 8a6d91f1218d
-    last_write_checksum: sha1:8fa3ee420168abf700bfbf0d44bdfad4aa710297
-    pristine_git_object: 8447db4ba12c3edf7d2fc25e1f2d76466869b3b2
+    last_write_checksum: sha1:d1e91ce026e8de556cf1c651eb838aa639c49782
+    pristine_git_object: 2afb5a92b593a101a67cd844e3254f5e5f065688
   src/lib/security.ts:
     id: 0502afa7922e
     last_write_checksum: sha1:e0ddde5241700f578f931cdc256b62b9191d2df5
@@ -797,3 +800,21 @@ examples:
         "500":
           application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `marble.posts.list()`: **Added**
+  * `marble.posts.get()`: **Added**
+  * `marble.categories.list()`: **Added**
+  * `marble.categories.get()`: **Added**
+  * `marble.tags.list()`: **Added**
+  * `marble.tags.get()`: **Added**
+  * `marble.authors.list()`: **Added**
+  * `marble.authors.get()`: **Added**
+  * `marble.posts.get/v1/posts()`: **Deleted** **Breaking** :warning:
+  * `marble.posts.get/v1/posts/{identifier}()`: **Deleted** **Breaking** :warning:
+  * `marble.categories.get/v1/categories()`: **Deleted** **Breaking** :warning:
+  * `marble.categories.get/v1/categories/{identifier}()`: **Deleted** **Breaking** :warning:
+  * `marble.tags.get/v1/tags()`: **Deleted** **Breaking** :warning:
+  * `marble.tags.get/v1/tags/{identifier}()`: **Deleted** **Breaking** :warning:
+  * `marble.authors.get/v1/authors()`: **Deleted** **Breaking** :warning:
+  * `marble.authors.get/v1/authors/{identifier}()`: **Deleted** **Breaking** :warning:
