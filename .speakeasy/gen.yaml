@@ -39,7 +39,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     files:
-      - dist/**/*
+      - dist/
       - FUNCTIONS.md
       - RUNTIMES.md
       - README.md
