@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "author": "Speakeasy",
   "files": [
-    "dist/**/*",
+    "dist/",
     "FUNCTIONS.md",
     "RUNTIMES.md",
     "README.md",
