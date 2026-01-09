@@ -1,11 +1,11 @@
 {
   "name": "@usemarble/sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Speakeasy",
   "type": "module",
   "license": "MIT",
   "files": [
-    "dist/**/*",
+    "dist/",
     "FUNCTIONS.md",
     "RUNTIMES.md",
     "README.md",

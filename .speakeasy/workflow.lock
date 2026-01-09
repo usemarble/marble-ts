@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:febb317016caff516a10e5f2213a3a7b9b988fd0feed529242e8885873d264d3
         tags:
             - latest
-            - speakeasy-sdk-regen-1767989306
+            - speakeasy-sdk-regen-1767991945
             - 1.0.0
 targets:
     marble:
@@ -15,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:d80f9134269b01e0a24810c8eb62220749e69db7fbf957b0ceda6afca84af122
         sourceBlobDigest: sha256:febb317016caff516a10e5f2213a3a7b9b988fd0feed529242e8885873d264d3
         codeSamplesNamespace: marble-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:58ffdb39a47fd018e5f9be9e0d7283858ae8083d4fa5ebfb8371984905baf138
+        codeSamplesRevisionDigest: sha256:f8d8a5d32fdb9db94568ca3974e012e2a2126768b206e567bd76b40d206f137d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
