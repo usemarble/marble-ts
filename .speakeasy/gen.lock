@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
-  docChecksum: 8747d4aee9a7b31b28c6fd184bf51c95
+  docChecksum: 7d9101b615619e21999631cc95d6e59a
   docVersion: 1.0.0
   speakeasyVersion: 1.684.0
   generationVersion: 2.793.0
-  releaseVersion: 1.0.3
-  configChecksum: ab9095b7d73d876642f4eb68f9f34aa2
+  releaseVersion: 1.0.4
+  configChecksum: 1c18e2bcf4978aa87b37c367fd570efd
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: c6f3fa5d-8e83-4850-8e45-2fe233eba62e
-  pristine_commit_hash: 4c5b6be2407df1a832ace0a5ecfe3a7a44c5c255
-  pristine_tree_hash: 9662fecf7db41e22c699bd789ec6829f14390ad2
+  generation_id: 72c436fc-38b9-4d9d-9bbe-35ccadec46e7
+  pristine_commit_hash: 44e1f8b6efaea694a350c0be26bdd7695a8d2b30
+  pristine_tree_hash: 65689bd2dc186618b33781609a4497c0636c6cd7
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -303,12 +303,12 @@ trackedFiles:
     pristine_git_object: e3d2cc3229ee33d32778b69ea553327b4e2dcc90
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:a874f5e1eff44a4a11826da195890f66cb6a2ca8
-    pristine_git_object: a13f14773c3f225b4d835a0a549025d483c74ca0
+    last_write_checksum: sha1:fd16b21e060e1bc492733a5616e25681d75727fd
+    pristine_git_object: eebf26518fe47ecb83face657561d57de3446a03
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:15a6bd5b0a908fb5073fd38122aca001664a13f9
-    pristine_git_object: ecb5a04d18cd1653170325305d4246d9260b35f8
+    last_write_checksum: sha1:e7544817f568de7217ef3dd49efe59d328ba4e44
+    pristine_git_object: 7289e1866aa50af27ff008360deb522ab4f6220d
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -367,8 +367,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:6c3768bbee45670d93a00c3fbba101fab8b59b50
-    pristine_git_object: 3627c94274bc440cfaf3b595568b7cb7416b2147
+    last_write_checksum: sha1:47d444d76d6f6952df3c75280c9063dd924a8d05
+    pristine_git_object: 6f047fad2796f399d82c97be964a3e26473a1fbf
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -563,8 +563,8 @@ trackedFiles:
     pristine_git_object: 32d8f05b77a53feb60b1270110c7a0b4160c07be
   src/models/post.ts:
     id: b3a3adebd438
-    last_write_checksum: sha1:ff640c7dcb94fc162a25af1c055987cec5cbfb7c
-    pristine_git_object: 8a14c8ff539549fa2d0c02b138b8cdc6bb7d271a
+    last_write_checksum: sha1:6f5e1f4f15b0720d70a184a394622c09505e4bfb
+    pristine_git_object: 440de71aa69271d60415f7ef65bf90cbd680dd2c
   src/models/postslistresponse.ts:
     id: dc414222484c
     last_write_checksum: sha1:466dd1498d3fd5e61caefcc5b1c0406a0286b5c0
@@ -800,3 +800,7 @@ examples:
         "500":
           application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `marble.posts.list()`:  `response.posts.[].publishedAt` **Changed** **Breaking** :warning:
+  * `marble.posts.get()`:  `response.post.publishedAt` **Changed** **Breaking** :warning:

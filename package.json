@@ -1,9 +1,7 @@
 {
   "name": "@usemarble/sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Speakeasy",
-  "type": "module",
-  "license": "MIT",
   "files": [
     "dist/",
     "FUNCTIONS.md",
@@ -11,6 +9,8 @@
     "README.md",
     "LICENSE"
   ],
+  "license": "MIT",
+  "type": "module",
   "tshy": {
     "sourceDialects": [
       "@usemarble/sdk/source"
