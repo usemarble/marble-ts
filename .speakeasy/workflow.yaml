@@ -13,6 +13,9 @@ targets:
     marble:
         target: typescript
         source: Marble API
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/marblecms/marble-s8w/marble-api-typescript-code-samples
