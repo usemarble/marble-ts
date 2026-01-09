@@ -5,7 +5,7 @@
 ### Available Operations
 
 * [list](#list) - List categories
-* [get](#get) - Get a category
+* [get](#get) - Get category
 
 ## list
 
@@ -18,7 +18,7 @@ Get a paginated list of categories
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -43,7 +43,7 @@ import { categoriesList } from "@usemarble/sdk/funcs/categoriesList.js";
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const marble = new MarbleCore({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -94,7 +94,7 @@ Get a single category by ID or slug
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -119,7 +119,7 @@ import { categoriesGet } from "@usemarble/sdk/funcs/categoriesGet.js";
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const marble = new MarbleCore({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {

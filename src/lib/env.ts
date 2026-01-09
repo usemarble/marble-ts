@@ -6,13 +6,13 @@ import * as z from "zod/v4-mini";
 import { dlv } from "./dlv.js";
 
 export interface Env {
-  MARBLE_BEARER_AUTH?: string | undefined;
+  MARBLE_API_KEY?: string | undefined;
 
   MARBLE_DEBUG?: boolean | undefined;
 }
 
 export const envSchema: z.ZodMiniType<Env, unknown> = z.object({
-  MARBLE_BEARER_AUTH: z.optional(z.string()),
+  MARBLE_API_KEY: z.optional(z.string()),
 
   MARBLE_DEBUG: z.optional(z.coerce.boolean()),
 });

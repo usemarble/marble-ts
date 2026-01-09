@@ -5,7 +5,7 @@
 ### Available Operations
 
 * [list](#list) - List posts
-* [get](#get) - Get a post
+* [get](#get) - Get post
 
 ## list
 
@@ -18,7 +18,7 @@ Get a paginated list of published posts with optional filtering
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ import { postsList } from "@usemarble/sdk/funcs/postsList.js";
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const marble = new MarbleCore({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -112,7 +112,7 @@ Get a single published post by ID or slug
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -138,7 +138,7 @@ import { postsGet } from "@usemarble/sdk/funcs/postsGet.js";
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const marble = new MarbleCore({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {

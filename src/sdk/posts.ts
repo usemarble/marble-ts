@@ -29,7 +29,7 @@ export class Posts extends ClientSDK {
   }
 
   /**
-   * Get a post
+   * Get post
    *
    * @remarks
    * Get a single published post by ID or slug

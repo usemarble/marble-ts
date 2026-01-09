@@ -1,6 +1,6 @@
 {
   "name": "@usemarble/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
@@ -21,7 +21,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/usemarble/marble-ts.git"
+    "url": "https://github.com/usemarble/marble-ts.git"
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",

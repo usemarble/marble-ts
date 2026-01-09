@@ -29,7 +29,7 @@ export class Tags extends ClientSDK {
   }
 
   /**
-   * Get a tag
+   * Get tag
    *
    * @remarks
    * Get a single tag by ID or slug

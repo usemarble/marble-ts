@@ -14,7 +14,7 @@ dotenv.config();
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function main() {

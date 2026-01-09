@@ -246,8 +246,8 @@ export function resolveGlobalSecurity(
     [
       {
         fieldName: "Authorization",
-        type: "http:bearer",
-        value: security?.bearerAuth ?? env().MARBLE_BEARER_AUTH,
+        type: "apiKey:header",
+        value: security?.apiKey ?? env().MARBLE_API_KEY,
       },
     ],
   );

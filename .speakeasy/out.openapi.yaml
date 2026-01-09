@@ -2,18 +2,18 @@ openapi: "3.1.0"
 info:
   title: "Marble API"
   version: "1.0.0"
-  description: "Headless CMS API for content delivery. Use your API key in the Authorization header as a Bearer token."
+  description: "A headless CMS API for managing and delivering content programmatically."
 servers:
   - url: "https://api.marblecms.com"
     description: "Production"
 security:
-  - bearerAuth: []
+  - apiKey: []
 components:
   securitySchemes:
-    "bearerAuth":
-      type: "http"
-      scheme: "bearer"
-      bearerFormat: "API Key"
+    "apiKey":
+      type: "apiKey"
+      in: "header"
+      name: "Authorization"
       description: "Your Marble API key"
   schemas:
     "PostsListResponse":
@@ -583,7 +583,7 @@ paths:
     get:
       tags:
         - "Posts"
-      summary: "Get a post"
+      summary: "Get post"
       description: "Get a single published post by ID or slug"
       parameters:
         - schema:
@@ -670,7 +670,7 @@ paths:
     get:
       tags:
         - "Categories"
-      summary: "Get a category"
+      summary: "Get category"
       description: "Get a single category by ID or slug"
       parameters:
         - schema:
@@ -752,7 +752,7 @@ paths:
     get:
       tags:
         - "Tags"
-      summary: "Get a tag"
+      summary: "Get tag"
       description: "Get a single tag by ID or slug"
       parameters:
         - schema:
@@ -834,7 +834,7 @@ paths:
     get:
       tags:
         - "Authors"
-      summary: "Get an author"
+      summary: "Get author"
       description: "Get a single author by ID or slug"
       parameters:
         - schema:
