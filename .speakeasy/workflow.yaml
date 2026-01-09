@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Marble API:
+        inputs:
+            - location: https://api.marblecms.com/openapi.json
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/marblecms/marble-s8w/marble-api
+targets:
+    marble:
+        target: typescript
+        source: Marble API
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/marblecms/marble-s8w/marble-api-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false

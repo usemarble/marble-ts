@@ -1,0 +1,864 @@
+openapi: "3.1.0"
+info:
+  title: "Marble API"
+  version: "1.0.0"
+  description: "Headless CMS API for content delivery. Use your API key in the Authorization header as a Bearer token."
+servers:
+  - url: "https://api.marblecms.com"
+    description: "Production"
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    "bearerAuth":
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "API Key"
+      description: "Your Marble API key"
+  schemas:
+    "PostsListResponse":
+      type: "object"
+      properties:
+        "posts":
+          type: "array"
+          items: {"$ref": "#/components/schemas/Post"}
+        "pagination": {"$ref": "#/components/schemas/Pagination"}
+      required:
+        - "posts"
+        - "pagination"
+    "Post":
+      type: "object"
+      properties:
+        "id":
+          type: "string"
+          example: "clx000post"
+        "slug":
+          type: "string"
+          example: "getting-started-with-nextjs"
+        "title":
+          type: "string"
+          example: "Getting Started with Next.js"
+        "content":
+          type: "string"
+          nullable: true
+          example: "<p>Hello world</p>"
+        "featured":
+          type: "boolean"
+          example: false
+        "coverImage":
+          type: "string"
+          nullable: true
+          example: "https://cdn.example.com/cover.jpg"
+        "description":
+          type: "string"
+          nullable: true
+          example: "A beginner's guide to Next.js"
+        "publishedAt":
+          type: "string"
+          nullable: true
+          format: "date-time"
+          example: "2024-01-15T10:00:00Z"
+        "updatedAt":
+          type: "string"
+          format: "date-time"
+          example: "2024-01-16T12:00:00Z"
+        "attribution":
+          type: "object"
+          nullable: true
+          properties:
+            "author":
+              type: "string"
+              example: "John Doe"
+            "url":
+              type: "string"
+              format: "uri"
+              example: "https://original-source.com/article"
+          required:
+            - "author"
+            - "url"
+          description: "Attribution to the original author when republishing content"
+        "authors":
+          type: "array"
+          items: {"$ref": "#/components/schemas/AuthorRef"}
+        "category": {"$ref": "#/components/schemas/CategoryRef"}
+        "tags":
+          type: "array"
+          items: {"$ref": "#/components/schemas/TagRef"}
+      required:
+        - "id"
+        - "slug"
+        - "title"
+        - "content"
+        - "featured"
+        - "coverImage"
+        - "description"
+        - "publishedAt"
+        - "updatedAt"
+        - "attribution"
+        - "authors"
+        - "category"
+        - "tags"
+    "AuthorRef":
+      type: "object"
+      properties:
+        "id":
+          type: "string"
+          example: "clx123abc"
+        "name":
+          type: "string"
+          example: "John Doe"
+        "image":
+          type: "string"
+          nullable: true
+          example: "https://cdn.example.com/avatar.jpg"
+        "bio":
+          type: "string"
+          nullable: true
+          example: "Technical writer and developer"
+        "role":
+          type: "string"
+          nullable: true
+          example: "Editor"
+        "slug":
+          type: "string"
+          example: "john-doe"
+        "socials":
+          type: "array"
+          items: {"$ref": "#/components/schemas/SocialRef"}
+      required:
+        - "id"
+        - "name"
+        - "image"
+        - "bio"
+        - "role"
+        - "slug"
+        - "socials"
+    "SocialRef":
+      type: "object"
+      properties:
+        "url":
+          type: "string"
+          format: "uri"
+          example: "https://twitter.com/johndoe"
+        "platform":
+          type: "string"
+          example: "twitter"
+      required:
+        - "url"
+        - "platform"
+    "CategoryRef":
+      type: "object"
+      nullable: true
+      properties:
+        "id":
+          type: "string"
+          example: "clx456def"
+        "name":
+          type: "string"
+          example: "Technology"
+        "slug":
+          type: "string"
+          example: "technology"
+        "description":
+          type: "string"
+          nullable: true
+          example: "Tech news and tutorials"
+      required:
+        - "id"
+        - "name"
+        - "slug"
+        - "description"
+    "TagRef":
+      type: "object"
+      properties:
+        "id":
+          type: "string"
+          example: "clx789ghi"
+        "name":
+          type: "string"
+          example: "JavaScript"
+        "slug":
+          type: "string"
+          example: "javascript"
+        "description":
+          type: "string"
+          nullable: true
+          example: "JavaScript tutorials"
+      required:
+        - "id"
+        - "name"
+        - "slug"
+        - "description"
+    "Pagination":
+      type: "object"
+      properties:
+        "limit":
+          type: "integer"
+          minimum: 0
+          exclusiveMinimum: 0
+          example: 10
+        "currentPage":
+          type: "integer"
+          minimum: 0
+          exclusiveMinimum: 0
+          example: 1
+        "nextPage":
+          type: "integer"
+          nullable: true
+          example: 2
+        "previousPage":
+          type: "integer"
+          nullable: true
+          example:
+        "totalPages":
+          type: "integer"
+          example: 5
+        "totalItems":
+          type: "integer"
+          example: 42
+      required:
+        - "limit"
+        - "currentPage"
+        - "nextPage"
+        - "previousPage"
+        - "totalPages"
+        - "totalItems"
+    "Error":
+      type: "object"
+      properties:
+        "error":
+          type: "string"
+          example: "Invalid query parameters"
+        "details":
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              "field":
+                type: "string"
+                example: "limit"
+              "message":
+                type: "string"
+                example: "Expected number, received string"
+            required:
+              - "field"
+              - "message"
+        "message":
+          type: "string"
+          example: "Validation failed"
+      required:
+        - "error"
+    "PageNotFound":
+      type: "object"
+      properties:
+        "error":
+          type: "string"
+          enum:
+            - "Invalid page number"
+        "details":
+          type: "object"
+          properties:
+            "message":
+              type: "string"
+              example: "Page 10 does not exist."
+            "totalPages":
+              type: "integer"
+              example: 5
+            "requestedPage":
+              type: "integer"
+              example: 10
+          required:
+            - "message"
+            - "totalPages"
+            - "requestedPage"
+      required:
+        - "error"
+        - "details"
+    "ServerError":
+      type: "object"
+      properties:
+        "error":
+          type: "string"
+          example: "Internal server error"
+        "message":
+          type: "string"
+          example: "Failed to fetch resource"
+      required:
+        - "error"
+    "ContentFormat":
+      type: "string"
+      enum:
+        - "html"
+        - "markdown"
+      example: "html"
+      description: "Content format (html or markdown)"
+    "SinglePostResponse":
+      type: "object"
+      properties:
+        "post": {"$ref": "#/components/schemas/Post"}
+      required:
+        - "post"
+    "NotFound":
+      type: "object"
+      properties:
+        "error":
+          type: "string"
+          example: "Post not found"
+        "message":
+          type: "string"
+          example: "The requested resource does not exist"
+      required:
+        - "error"
+        - "message"
+    "CategoriesListResponse":
+      type: "object"
+      properties:
+        "categories":
+          type: "array"
+          items: {"$ref": "#/components/schemas/Category"}
+        "pagination": {"$ref": "#/components/schemas/Pagination"}
+      required:
+        - "categories"
+        - "pagination"
+    "Category":
+      type: "object"
+      properties:
+        "id":
+          type: "string"
+          example: "clx456def"
+        "name":
+          type: "string"
+          example: "Technology"
+        "slug":
+          type: "string"
+          example: "technology"
+        "description":
+          type: "string"
+          nullable: true
+          example: "Tech news and tutorials"
+        "count":
+          type: "object"
+          properties:
+            "posts":
+              type: "integer"
+              example: 15
+          required:
+            - "posts"
+          description: "Number of published posts in this category"
+      required:
+        - "id"
+        - "name"
+        - "slug"
+        - "description"
+        - "count"
+    "SingleCategoryResponse":
+      type: "object"
+      properties:
+        "category": {"$ref": "#/components/schemas/Category"}
+      required:
+        - "category"
+    "TagsListResponse":
+      type: "object"
+      properties:
+        "tags":
+          type: "array"
+          items: {"$ref": "#/components/schemas/Tag"}
+        "pagination": {"$ref": "#/components/schemas/Pagination"}
+      required:
+        - "tags"
+        - "pagination"
+    "Tag":
+      type: "object"
+      properties:
+        "id":
+          type: "string"
+          example: "clx789ghi"
+        "name":
+          type: "string"
+          example: "JavaScript"
+        "slug":
+          type: "string"
+          example: "javascript"
+        "description":
+          type: "string"
+          nullable: true
+          example: "JavaScript tutorials"
+        "count":
+          type: "object"
+          properties:
+            "posts":
+              type: "integer"
+              example: 8
+          required:
+            - "posts"
+          description: "Number of published posts with this tag"
+      required:
+        - "id"
+        - "name"
+        - "slug"
+        - "description"
+        - "count"
+    "SingleTagResponse":
+      type: "object"
+      properties:
+        "tag": {"$ref": "#/components/schemas/Tag"}
+      required:
+        - "tag"
+    "AuthorsListResponse":
+      type: "object"
+      properties:
+        "authors":
+          type: "array"
+          items: {"$ref": "#/components/schemas/Author"}
+        "pagination": {"$ref": "#/components/schemas/Pagination"}
+      required:
+        - "authors"
+        - "pagination"
+    "Author":
+      type: "object"
+      properties:
+        "id":
+          type: "string"
+          example: "clx123abc"
+        "name":
+          type: "string"
+          example: "John Doe"
+        "image":
+          type: "string"
+          nullable: true
+          example: "https://cdn.example.com/avatar.jpg"
+        "slug":
+          type: "string"
+          example: "john-doe"
+        "bio":
+          type: "string"
+          nullable: true
+          example: "Technical writer and developer"
+        "role":
+          type: "string"
+          nullable: true
+          example: "Editor"
+        "socials":
+          type: "array"
+          items: {"$ref": "#/components/schemas/Social"}
+        "count":
+          type: "object"
+          properties:
+            "posts":
+              type: "integer"
+              example: 12
+          required:
+            - "posts"
+          description: "Number of published posts by this author"
+      required:
+        - "id"
+        - "name"
+        - "image"
+        - "slug"
+        - "bio"
+        - "role"
+        - "socials"
+    "Social":
+      type: "object"
+      properties:
+        "url":
+          type: "string"
+          format: "uri"
+          example: "https://twitter.com/johndoe"
+        "platform":
+          type: "string"
+          example: "twitter"
+      required:
+        - "url"
+        - "platform"
+    "SingleAuthorResponse":
+      type: "object"
+      properties:
+        "author": {"$ref": "#/components/schemas/Author"}
+      required:
+        - "author"
+paths:
+  "/v1/posts":
+    get:
+      tags:
+        - "Posts"
+      summary: "List posts"
+      description: "Get a paginated list of published posts with optional filtering"
+      parameters:
+        - schema:
+            type: "integer"
+            example: 10
+            description: "Number of posts per page (1-100)"
+          required: false
+          description: "Number of posts per page (1-100)"
+          name: "limit"
+          in: "query"
+        - schema:
+            type: "integer"
+            example: 1
+            description: "Page number"
+          required: false
+          description: "Page number"
+          name: "page"
+          in: "query"
+        - schema:
+            type: "string"
+            enum:
+              - "asc"
+              - "desc"
+            default: "desc"
+            example: "desc"
+            description: "Sort order by publishedAt"
+          required: false
+          description: "Sort order by publishedAt"
+          name: "order"
+          in: "query"
+        - schema:
+            type: "string"
+            example: "tech,news"
+            description: "Comma-separated category slugs to include"
+          required: false
+          description: "Comma-separated category slugs to include"
+          name: "categories"
+          in: "query"
+        - schema:
+            type: "string"
+            example: "drafts"
+            description: "Comma-separated category slugs to exclude"
+          required: false
+          description: "Comma-separated category slugs to exclude"
+          name: "excludeCategories"
+          in: "query"
+        - schema:
+            type: "string"
+            example: "javascript,react"
+            description: "Comma-separated tag slugs to include"
+          required: false
+          description: "Comma-separated tag slugs to include"
+          name: "tags"
+          in: "query"
+        - schema:
+            type: "string"
+            example: "outdated"
+            description: "Comma-separated tag slugs to exclude"
+          required: false
+          description: "Comma-separated tag slugs to exclude"
+          name: "excludeTags"
+          in: "query"
+        - schema:
+            type: "string"
+            example: "nextjs"
+            description: "Search query for title and content"
+          required: false
+          description: "Search query for title and content"
+          name: "query"
+          in: "query"
+        - schema: {"$ref": "#/components/schemas/ContentFormat"}
+          required: false
+          description: "Content format (html or markdown)"
+          name: "format"
+          in: "query"
+      responses:
+        "200":
+          description: "Paginated list of posts"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/PostsListResponse"}
+        "400":
+          description: "Invalid query parameters or page number"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - {"$ref": "#/components/schemas/Error"}
+                  - {"$ref": "#/components/schemas/PageNotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "list"
+      x-speakeasy-pagination: {"type": "offsetLimit", "inputs": [{"name": "page", "in": "parameters", "type": "page"}, {"name": "limit", "in": "parameters", "type": "limit"}], "outputs": {"numPages": "$.pagination.totalPages"}}
+  "/v1/posts/{identifier}":
+    get:
+      tags:
+        - "Posts"
+      summary: "Get a post"
+      description: "Get a single published post by ID or slug"
+      parameters:
+        - schema:
+            type: "string"
+            example: "my-post-slug"
+            description: "Post ID or slug"
+          required: true
+          description: "Post ID or slug"
+          name: "identifier"
+          in: "path"
+        - schema: {"$ref": "#/components/schemas/ContentFormat"}
+          required: false
+          description: "Content format (html or markdown)"
+          name: "format"
+          in: "query"
+      responses:
+        "200":
+          description: "The requested post"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SinglePostResponse"}
+        "404":
+          description: "Post not found"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/NotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "get"
+  "/v1/categories":
+    get:
+      tags:
+        - "Categories"
+      summary: "List categories"
+      description: "Get a paginated list of categories"
+      parameters:
+        - schema:
+            type: "integer"
+            minimum: 1
+            maximum: 100
+            default: 10
+            example: "10"
+            description: "Number of items per page (1-100)"
+          required: false
+          description: "Number of items per page (1-100)"
+          name: "limit"
+          in: "query"
+        - schema:
+            type: "integer"
+            minimum: 0
+            exclusiveMinimum: 0
+            default: 1
+            example: "1"
+            description: "Page number"
+          required: false
+          description: "Page number"
+          name: "page"
+          in: "query"
+      responses:
+        "200":
+          description: "Paginated list of categories"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/CategoriesListResponse"}
+        "400":
+          description: "Invalid query parameters or page number"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - {"$ref": "#/components/schemas/Error"}
+                  - {"$ref": "#/components/schemas/PageNotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "list"
+      x-speakeasy-pagination: {"type": "offsetLimit", "inputs": [{"name": "page", "in": "parameters", "type": "page"}, {"name": "limit", "in": "parameters", "type": "limit"}], "outputs": {"numPages": "$.pagination.totalPages"}}
+  "/v1/categories/{identifier}":
+    get:
+      tags:
+        - "Categories"
+      summary: "Get a category"
+      description: "Get a single category by ID or slug"
+      parameters:
+        - schema:
+            type: "string"
+            example: "technology"
+            description: "Category ID or slug"
+          required: true
+          description: "Category ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "The requested category"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SingleCategoryResponse"}
+        "404":
+          description: "Category not found"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/NotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "get"
+  "/v1/tags":
+    get:
+      tags:
+        - "Tags"
+      summary: "List tags"
+      description: "Get a paginated list of tags"
+      parameters:
+        - schema:
+            type: "integer"
+            minimum: 1
+            maximum: 100
+            default: 10
+            example: "10"
+            description: "Number of items per page (1-100)"
+          required: false
+          description: "Number of items per page (1-100)"
+          name: "limit"
+          in: "query"
+        - schema:
+            type: "integer"
+            minimum: 0
+            exclusiveMinimum: 0
+            default: 1
+            example: "1"
+            description: "Page number"
+          required: false
+          description: "Page number"
+          name: "page"
+          in: "query"
+      responses:
+        "200":
+          description: "Paginated list of tags"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/TagsListResponse"}
+        "400":
+          description: "Invalid query parameters or page number"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - {"$ref": "#/components/schemas/Error"}
+                  - {"$ref": "#/components/schemas/PageNotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "list"
+      x-speakeasy-pagination: {"type": "offsetLimit", "inputs": [{"name": "page", "in": "parameters", "type": "page"}, {"name": "limit", "in": "parameters", "type": "limit"}], "outputs": {"numPages": "$.pagination.totalPages"}}
+  "/v1/tags/{identifier}":
+    get:
+      tags:
+        - "Tags"
+      summary: "Get a tag"
+      description: "Get a single tag by ID or slug"
+      parameters:
+        - schema:
+            type: "string"
+            example: "javascript"
+            description: "Tag ID or slug"
+          required: true
+          description: "Tag ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "The requested tag"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SingleTagResponse"}
+        "404":
+          description: "Tag not found"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/NotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "get"
+  "/v1/authors":
+    get:
+      tags:
+        - "Authors"
+      summary: "List authors"
+      description: "Get a paginated list of authors who have published posts"
+      parameters:
+        - schema:
+            type: "integer"
+            minimum: 1
+            maximum: 100
+            default: 10
+            example: "10"
+            description: "Number of items per page (1-100)"
+          required: false
+          description: "Number of items per page (1-100)"
+          name: "limit"
+          in: "query"
+        - schema:
+            type: "integer"
+            minimum: 0
+            exclusiveMinimum: 0
+            default: 1
+            example: "1"
+            description: "Page number"
+          required: false
+          description: "Page number"
+          name: "page"
+          in: "query"
+      responses:
+        "200":
+          description: "Paginated list of authors"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/AuthorsListResponse"}
+        "400":
+          description: "Invalid query parameters or page number"
+          content:
+            "application/json":
+              schema:
+                anyOf:
+                  - {"$ref": "#/components/schemas/Error"}
+                  - {"$ref": "#/components/schemas/PageNotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "list"
+      x-speakeasy-pagination: {"type": "offsetLimit", "inputs": [{"name": "page", "in": "parameters", "type": "page"}, {"name": "limit", "in": "parameters", "type": "limit"}], "outputs": {"numPages": "$.pagination.totalPages"}}
+  "/v1/authors/{identifier}":
+    get:
+      tags:
+        - "Authors"
+      summary: "Get an author"
+      description: "Get a single author by ID or slug"
+      parameters:
+        - schema:
+            type: "string"
+            example: "john-doe"
+            description: "Author ID or slug"
+          required: true
+          description: "Author ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "The requested author"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/SingleAuthorResponse"}
+        "404":
+          description: "Author not found"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/NotFound"}
+        "500":
+          description: "Server error"
+          content:
+            "application/json":
+              schema: {"$ref": "#/components/schemas/ServerError"}
+      x-speakeasy-name-override: "get"

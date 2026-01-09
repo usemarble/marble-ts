@@ -1,0 +1,146 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Speakeasy Modifications
+  version: 0.0.7
+  x-speakeasy-metadata:
+    after: ""
+    before: ""
+    type: speakeasy-modifications
+actions:
+  - target: $["paths"]["/v1/authors/{identifier}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.authors.get()
+      before: sdk.Authors.get_/v1/authors/{identifier}()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/categories/{identifier}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.categories.get()
+      before: sdk.Categories.get_/v1/categories/{identifier}()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/tags"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.tags.list()
+      before: sdk.Tags.get_/v1/tags()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/tags/{identifier}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.tags.get()
+      before: sdk.Tags.get_/v1/tags/{identifier}()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/posts"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.posts.list()
+      before: sdk.Posts.get_/v1/posts()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/posts/{identifier}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.posts.get()
+      before: sdk.Posts.get_/v1/posts/{identifier}()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/categories"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.categories.list()
+      before: sdk.Categories.get_/v1/categories()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/authors"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.authors.list()
+      before: sdk.Authors.get_/v1/authors()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/posts"]["get"]
+    update:
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          numPages: $.pagination.totalPages
+    x-speakeasy-metadata:
+      created_at: 1767916711163
+      type: user-edit
+  - target: $["paths"]["/v1/categories"]["get"]
+    update:
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          numPages: $.pagination.totalPages
+    x-speakeasy-metadata:
+      created_at: 1767916729874
+      type: user-edit
+  - target: $["paths"]["/v1/tags"]["get"]
+    update:
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          numPages: $.pagination.totalPages
+    x-speakeasy-metadata:
+      created_at: 1767916742032
+      type: user-edit
+  - target: $["paths"]["/v1/authors"]["get"]
+    update:
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          numPages: $.pagination.totalPages
+    x-speakeasy-metadata:
+      created_at: 1767916752892
+      type: user-edit
