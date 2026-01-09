@@ -1,0 +1,19 @@
+name: Publish to JSR
+on:
+  workflow_run:
+    workflows: ["Publish"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+      - name: Publish to JSR
+        run: npx jsr publish

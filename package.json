@@ -4,6 +4,13 @@
   "author": "Speakeasy",
   "type": "module",
   "license": "MIT",
+  "files": [
+    "dist/**/*",
+    "FUNCTIONS.md",
+    "RUNTIMES.md",
+    "README.md",
+    "LICENSE"
+  ],
   "tshy": {
     "sourceDialects": [
       "@usemarble/sdk/source"
