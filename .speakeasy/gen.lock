@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.684.0
   generationVersion: 2.793.0
-  releaseVersion: 1.0.2
-  configChecksum: 0f6b74a9d64569104edf2ed2cc929465
+  releaseVersion: 1.0.3
+  configChecksum: ab9095b7d73d876642f4eb68f9f34aa2
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 582a488d-12f3-420a-b174-21c7fedeee71
-  pristine_commit_hash: ac549324ad2a8fc17d9b327c3233582a0479218e
-  pristine_tree_hash: af472feab89121613996f3a67b2d02c64f7cb322
+  generation_id: c6f3fa5d-8e83-4850-8e45-2fe233eba62e
+  pristine_commit_hash: 4c5b6be2407df1a832ace0a5ecfe3a7a44c5c255
+  pristine_tree_hash: 9662fecf7db41e22c699bd789ec6829f14390ad2
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -303,12 +303,12 @@ trackedFiles:
     pristine_git_object: e3d2cc3229ee33d32778b69ea553327b4e2dcc90
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:cada86377dad78cd85e9a9645354f6dd87957e76
-    pristine_git_object: 1345d6c68e4b0d856dfc42537d14373b11dc8539
+    last_write_checksum: sha1:a874f5e1eff44a4a11826da195890f66cb6a2ca8
+    pristine_git_object: a13f14773c3f225b4d835a0a549025d483c74ca0
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:91fa4522a724d33cc3bd56a808fad264725c13e1
-    pristine_git_object: 04356a6acf7637755ba7cd0c084c6e0b0ec59a1f
+    last_write_checksum: sha1:15a6bd5b0a908fb5073fd38122aca001664a13f9
+    pristine_git_object: ecb5a04d18cd1653170325305d4246d9260b35f8
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -367,8 +367,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:59a93924f084904d6b76c5aa59a84b32891dd4f9
-    pristine_git_object: f81f78723662d52f077a676603d6de87adee8016
+    last_write_checksum: sha1:6c3768bbee45670d93a00c3fbba101fab8b59b50
+    pristine_git_object: 3627c94274bc440cfaf3b595568b7cb7416b2147
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
