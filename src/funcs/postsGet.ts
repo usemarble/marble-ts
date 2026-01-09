@@ -39,7 +39,7 @@ export function postsGet(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.SinglePostResponse,
+    models.PostResponse,
     | errors.NotFoundError
     | errors.ServerError
     | MarbleError
@@ -66,7 +66,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      models.SinglePostResponse,
+      models.PostResponse,
       | errors.NotFoundError
       | errors.ServerError
       | MarbleError
@@ -161,7 +161,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.SinglePostResponse,
+    models.PostResponse,
     | errors.NotFoundError
     | errors.ServerError
     | MarbleError
@@ -173,7 +173,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.SinglePostResponse$inboundSchema),
+    M.json(200, models.PostResponse$inboundSchema),
     M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),

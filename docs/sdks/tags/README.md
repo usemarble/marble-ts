@@ -148,7 +148,7 @@ run();
 
 ### Response
 
-**Promise\<[models.SingleTagResponse](../../models/singletagresponse.md)\>**
+**Promise\<[models.TagResponse](../../models/tagresponse.md)\>**
 
 ### Errors
 

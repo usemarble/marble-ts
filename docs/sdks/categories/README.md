@@ -148,7 +148,7 @@ run();
 
 ### Response
 
-**Promise\<[models.SingleCategoryResponse](../../models/singlecategoryresponse.md)\>**
+**Promise\<[models.CategoryResponse](../../models/categoryresponse.md)\>**
 
 ### Errors
 

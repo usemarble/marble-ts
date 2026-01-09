@@ -39,7 +39,7 @@ export class Categories extends ClientSDK {
   async get(
     request: operations.GetV1CategoriesIdentifierRequest,
     options?: RequestOptions,
-  ): Promise<models.SingleCategoryResponse> {
+  ): Promise<models.CategoryResponse> {
     return unwrapAsync(categoriesGet(
       this,
       request,

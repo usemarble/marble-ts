@@ -148,7 +148,7 @@ run();
 
 ### Response
 
-**Promise\<[models.SingleAuthorResponse](../../models/singleauthorresponse.md)\>**
+**Promise\<[models.AuthorResponse](../../models/authorresponse.md)\>**
 
 ### Errors
 

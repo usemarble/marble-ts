@@ -39,7 +39,7 @@ export function authorsGet(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.SingleAuthorResponse,
+    models.AuthorResponse,
     | errors.NotFoundError
     | errors.ServerError
     | MarbleError
@@ -66,7 +66,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      models.SingleAuthorResponse,
+      models.AuthorResponse,
       | errors.NotFoundError
       | errors.ServerError
       | MarbleError
@@ -156,7 +156,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.SingleAuthorResponse,
+    models.AuthorResponse,
     | errors.NotFoundError
     | errors.ServerError
     | MarbleError
@@ -168,7 +168,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.SingleAuthorResponse$inboundSchema),
+    M.json(200, models.AuthorResponse$inboundSchema),
     M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),

@@ -37,7 +37,7 @@ export class Posts extends ClientSDK {
   async get(
     request: operations.GetV1PostsIdentifierRequest,
     options?: RequestOptions,
-  ): Promise<models.SinglePostResponse> {
+  ): Promise<models.PostResponse> {
     return unwrapAsync(postsGet(
       this,
       request,

@@ -37,7 +37,7 @@ export class Authors extends ClientSDK {
   async get(
     request: operations.GetV1AuthorsIdentifierRequest,
     options?: RequestOptions,
-  ): Promise<models.SingleAuthorResponse> {
+  ): Promise<models.AuthorResponse> {
     return unwrapAsync(authorsGet(
       this,
       request,

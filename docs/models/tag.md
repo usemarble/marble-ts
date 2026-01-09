@@ -6,7 +6,7 @@
 import { Tag } from "@usemarble/sdk/models";
 
 let value: Tag = {
-  id: "clx789ghi",
+  id: "cryitfjp4567no07ygqadhm1",
   name: "JavaScript",
   slug: "javascript",
   description: "JavaScript tutorials",
@@ -20,7 +20,7 @@ let value: Tag = {
 
 | Field                                    | Type                                     | Required                                 | Description                              | Example                                  |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `id`                                     | *string*                                 | :heavy_check_mark:                       | N/A                                      | clx789ghi                                |
+| `id`                                     | *string*                                 | :heavy_check_mark:                       | N/A                                      | cryitfjp4567no07ygqadhm1                 |
 | `name`                                   | *string*                                 | :heavy_check_mark:                       | N/A                                      | JavaScript                               |
 | `slug`                                   | *string*                                 | :heavy_check_mark:                       | N/A                                      | javascript                               |
 | `description`                            | *string*                                 | :heavy_check_mark:                       | N/A                                      | JavaScript tutorials                     |

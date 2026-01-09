@@ -6,7 +6,7 @@
 import { TagRef } from "@usemarble/sdk/models";
 
 let value: TagRef = {
-  id: "clx789ghi",
+  id: "cryitfjp1234jl04vdnycek8",
   name: "JavaScript",
   slug: "javascript",
   description: "JavaScript tutorials",
@@ -15,9 +15,9 @@ let value: TagRef = {
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          | Example              |
-| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `id`                 | *string*             | :heavy_check_mark:   | N/A                  | clx789ghi            |
-| `name`               | *string*             | :heavy_check_mark:   | N/A                  | JavaScript           |
-| `slug`               | *string*             | :heavy_check_mark:   | N/A                  | javascript           |
-| `description`        | *string*             | :heavy_check_mark:   | N/A                  | JavaScript tutorials |
+| Field                    | Type                     | Required                 | Description              | Example                  |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `id`                     | *string*                 | :heavy_check_mark:       | N/A                      | cryitfjp1234jl04vdnycek8 |
+| `name`                   | *string*                 | :heavy_check_mark:       | N/A                      | JavaScript               |
+| `slug`                   | *string*                 | :heavy_check_mark:       | N/A                      | javascript               |
+| `description`            | *string*                 | :heavy_check_mark:       | N/A                      | JavaScript tutorials     |

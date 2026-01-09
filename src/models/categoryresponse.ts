@@ -8,24 +8,24 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import { Category, Category$inboundSchema } from "./category.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
-export type SingleCategoryResponse = {
+export type CategoryResponse = {
   category: Category;
 };
 
 /** @internal */
-export const SingleCategoryResponse$inboundSchema: z.ZodMiniType<
-  SingleCategoryResponse,
+export const CategoryResponse$inboundSchema: z.ZodMiniType<
+  CategoryResponse,
   unknown
 > = z.object({
   category: Category$inboundSchema,
 });
 
-export function singleCategoryResponseFromJSON(
+export function categoryResponseFromJSON(
   jsonString: string,
-): SafeParseResult<SingleCategoryResponse, SDKValidationError> {
+): SafeParseResult<CategoryResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SingleCategoryResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SingleCategoryResponse' from JSON`,
+    (x) => CategoryResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CategoryResponse' from JSON`,
   );
 }

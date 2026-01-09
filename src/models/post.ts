@@ -23,10 +23,10 @@ export type Post = {
   id: string;
   slug: string;
   title: string;
-  content: string | null;
+  content: string;
   featured: boolean;
   coverImage: string | null;
-  description: string | null;
+  description: string;
   publishedAt: Date;
   updatedAt: Date;
   /**
@@ -60,10 +60,10 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   id: types.string(),
   slug: types.string(),
   title: types.string(),
-  content: types.nullable(types.string()),
+  content: types.string(),
   featured: types.boolean(),
   coverImage: types.nullable(types.string()),
-  description: types.nullable(types.string()),
+  description: types.string(),
   publishedAt: types.date(),
   updatedAt: types.date(),
   attribution: types.nullable(z.lazy(() => Attribution$inboundSchema)),

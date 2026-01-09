@@ -9,9 +9,9 @@ let value: GetV1AuthorsResponse = {
   result: {
     authors: [
       {
-        id: "clx123abc",
+        id: "cryitfjp3456lm06xfpzcgl0",
         name: "John Doe",
-        image: "https://cdn.example.com/avatar.jpg",
+        image: "https://media.marblecms.com/avatar.jpg",
         slug: "john-doe",
         bio: "Technical writer and developer",
         role: "Editor",

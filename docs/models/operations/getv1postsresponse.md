@@ -9,12 +9,12 @@ let value: GetV1PostsResponse = {
   result: {
     posts: [
       {
-        id: "clx000post",
+        id: "cryitfjp5678mn09qrstuvwx",
         slug: "getting-started-with-nextjs",
         title: "Getting Started with Next.js",
         content: "<p>Hello world</p>",
         featured: false,
-        coverImage: "https://cdn.example.com/cover.jpg",
+        coverImage: "https://media.marblecms.com/cover.jpg",
         description: "A beginner's guide to Next.js",
         publishedAt: new Date("2024-01-15T10:00:00Z"),
         updatedAt: new Date("2024-01-16T12:00:00Z"),
@@ -24,14 +24,14 @@ let value: GetV1PostsResponse = {
         },
         authors: [],
         category: {
-          id: "clx456def",
+          id: "cryitfjp1234jl04vdnycek8",
           name: "Technology",
           slug: "technology",
           description: "Tech news and tutorials",
         },
         tags: [
           {
-            id: "clx789ghi",
+            id: "cryitfjp1234jl04vdnycek8",
             name: "JavaScript",
             slug: "javascript",
             description: "JavaScript tutorials",
