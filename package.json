@@ -3,6 +3,14 @@
   "version": "1.0.3",
   "author": "Speakeasy",
   "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist/",
+    "FUNCTIONS.md",
+    "RUNTIMES.md",
+    "README.md",
+    "LICENSE"
+  ],
   "tshy": {
     "sourceDialects": [
       "@usemarble/sdk/source"
@@ -21,7 +29,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/usemarble/marble-ts.git"
+    "url": "git+https://github.com/usemarble/marble-ts.git"
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
