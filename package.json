@@ -21,7 +21,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/usemarble/marble-ts.git"
+    "url": "git+https://github.com/usemarble/marble-ts.git"
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
