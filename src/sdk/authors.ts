@@ -29,7 +29,7 @@ export class Authors extends ClientSDK {
   }
 
   /**
-   * Get an author
+   * Get author
    *
    * @remarks
    * Get a single author by ID or slug

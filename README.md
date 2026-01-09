@@ -9,7 +9,6 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage _
 ## Summary
 
 Marble API: A headless CMS API for managing and delivering content programmatically.
-
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -82,7 +81,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -114,16 +113,16 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type | Scheme      | Environment Variable |
-| ------------ | ---- | ----------- | -------------------- |
-| `bearerAuth` | http | HTTP Bearer | `MARBLE_BEARER_AUTH` |
+| Name     | Type   | Scheme  | Environment Variable |
+| -------- | ------ | ------- | -------------------- |
+| `apiKey` | apiKey | API key | `MARBLE_API_KEY`     |
 
-To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -157,22 +156,22 @@ run();
 ### [Authors](docs/sdks/authors/README.md)
 
 * [list](docs/sdks/authors/README.md#list) - List authors
-* [get](docs/sdks/authors/README.md#get) - Get an author
+* [get](docs/sdks/authors/README.md#get) - Get author
 
 ### [Categories](docs/sdks/categories/README.md)
 
 * [list](docs/sdks/categories/README.md#list) - List categories
-* [get](docs/sdks/categories/README.md#get) - Get a category
+* [get](docs/sdks/categories/README.md#get) - Get category
 
 ### [Posts](docs/sdks/posts/README.md)
 
 * [list](docs/sdks/posts/README.md#list) - List posts
-* [get](docs/sdks/posts/README.md#get) - Get a post
+* [get](docs/sdks/posts/README.md#get) - Get post
 
 ### [Tags](docs/sdks/tags/README.md)
 
 * [list](docs/sdks/tags/README.md#list) - List tags
-* [get](docs/sdks/tags/README.md#get) - Get a tag
+* [get](docs/sdks/tags/README.md#get) - Get tag
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -192,13 +191,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`authorsGet`](docs/sdks/authors/README.md#get) - Get an author
+- [`authorsGet`](docs/sdks/authors/README.md#get) - Get author
 - [`authorsList`](docs/sdks/authors/README.md#list) - List authors
-- [`categoriesGet`](docs/sdks/categories/README.md#get) - Get a category
+- [`categoriesGet`](docs/sdks/categories/README.md#get) - Get category
 - [`categoriesList`](docs/sdks/categories/README.md#list) - List categories
-- [`postsGet`](docs/sdks/posts/README.md#get) - Get a post
+- [`postsGet`](docs/sdks/posts/README.md#get) - Get post
 - [`postsList`](docs/sdks/posts/README.md#list) - List posts
-- [`tagsGet`](docs/sdks/tags/README.md#get) - Get a tag
+- [`tagsGet`](docs/sdks/tags/README.md#get) - Get tag
 - [`tagsList`](docs/sdks/tags/README.md#list) - List tags
 
 </details>
@@ -220,7 +219,7 @@ Here's an example of one such pagination call:
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -255,7 +254,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -305,7 +304,7 @@ const marble = new Marble({
     },
     retryConnectionErrors: false,
   },
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -350,7 +349,7 @@ import { Marble } from "@usemarble/sdk";
 import * as errors from "@usemarble/sdk/models/errors";
 
 const marble = new Marble({
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -430,7 +429,7 @@ import { Marble } from "@usemarble/sdk";
 
 const marble = new Marble({
   serverURL: "https://api.marblecms.com",
-  bearerAuth: process.env["MARBLE_BEARER_AUTH"] ?? "",
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
 });
 
 async function run() {

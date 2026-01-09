@@ -31,7 +31,7 @@ export class Categories extends ClientSDK {
   }
 
   /**
-   * Get a category
+   * Get category
    *
    * @remarks
    * Get a single category by ID or slug
