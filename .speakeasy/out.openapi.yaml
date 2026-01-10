@@ -555,6 +555,17 @@ paths:
           description: "Content format (html or markdown)"
           name: "format"
           in: "query"
+        - schema:
+            type: "string"
+            enum:
+              - "true"
+              - "false"
+            example: "true"
+            description: "Filter by featured status"
+          required: false
+          description: "Filter by featured status"
+          name: "featured"
+          in: "query"
       responses:
         "200":
           description: "Paginated list of posts"

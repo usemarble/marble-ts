@@ -31,6 +31,7 @@ async function run() {
     excludeTags: "outdated",
     query: "nextjs",
     format: "html",
+    featured: "true",
   });
 
   for await (const page of result) {
@@ -65,6 +66,7 @@ async function run() {
     excludeTags: "outdated",
     query: "nextjs",
     format: "html",
+    featured: "true",
   });
   if (res.ok) {
     const { value: result } = res;

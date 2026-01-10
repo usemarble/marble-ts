@@ -22,6 +22,18 @@ export const Order = {
  */
 export type Order = ClosedEnum<typeof Order>;
 
+/**
+ * Filter by featured status
+ */
+export const Featured = {
+  True: "true",
+  False: "false",
+} as const;
+/**
+ * Filter by featured status
+ */
+export type Featured = ClosedEnum<typeof Featured>;
+
 export type GetV1PostsRequest = {
   /**
    * Number of posts per page (1-100)
@@ -59,6 +71,10 @@ export type GetV1PostsRequest = {
    * Content format (html or markdown)
    */
   format?: models.ContentFormat | undefined;
+  /**
+   * Filter by featured status
+   */
+  featured?: Featured | undefined;
 };
 
 export type GetV1PostsResponse = {
@@ -67,6 +83,11 @@ export type GetV1PostsResponse = {
 
 /** @internal */
 export const Order$outboundSchema: z.ZodMiniEnum<typeof Order> = z.enum(Order);
+
+/** @internal */
+export const Featured$outboundSchema: z.ZodMiniEnum<typeof Featured> = z.enum(
+  Featured,
+);
 
 /** @internal */
 export type GetV1PostsRequest$Outbound = {
@@ -79,6 +100,7 @@ export type GetV1PostsRequest$Outbound = {
   excludeTags?: string | undefined;
   query?: string | undefined;
   format?: string | undefined;
+  featured?: string | undefined;
 };
 
 /** @internal */
@@ -95,6 +117,7 @@ export const GetV1PostsRequest$outboundSchema: z.ZodMiniType<
   excludeTags: z.optional(z.string()),
   query: z.optional(z.string()),
   format: z.optional(models.ContentFormat$outboundSchema),
+  featured: z.optional(Featured$outboundSchema),
 });
 
 export function getV1PostsRequestToJSON(
