@@ -111,6 +111,7 @@ async function $do(
     "categories": payload?.categories,
     "excludeCategories": payload?.excludeCategories,
     "excludeTags": payload?.excludeTags,
+    "featured": payload?.featured,
     "format": payload?.format,
     "limit": payload?.limit,
     "order": payload?.order,
