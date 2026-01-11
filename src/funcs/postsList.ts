@@ -5,7 +5,7 @@
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeFormQuery, queryJoin } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -107,18 +107,22 @@ async function $do(
 
   const path = pathToFunc("/v1/posts")();
 
-  const query = encodeFormQuery({
-    "categories": payload?.categories,
-    "excludeCategories": payload?.excludeCategories,
-    "excludeTags": payload?.excludeTags,
-    "featured": payload?.featured,
-    "format": payload?.format,
-    "limit": payload?.limit,
-    "order": payload?.order,
-    "page": payload?.page,
-    "query": payload?.query,
-    "tags": payload?.tags,
-  });
+  const query = queryJoin(
+    encodeFormQuery({
+      "categories": payload?.categories,
+      "excludeCategories": payload?.excludeCategories,
+      "excludeTags": payload?.excludeTags,
+      "tags": payload?.tags,
+    }, { explode: false }),
+    encodeFormQuery({
+      "featured": payload?.featured,
+      "format": payload?.format,
+      "limit": payload?.limit,
+      "order": payload?.order,
+      "page": payload?.page,
+      "query": payload?.query,
+    }),
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",

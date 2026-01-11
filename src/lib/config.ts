@@ -61,7 +61,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "1.0.6",
+  sdkVersion: "1.0.7",
   genVersion: "2.793.0",
-  userAgent: "speakeasy-sdk/typescript 1.0.6 2.793.0 1.0.0 @usemarble/sdk",
+  userAgent: "speakeasy-sdk/typescript 1.0.7 2.793.0 1.0.0 @usemarble/sdk",
 } as const;

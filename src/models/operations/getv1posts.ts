@@ -48,21 +48,21 @@ export type GetV1PostsRequest = {
    */
   order?: Order | undefined;
   /**
-   * Comma-separated category slugs to include
+   * Category slugs to include
    */
-  categories?: string | undefined;
+  categories?: Array<string> | undefined;
   /**
-   * Comma-separated category slugs to exclude
+   * Category slugs to exclude
    */
-  excludeCategories?: string | undefined;
+  excludeCategories?: Array<string> | undefined;
   /**
-   * Comma-separated tag slugs to include
+   * Tag slugs to include
    */
-  tags?: string | undefined;
+  tags?: Array<string> | undefined;
   /**
-   * Comma-separated tag slugs to exclude
+   * Tag slugs to exclude
    */
-  excludeTags?: string | undefined;
+  excludeTags?: Array<string> | undefined;
   /**
    * Search query for title and content
    */
@@ -94,10 +94,10 @@ export type GetV1PostsRequest$Outbound = {
   limit?: number | undefined;
   page?: number | undefined;
   order: string;
-  categories?: string | undefined;
-  excludeCategories?: string | undefined;
-  tags?: string | undefined;
-  excludeTags?: string | undefined;
+  categories?: Array<string> | undefined;
+  excludeCategories?: Array<string> | undefined;
+  tags?: Array<string> | undefined;
+  excludeTags?: Array<string> | undefined;
   query?: string | undefined;
   format?: string | undefined;
   featured?: string | undefined;
@@ -111,10 +111,10 @@ export const GetV1PostsRequest$outboundSchema: z.ZodMiniType<
   limit: z.optional(z.int()),
   page: z.optional(z.int()),
   order: z._default(Order$outboundSchema, "desc"),
-  categories: z.optional(z.string()),
-  excludeCategories: z.optional(z.string()),
-  tags: z.optional(z.string()),
-  excludeTags: z.optional(z.string()),
+  categories: z.optional(z.array(z.string())),
+  excludeCategories: z.optional(z.array(z.string())),
+  tags: z.optional(z.array(z.string())),
+  excludeTags: z.optional(z.array(z.string())),
   query: z.optional(z.string()),
   format: z.optional(models.ContentFormat$outboundSchema),
   featured: z.optional(Featured$outboundSchema),
