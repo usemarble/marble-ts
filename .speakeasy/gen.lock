@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
-  docChecksum: 815bbc03ee8160f9f557ce58a4d52706
+  docChecksum: 889c5c4fcef1958a2682f55b56da8297
   docVersion: 1.0.0
   speakeasyVersion: 1.684.0
   generationVersion: 2.793.0
-  releaseVersion: 1.0.7
-  configChecksum: ac9344658557b4f9a15623d31434ba86
+  releaseVersion: 1.0.8
+  configChecksum: 8ce61c3cb1e972221c22d9cb28fcd5eb
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 8706e0ef-3f4c-4a48-b1fe-50cfd31f1398
-  pristine_commit_hash: ca339b66ab43849ffee1890eb65291884e8198b2
-  pristine_tree_hash: 2bf0b70961db1eeb32b36a6416a389579818345e
+  generation_id: 4502c9aa-d80e-495d-af2d-8a6ac71f1cac
+  pristine_commit_hash: 3c3519d14880303a88e99ce10a108170f476156f
+  pristine_tree_hash: d316fec634722cc729cbda1115648a77ab977083
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -307,12 +307,12 @@ trackedFiles:
     pristine_git_object: e71dfe3f0a1d6fe1d85f98a70041a293f44a59d5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:16eae02f87f62c15949be02bac8f602b21ce65eb
-    pristine_git_object: 9545cb8ae63b7526ac1f58f1364f1db49981c263
+    last_write_checksum: sha1:560e9a70400c62b976c45b2ffcc38826fa2a4596
+    pristine_git_object: 39b73e9d5b5a1f0c319ed97a1a7815d1df18d825
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:7fc090b0dd436e5bce1ae438fc9a497969229efe
-    pristine_git_object: cd54e6df3ffa1844825df43237d1f6328eaf95de
+    last_write_checksum: sha1:b259bfda6ff5459d50199e608804c8b2503b7aa9
+    pristine_git_object: 0061ad91fcf798c9f33a1907e2917c64db20bdb2
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -371,8 +371,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:29c3b0b4aa01c85bb55f55399881ab62337f1a8f
-    pristine_git_object: e21acf80cf63a52666f6316af53fa1c60521eb86
+    last_write_checksum: sha1:0f8c2776c43305d05dee18dd8a81b81355ea7a42
+    pristine_git_object: 800b2041d0723a19c94c9d7b90dda70137ca7a48
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -575,8 +575,8 @@ trackedFiles:
     pristine_git_object: 32d8f05b77a53feb60b1270110c7a0b4160c07be
   src/models/post.ts:
     id: b3a3adebd438
-    last_write_checksum: sha1:fa93030e4e96f1a8fa25eefe4c791a9ca9b4948a
-    pristine_git_object: 20c160e76dab8fbd6f3daa79d65d55de18f90559
+    last_write_checksum: sha1:e321b0b6f1439187c9015ce61d9c604cd5b1098d
+    pristine_git_object: 47f184f9eaacdf9252778f8c63d71d87c3cbb27a
   src/models/postresponse.ts:
     id: 09c17c5eb329
     last_write_checksum: sha1:9940a8c95f0dfa440d7fff4e35e6769292bd8804
@@ -807,4 +807,5 @@ examples:
 examplesVersion: 1.0.2
 releaseNotes: |
   ## Typescript SDK Changes:
-  * `marble.posts.list()`:  `request` **Changed** **Breaking** :warning:
+  * `marble.posts.list()`:  `response.posts.[].category` **Changed** **Breaking** :warning:
+  * `marble.posts.get()`:  `response.post.category` **Changed** **Breaking** :warning:

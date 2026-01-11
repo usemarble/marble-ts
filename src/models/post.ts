@@ -34,7 +34,7 @@ export type Post = {
    */
   attribution: Attribution | null;
   authors: Array<AuthorRef>;
-  category: CategoryRef | null;
+  category: CategoryRef;
   tags: Array<TagRef>;
 };
 
@@ -68,7 +68,7 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   updatedAt: types.date(),
   attribution: types.nullable(z.lazy(() => Attribution$inboundSchema)),
   authors: z.array(AuthorRef$inboundSchema),
-  category: types.nullable(CategoryRef$inboundSchema),
+  category: CategoryRef$inboundSchema,
   tags: z.array(TagRef$inboundSchema),
 });
 
