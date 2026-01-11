@@ -511,37 +511,53 @@ paths:
           name: "order"
           in: "query"
         - schema:
-            type: "string"
-            example: "tech,news"
-            description: "Comma-separated category slugs to include"
+            type: "array"
+            items:
+              type: "string"
+            example: ["tech", "news"]
+            description: "Category slugs to include"
           required: false
-          description: "Comma-separated category slugs to include"
+          description: "Category slugs to include"
           name: "categories"
           in: "query"
+          style: "form"
+          explode: false
         - schema:
-            type: "string"
-            example: "changelog"
-            description: "Comma-separated category slugs to exclude"
+            type: "array"
+            items:
+              type: "string"
+            example: ["changelog"]
+            description: "Category slugs to exclude"
           required: false
-          description: "Comma-separated category slugs to exclude"
+          description: "Category slugs to exclude"
           name: "excludeCategories"
           in: "query"
+          style: "form"
+          explode: false
         - schema:
-            type: "string"
-            example: "javascript,react"
-            description: "Comma-separated tag slugs to include"
+            type: "array"
+            items:
+              type: "string"
+            example: ["javascript", "react"]
+            description: "Tag slugs to include"
           required: false
-          description: "Comma-separated tag slugs to include"
+          description: "Tag slugs to include"
           name: "tags"
           in: "query"
+          style: "form"
+          explode: false
         - schema:
-            type: "string"
-            example: "outdated"
-            description: "Comma-separated tag slugs to exclude"
+            type: "array"
+            items:
+              type: "string"
+            example: ["outdated"]
+            description: "Tag slugs to exclude"
           required: false
-          description: "Comma-separated tag slugs to exclude"
+          description: "Tag slugs to exclude"
           name: "excludeTags"
           in: "query"
+          style: "form"
+          explode: false
         - schema:
             type: "string"
             example: "nextjs"

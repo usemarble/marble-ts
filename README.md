@@ -88,10 +88,20 @@ async function run() {
   const result = await marble.posts.list({
     limit: 10,
     page: 1,
-    categories: "tech,news",
-    excludeCategories: "changelog",
-    tags: "javascript,react",
-    excludeTags: "outdated",
+    categories: [
+      "tech",
+      "news",
+    ],
+    excludeCategories: [
+      "changelog",
+    ],
+    tags: [
+      "javascript",
+      "react",
+    ],
+    excludeTags: [
+      "outdated",
+    ],
     query: "nextjs",
     format: "html",
     featured: "true",
@@ -130,10 +140,20 @@ async function run() {
   const result = await marble.posts.list({
     limit: 10,
     page: 1,
-    categories: "tech,news",
-    excludeCategories: "changelog",
-    tags: "javascript,react",
-    excludeTags: "outdated",
+    categories: [
+      "tech",
+      "news",
+    ],
+    excludeCategories: [
+      "changelog",
+    ],
+    tags: [
+      "javascript",
+      "react",
+    ],
+    excludeTags: [
+      "outdated",
+    ],
     query: "nextjs",
     format: "html",
     featured: "true",
@@ -228,10 +248,20 @@ async function run() {
   const result = await marble.posts.list({
     limit: 10,
     page: 1,
-    categories: "tech,news",
-    excludeCategories: "changelog",
-    tags: "javascript,react",
-    excludeTags: "outdated",
+    categories: [
+      "tech",
+      "news",
+    ],
+    excludeCategories: [
+      "changelog",
+    ],
+    tags: [
+      "javascript",
+      "react",
+    ],
+    excludeTags: [
+      "outdated",
+    ],
     query: "nextjs",
     format: "html",
     featured: "true",
@@ -264,10 +294,20 @@ async function run() {
   const result = await marble.posts.list({
     limit: 10,
     page: 1,
-    categories: "tech,news",
-    excludeCategories: "changelog",
-    tags: "javascript,react",
-    excludeTags: "outdated",
+    categories: [
+      "tech",
+      "news",
+    ],
+    excludeCategories: [
+      "changelog",
+    ],
+    tags: [
+      "javascript",
+      "react",
+    ],
+    excludeTags: [
+      "outdated",
+    ],
     query: "nextjs",
     format: "html",
     featured: "true",
@@ -315,10 +355,20 @@ async function run() {
   const result = await marble.posts.list({
     limit: 10,
     page: 1,
-    categories: "tech,news",
-    excludeCategories: "changelog",
-    tags: "javascript,react",
-    excludeTags: "outdated",
+    categories: [
+      "tech",
+      "news",
+    ],
+    excludeCategories: [
+      "changelog",
+    ],
+    tags: [
+      "javascript",
+      "react",
+    ],
+    excludeTags: [
+      "outdated",
+    ],
     query: "nextjs",
     format: "html",
     featured: "true",
@@ -362,10 +412,20 @@ async function run() {
     const result = await marble.posts.list({
       limit: 10,
       page: 1,
-      categories: "tech,news",
-      excludeCategories: "changelog",
-      tags: "javascript,react",
-      excludeTags: "outdated",
+      categories: [
+        "tech",
+        "news",
+      ],
+      excludeCategories: [
+        "changelog",
+      ],
+      tags: [
+        "javascript",
+        "react",
+      ],
+      excludeTags: [
+        "outdated",
+      ],
       query: "nextjs",
       format: "html",
       featured: "true",
@@ -442,10 +502,20 @@ async function run() {
   const result = await marble.posts.list({
     limit: 10,
     page: 1,
-    categories: "tech,news",
-    excludeCategories: "changelog",
-    tags: "javascript,react",
-    excludeTags: "outdated",
+    categories: [
+      "tech",
+      "news",
+    ],
+    excludeCategories: [
+      "changelog",
+    ],
+    tags: [
+      "javascript",
+      "react",
+    ],
+    excludeTags: [
+      "outdated",
+    ],
     query: "nextjs",
     format: "html",
     featured: "true",
