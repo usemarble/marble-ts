@@ -32,7 +32,7 @@ export class Posts extends ClientSDK {
    * Get post
    *
    * @remarks
-   * Get a single published post by ID or slug
+   * Get a single post by ID or slug, with optional status filtering
    */
   async get(
     request: operations.GetV1PostsIdentifierRequest,

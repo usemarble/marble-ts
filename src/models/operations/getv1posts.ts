@@ -34,6 +34,19 @@ export const Featured = {
  */
 export type Featured = ClosedEnum<typeof Featured>;
 
+/**
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ */
+export const GetV1PostsStatus = {
+  Published: "published",
+  Draft: "draft",
+  All: "all",
+} as const;
+/**
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ */
+export type GetV1PostsStatus = ClosedEnum<typeof GetV1PostsStatus>;
+
 export type GetV1PostsRequest = {
   /**
    * Number of posts per page (1-100)
@@ -75,6 +88,10 @@ export type GetV1PostsRequest = {
    * Filter by featured status
    */
   featured?: Featured | undefined;
+  /**
+   * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+   */
+  status?: GetV1PostsStatus | undefined;
 };
 
 export type GetV1PostsResponse = {
@@ -90,6 +107,11 @@ export const Featured$outboundSchema: z.ZodMiniEnum<typeof Featured> = z.enum(
 );
 
 /** @internal */
+export const GetV1PostsStatus$outboundSchema: z.ZodMiniEnum<
+  typeof GetV1PostsStatus
+> = z.enum(GetV1PostsStatus);
+
+/** @internal */
 export type GetV1PostsRequest$Outbound = {
   limit?: number | undefined;
   page?: number | undefined;
@@ -101,6 +123,7 @@ export type GetV1PostsRequest$Outbound = {
   query?: string | undefined;
   format?: string | undefined;
   featured?: string | undefined;
+  status: string;
 };
 
 /** @internal */
@@ -118,6 +141,7 @@ export const GetV1PostsRequest$outboundSchema: z.ZodMiniType<
   query: z.optional(z.string()),
   format: z.optional(models.ContentFormat$outboundSchema),
   featured: z.optional(Featured$outboundSchema),
+  status: z._default(GetV1PostsStatus$outboundSchema, "published"),
 });
 
 export function getV1PostsRequestToJSON(

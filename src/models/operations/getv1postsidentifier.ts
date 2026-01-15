@@ -3,7 +3,23 @@
  */
 
 import * as z from "zod/v4-mini";
+import { ClosedEnum } from "../../types/enums.js";
 import * as models from "../index.js";
+
+/**
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ */
+export const GetV1PostsIdentifierStatus = {
+  Published: "published",
+  Draft: "draft",
+  All: "all",
+} as const;
+/**
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ */
+export type GetV1PostsIdentifierStatus = ClosedEnum<
+  typeof GetV1PostsIdentifierStatus
+>;
 
 export type GetV1PostsIdentifierRequest = {
   /**
@@ -14,12 +30,22 @@ export type GetV1PostsIdentifierRequest = {
    * Content format (html or markdown)
    */
   format?: models.ContentFormat | undefined;
+  /**
+   * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+   */
+  status?: GetV1PostsIdentifierStatus | undefined;
 };
+
+/** @internal */
+export const GetV1PostsIdentifierStatus$outboundSchema: z.ZodMiniEnum<
+  typeof GetV1PostsIdentifierStatus
+> = z.enum(GetV1PostsIdentifierStatus);
 
 /** @internal */
 export type GetV1PostsIdentifierRequest$Outbound = {
   identifier: string;
   format?: string | undefined;
+  status: string;
 };
 
 /** @internal */
@@ -29,6 +55,7 @@ export const GetV1PostsIdentifierRequest$outboundSchema: z.ZodMiniType<
 > = z.object({
   identifier: z.string(),
   format: z.optional(models.ContentFormat$outboundSchema),
+  status: z._default(GetV1PostsIdentifierStatus$outboundSchema, "published"),
 });
 
 export function getV1PostsIdentifierRequestToJSON(

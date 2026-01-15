@@ -581,6 +581,19 @@ paths:
           description: "Filter by featured status"
           name: "featured"
           in: "query"
+        - schema:
+            type: "string"
+            enum:
+              - "published"
+              - "draft"
+              - "all"
+            default: "published"
+            example: "published"
+            description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+          required: false
+          description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+          name: "status"
+          in: "query"
       responses:
         "200":
           description: "Paginated list of posts"
@@ -607,7 +620,7 @@ paths:
       tags:
         - "Posts"
       summary: "Get post"
-      description: "Get a single published post by ID or slug"
+      description: "Get a single post by ID or slug, with optional status filtering"
       parameters:
         - schema:
             type: "string"
@@ -621,6 +634,19 @@ paths:
           required: false
           description: "Content format (html or markdown)"
           name: "format"
+          in: "query"
+        - schema:
+            type: "string"
+            enum:
+              - "published"
+              - "draft"
+              - "all"
+            default: "published"
+            example: "published"
+            description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+          required: false
+          description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+          name: "status"
           in: "query"
       responses:
         "200":

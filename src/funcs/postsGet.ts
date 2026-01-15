@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Get post
  *
  * @remarks
- * Get a single published post by ID or slug
+ * Get a single post by ID or slug, with optional status filtering
  */
 export function postsGet(
   client: MarbleCore,
@@ -104,6 +104,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "format": payload.format,
+    "status": payload.status,
   });
 
   const headers = new Headers(compactMap({
