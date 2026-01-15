@@ -121,6 +121,7 @@ async function $do(
       "order": payload?.order,
       "page": payload?.page,
       "query": payload?.query,
+      "status": payload?.status,
     }),
   );
 

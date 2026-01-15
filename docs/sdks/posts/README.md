@@ -125,7 +125,7 @@ run();
 
 ## get
 
-Get a single published post by ID or slug
+Get a single post by ID or slug, with optional status filtering
 
 ### Example Usage
 
