@@ -3,22 +3,22 @@ id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
   docChecksum: d1b5cf50e70a2dcbba44765c24514155
   docVersion: 1.0.0
-  speakeasyVersion: 1.685.3
-  generationVersion: 2.795.8
-  releaseVersion: 1.0.9
-  configChecksum: f5429a9d374c62953e1c11794d4fb694
+  speakeasyVersion: 1.686.0
+  generationVersion: 2.796.1
+  releaseVersion: 1.0.10
+  configChecksum: a4a4adc82c3f5e1c9eb213a7ce26d701
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 88a435a2-944b-4241-9f21-ab5466942513
-  pristine_commit_hash: d3ec8a47ff4d157ef53e78e78c4f9cb97cbc25cc
-  pristine_tree_hash: 26b275c7326dc5379298f3212977fc9424b746a0
+  generation_id: 11f0dab6-733a-42b1-8026-5cd1732ddb5e
+  pristine_commit_hash: f570d3f34ca285d7727bf63836687b3eb64b1ec5
+  pristine_tree_hash: 88e2248884c4a4b281e87e396b939bc15a5539b6
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.21
+    core: 3.26.22
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.1
     enumUnions: 0.1.0
@@ -315,12 +315,12 @@ trackedFiles:
     pristine_git_object: e71dfe3f0a1d6fe1d85f98a70041a293f44a59d5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:b6f7a5a8c265274e2bd93d93e0a342b3c8b70cad
-    pristine_git_object: 885d925b4e2d187009c87c207dd00e86ae3d07a9
+    last_write_checksum: sha1:63f506e18230013920e2db452fc9a36abb9fdfad
+    pristine_git_object: e2ab63db9ced1570a2db46d3b06846e20623fdd9
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:641d1f772108374849d32143d4a0c12e1c7cbd92
-    pristine_git_object: 9210975d3a6000bb771646efbc140124ae75f41c
+    last_write_checksum: sha1:4da5519459f25db7b2fce30b78adbc444ff80ef3
+    pristine_git_object: 25b2760ce234ae3971fd45ee4561297bd89b18af
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -379,8 +379,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:867e0c315a875b7bd3cd199cf73679747ca0f9ac
-    pristine_git_object: 5a70969cc6b9f2b544ae40a707a9bba3feea8555
+    last_write_checksum: sha1:b1cc3640820615772a1de4e1c21484ba6eea696d
+    pristine_git_object: 9e1d99ec683ec534230582b23066007ff04f5551
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -815,4 +815,3 @@ examples:
         "500":
           application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
 examplesVersion: 1.0.2
-releaseNotes: "## Typescript SDK Changes:\n* `marble.posts.list()`: \n  *  `request.status` **Added**\n* `marble.posts.get()`: \n  *  `request.status` **Added**\n"
