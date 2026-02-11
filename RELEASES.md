@@ -99,3 +99,13 @@ Based on:
 - [typescript v1.0.10] .
 ### Releases
 - [NPM v1.0.10] https://www.npmjs.com/package/@usemarble/sdk/v/1.0.10 - .
+
+## 2026-02-11 02:09:30
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.709.4 (2.816.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.1.0] .
+### Releases
+- [NPM v1.1.0] https://www.npmjs.com/package/@usemarble/sdk/v/1.1.0 - .
