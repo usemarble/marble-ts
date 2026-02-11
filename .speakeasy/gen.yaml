@@ -18,21 +18,22 @@ generation:
     sharedErrorComponentsApr2025: true
     sharedNestedComponentsJan2026: false
   auth:
-    oAuth2ClientCredentialsEnabled: true
-    oAuth2PasswordEnabled: true
+    oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
     hoistGlobalSecurity: true
   inferSSEOverload: true
   sdkHooksConfigAccess: true
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: body
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.0.10
+  version: 1.1.0
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -78,6 +79,7 @@ typescript:
   inputModelSuffix: input
   jsonpath: rfc9535
   laxMode: lax
+  legacyFileNaming: true
   maxMethodParams: 0
   methodArguments: infer-optional-args
   modelPropertyCasing: camel

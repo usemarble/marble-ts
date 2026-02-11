@@ -1,30 +1,30 @@
 lockVersion: 2.0.0
 id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
-  docChecksum: d1b5cf50e70a2dcbba44765c24514155
+  docChecksum: 453dd00eddb5e57fad384b8ac3bd561e
   docVersion: 1.0.0
-  speakeasyVersion: 1.686.0
-  generationVersion: 2.796.1
-  releaseVersion: 1.0.10
-  configChecksum: a4a4adc82c3f5e1c9eb213a7ce26d701
+  speakeasyVersion: 1.709.4
+  generationVersion: 2.816.0
+  releaseVersion: 1.1.0
+  configChecksum: 972c2821a492e124ea96c9f2765285a4
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 11f0dab6-733a-42b1-8026-5cd1732ddb5e
-  pristine_commit_hash: f570d3f34ca285d7727bf63836687b3eb64b1ec5
-  pristine_tree_hash: 88e2248884c4a4b281e87e396b939bc15a5539b6
+  generation_id: 91556085-6762-4b0f-93a4-e9ec12f36983
+  pristine_commit_hash: cae634443773e6a8c7b7a9bf1d5afe00bbace0ed
+  pristine_tree_hash: 62837b6bf00dddc11a5483f23e93e90759bf7fb3
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.12
-    core: 3.26.22
+    constsAndDefaults: 0.1.13
+    core: 3.26.27
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     errorUnions: 0.1.1
-    globalSecurity: 2.82.14
+    globalSecurity: 2.82.15
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.83.0
@@ -32,10 +32,10 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.1
     pagination: 2.83.0
-    responseFormat: 0.2.3
+    responseFormat: 0.3.0
     retries: 2.83.0
     sdkHooks: 0.4.0
-    unions: 2.86.3
+    unions: 2.86.4
 trackedFiles:
   .devcontainer/README.md:
     id: b170c0f184ac
@@ -315,12 +315,12 @@ trackedFiles:
     pristine_git_object: e71dfe3f0a1d6fe1d85f98a70041a293f44a59d5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:63f506e18230013920e2db452fc9a36abb9fdfad
-    pristine_git_object: e2ab63db9ced1570a2db46d3b06846e20623fdd9
+    last_write_checksum: sha1:9bcd19d148c96e5a0bf4acbfa49a4dfae9b8f8c0
+    pristine_git_object: 63e60351f4fb28dab051d6876cc4282687670c43
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:4da5519459f25db7b2fce30b78adbc444ff80ef3
-    pristine_git_object: 25b2760ce234ae3971fd45ee4561297bd89b18af
+    last_write_checksum: sha1:3ac8fe327895e9ee2d11f8c0628173d9b1359cb6
+    pristine_git_object: 72af401e1971b8afc1100977cf6b7f3b8a200ca4
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -359,8 +359,8 @@ trackedFiles:
     pristine_git_object: 5134bcc9ec26ef3340607330cb184454d48ff6d7
   src/hooks/hooks.ts:
     id: a2463fc6f69b
-    last_write_checksum: sha1:7dd975bbcc46a32dd394f86a4652b74ecc70d874
-    pristine_git_object: 7ed9e0445ac189e0f90687c6ef602212702bde90
+    last_write_checksum: sha1:3a90d88b4c6c07247db8e5f6441a79538232394e
+    pristine_git_object: 94ad0a323123b34dc638717c5d67a3c23c54d5c6
   src/hooks/index.ts:
     id: 5f2dab62b520
     last_write_checksum: sha1:1a11c073a6cd792932218e1d4ed36b8567bad8ef
@@ -379,8 +379,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:b1cc3640820615772a1de4e1c21484ba6eea696d
-    pristine_git_object: 9e1d99ec683ec534230582b23066007ff04f5551
+    last_write_checksum: sha1:85b9247f67c321cdee7b388f2933b66d9bf01df3
+    pristine_git_object: ef5197b58902a2094092c87882c0a0dc7a6edd53
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -687,8 +687,8 @@ trackedFiles:
     pristine_git_object: c79b3f53a3dd922aa2ace5a4191c8652cf9a8e89
   src/types/smartUnion.ts:
     id: b65a1bd4c0e9
-    last_write_checksum: sha1:d6c9754e1231a36cffe46c384849be413d5e2a72
-    pristine_git_object: 266e39ba2e58c1b8eba39834612ca34c36e186a8
+    last_write_checksum: sha1:aa3829a12a514b6c9a8ae76aab95086d7ccbc30f
+    pristine_git_object: 1eabf9aa2e6dd5052f2a337279b6ba0452122958
   src/types/streams.ts:
     id: f99be9c4bf14
     last_write_checksum: sha1:cc9ced2dd34a76c3a1bd7784ccda1cc3b37ab9a9
