@@ -178,22 +178,34 @@ run();
 ### [Authors](docs/sdks/authors/README.md)
 
 * [list](docs/sdks/authors/README.md#list) - List authors
+* [postV1Authors](docs/sdks/authors/README.md#postv1authors) - Create author
 * [get](docs/sdks/authors/README.md#get) - Get author
+* [patchV1AuthorsIdentifier](docs/sdks/authors/README.md#patchv1authorsidentifier) - Update author
+* [deleteV1AuthorsIdentifier](docs/sdks/authors/README.md#deletev1authorsidentifier) - Delete author
 
 ### [Categories](docs/sdks/categories/README.md)
 
 * [list](docs/sdks/categories/README.md#list) - List categories
+* [postV1Categories](docs/sdks/categories/README.md#postv1categories) - Create category
 * [get](docs/sdks/categories/README.md#get) - Get category
+* [patchV1CategoriesIdentifier](docs/sdks/categories/README.md#patchv1categoriesidentifier) - Update category
+* [deleteV1CategoriesIdentifier](docs/sdks/categories/README.md#deletev1categoriesidentifier) - Delete category
 
 ### [Posts](docs/sdks/posts/README.md)
 
 * [list](docs/sdks/posts/README.md#list) - List posts
+* [postV1Posts](docs/sdks/posts/README.md#postv1posts) - Create post
 * [get](docs/sdks/posts/README.md#get) - Get post
+* [patchV1PostsIdentifier](docs/sdks/posts/README.md#patchv1postsidentifier) - Update post
+* [deleteV1PostsIdentifier](docs/sdks/posts/README.md#deletev1postsidentifier) - Delete post
 
 ### [Tags](docs/sdks/tags/README.md)
 
 * [list](docs/sdks/tags/README.md#list) - List tags
+* [postV1Tags](docs/sdks/tags/README.md#postv1tags) - Create tag
 * [get](docs/sdks/tags/README.md#get) - Get tag
+* [patchV1TagsIdentifier](docs/sdks/tags/README.md#patchv1tagsidentifier) - Update tag
+* [deleteV1TagsIdentifier](docs/sdks/tags/README.md#deletev1tagsidentifier) - Delete tag
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -213,14 +225,26 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`authorsDeleteV1AuthorsIdentifier`](docs/sdks/authors/README.md#deletev1authorsidentifier) - Delete author
 - [`authorsGet`](docs/sdks/authors/README.md#get) - Get author
 - [`authorsList`](docs/sdks/authors/README.md#list) - List authors
+- [`authorsPatchV1AuthorsIdentifier`](docs/sdks/authors/README.md#patchv1authorsidentifier) - Update author
+- [`authorsPostV1Authors`](docs/sdks/authors/README.md#postv1authors) - Create author
+- [`categoriesDeleteV1CategoriesIdentifier`](docs/sdks/categories/README.md#deletev1categoriesidentifier) - Delete category
 - [`categoriesGet`](docs/sdks/categories/README.md#get) - Get category
 - [`categoriesList`](docs/sdks/categories/README.md#list) - List categories
+- [`categoriesPatchV1CategoriesIdentifier`](docs/sdks/categories/README.md#patchv1categoriesidentifier) - Update category
+- [`categoriesPostV1Categories`](docs/sdks/categories/README.md#postv1categories) - Create category
+- [`postsDeleteV1PostsIdentifier`](docs/sdks/posts/README.md#deletev1postsidentifier) - Delete post
 - [`postsGet`](docs/sdks/posts/README.md#get) - Get post
 - [`postsList`](docs/sdks/posts/README.md#list) - List posts
+- [`postsPatchV1PostsIdentifier`](docs/sdks/posts/README.md#patchv1postsidentifier) - Update post
+- [`postsPostV1Posts`](docs/sdks/posts/README.md#postv1posts) - Create post
+- [`tagsDeleteV1TagsIdentifier`](docs/sdks/tags/README.md#deletev1tagsidentifier) - Delete tag
 - [`tagsGet`](docs/sdks/tags/README.md#get) - Get tag
 - [`tagsList`](docs/sdks/tags/README.md#list) - List tags
+- [`tagsPatchV1TagsIdentifier`](docs/sdks/tags/README.md#patchv1tagsidentifier) - Update tag
+- [`tagsPostV1Tags`](docs/sdks/tags/README.md#postv1tags) - Create tag
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -461,7 +485,7 @@ run();
 * [`MarbleError`](./src/models/errors/marbleerror.ts): The base class for HTTP error responses.
   * [`ServerError`](./src/models/errors/servererror.ts): Server error. Status code `500`.
 
-<details><summary>Less common errors (9)</summary>
+<details><summary>Less common errors (11)</summary>
 
 <br />
 
@@ -474,9 +498,11 @@ run();
 
 
 **Inherit from [`MarbleError`](./src/models/errors/marbleerror.ts)**:
-* [`ErrorT`](./src/models/errors/errort.ts): Invalid query parameters or page number. Status code `400`. Applicable to 4 of 8 methods.*
-* [`PageNotFoundError`](./src/models/errors/pagenotfounderror.ts): Invalid query parameters or page number. Status code `400`. Applicable to 4 of 8 methods.*
-* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 4 of 8 methods.*
+* [`ErrorT`](./src/models/errors/errort.ts): Status code `400`. Applicable to 13 of 20 methods.*
+* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 12 of 20 methods.*
+* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 12 of 20 methods.*
+* [`ConflictError`](./src/models/errors/conflicterror.ts): Status code `409`. Applicable to 8 of 20 methods.*
+* [`PageNotFoundError`](./src/models/errors/pagenotfounderror.ts): Invalid query parameters or page number. Status code `400`. Applicable to 4 of 20 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -544,19 +570,23 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be
 used to integrate a third-party HTTP client or when writing tests to mock out
 the HTTP client and feed in fixtures.
 
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
+The following example shows how to:
+- route requests through a proxy server using [undici](https://www.npmjs.com/package/undici)'s ProxyAgent
+- use the `"beforeRequest"` hook to add a custom header and a timeout to requests
+- use the `"requestError"` hook to log errors
 
 ```typescript
 import { Marble } from "@usemarble/sdk";
+import { ProxyAgent } from "undici";
 import { HTTPClient } from "@usemarble/sdk/lib/http";
 
+const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
+
 const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
+  // 'fetcher' takes a function that has the same signature as native 'fetch'.
+  fetcher: (input, init) =>
+    // 'dispatcher' is specific to undici and not part of the standard Fetch API.
+    fetch(input, { ...init, dispatcher } as RequestInit),
 });
 
 httpClient.addHook("beforeRequest", (request) => {
