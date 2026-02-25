@@ -1,13 +1,13 @@
-# Attribution
+# PostAttribution
 
 Attribution to the original author when republishing content
 
 ## Example Usage
 
 ```typescript
-import { Attribution } from "@usemarble/sdk/models";
+import { PostAttribution } from "@usemarble/sdk/models";
 
-let value: Attribution = {
+let value: PostAttribution = {
   author: "John Doe",
   url: "https://original-source.com/article",
 };

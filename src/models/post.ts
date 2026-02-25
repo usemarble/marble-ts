@@ -14,7 +14,7 @@ import { TagRef, TagRef$inboundSchema } from "./tagref.js";
 /**
  * Attribution to the original author when republishing content
  */
-export type Attribution = {
+export type PostAttribution = {
   author: string;
   url: string;
 };
@@ -32,26 +32,28 @@ export type Post = {
   /**
    * Attribution to the original author when republishing content
    */
-  attribution: Attribution | null;
+  attribution: PostAttribution | null;
   authors: Array<AuthorRef>;
   category: CategoryRef;
   tags: Array<TagRef>;
 };
 
 /** @internal */
-export const Attribution$inboundSchema: z.ZodMiniType<Attribution, unknown> = z
-  .object({
-    author: types.string(),
-    url: types.string(),
-  });
+export const PostAttribution$inboundSchema: z.ZodMiniType<
+  PostAttribution,
+  unknown
+> = z.object({
+  author: types.string(),
+  url: types.string(),
+});
 
-export function attributionFromJSON(
+export function postAttributionFromJSON(
   jsonString: string,
-): SafeParseResult<Attribution, SDKValidationError> {
+): SafeParseResult<PostAttribution, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Attribution$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attribution' from JSON`,
+    (x) => PostAttribution$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostAttribution' from JSON`,
   );
 }
 
@@ -66,7 +68,7 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   description: types.string(),
   publishedAt: types.date(),
   updatedAt: types.date(),
-  attribution: types.nullable(z.lazy(() => Attribution$inboundSchema)),
+  attribution: types.nullable(z.lazy(() => PostAttribution$inboundSchema)),
   authors: z.array(AuthorRef$inboundSchema),
   category: CategoryRef$inboundSchema,
   tags: z.array(TagRef$inboundSchema),

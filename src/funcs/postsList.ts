@@ -241,7 +241,7 @@ async function $do(
       postsList(
         client,
         {
-          ...request,
+          ...request!,
           page: nextPage,
         },
         options,

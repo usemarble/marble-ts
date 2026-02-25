@@ -230,7 +230,7 @@ async function $do(
       authorsList(
         client,
         {
-          ...request,
+          ...request!,
           page: nextPage,
         },
         options,

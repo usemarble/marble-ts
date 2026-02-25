@@ -313,6 +313,258 @@ components:
       required:
         - "error"
         - "message"
+    CreatePostResponse:
+      type: "object"
+      properties:
+        post:
+          type: "object"
+          properties:
+            id:
+              type: "string"
+              example: "cryitfjp5678mn09qrstuvwx"
+            slug:
+              type: "string"
+              example: "getting-started-with-nextjs"
+            title:
+              type: "string"
+              example: "Getting Started with Next.js"
+            status:
+              type: "string"
+              example: "draft"
+            featured:
+              type: "boolean"
+              example: false
+            publishedAt:
+              type: "string"
+              example: "2024-01-15T10:00:00.000Z"
+            createdAt:
+              type: "string"
+              example: "2024-01-15T10:00:00.000Z"
+          required:
+            - "id"
+            - "slug"
+            - "title"
+            - "status"
+            - "featured"
+            - "publishedAt"
+            - "createdAt"
+      required:
+        - "post"
+    Forbidden:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Forbidden"
+        message:
+          type: "string"
+          example: "Write operations require a private API key (msk_...). Public keys are read-only."
+      required:
+        - "error"
+        - "message"
+    Conflict:
+      type: "object"
+      properties:
+        error:
+          type: "string"
+          example: "Slug already in use"
+        message:
+          type: "string"
+          example: "A resource with this slug already exists in this workspace"
+      required:
+        - "error"
+    CreatePostBody:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+          minLength: 1
+          example: "Getting Started with Next.js"
+        content:
+          type: "string"
+          minLength: 1
+          example: "<p>Hello world</p>"
+        description:
+          type: "string"
+          minLength: 1
+          example: "A beginner's guide to Next.js"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "getting-started-with-nextjs"
+        categoryId:
+          type: "string"
+          minLength: 1
+          example: "cryitfjp2345kl05weoybfk9"
+        status:
+          type: "string"
+          enum:
+            - "published"
+            - "draft"
+          example: "draft"
+        tags:
+          type: "array"
+          items:
+            type: "string"
+          example:
+            - "cryitfjp4567no07ygqadhm1"
+          description: "Array of tag IDs to attach to the post"
+        authors:
+          type: "array"
+          items:
+            type: "string"
+          example:
+            - "cryitfjp3456lm06xfpzcgl0"
+          description: "Array of author IDs. If omitted, the first workspace author is used."
+        featured:
+          type: "boolean"
+          default: false
+          example: false
+        coverImage:
+          type: "string"
+          nullable: true
+          format: "uri"
+          example: "https://media.marblecms.com/cover.jpg"
+        publishedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-15T10:00:00Z"
+          description: "ISO 8601 datetime. Defaults to current time if omitted."
+        attribution:
+          type: "object"
+          nullable: true
+          properties:
+            author:
+              type: "string"
+              minLength: 1
+            url:
+              type: "string"
+              format: "uri"
+          required:
+            - "author"
+            - "url"
+          description: "Attribution to original author when republishing content"
+      required:
+        - "title"
+        - "content"
+        - "description"
+        - "slug"
+        - "categoryId"
+        - "status"
+    UpdatePostResponse:
+      type: "object"
+      properties:
+        post:
+          type: "object"
+          properties:
+            id:
+              type: "string"
+              example: "cryitfjp5678mn09qrstuvwx"
+            slug:
+              type: "string"
+              example: "updated-post-slug"
+            title:
+              type: "string"
+              example: "Updated Post Title"
+            status:
+              type: "string"
+              example: "published"
+            featured:
+              type: "boolean"
+              example: true
+            publishedAt:
+              type: "string"
+              example: "2024-02-01T10:00:00.000Z"
+            updatedAt:
+              type: "string"
+              example: "2024-02-01T12:00:00.000Z"
+          required:
+            - "id"
+            - "slug"
+            - "title"
+            - "status"
+            - "featured"
+            - "publishedAt"
+            - "updatedAt"
+      required:
+        - "post"
+    UpdatePostBody:
+      type: "object"
+      properties:
+        title:
+          type: "string"
+          minLength: 1
+          example: "Updated Post Title"
+        content:
+          type: "string"
+          minLength: 1
+          example: "<p>Updated content</p>"
+        description:
+          type: "string"
+          minLength: 1
+          example: "Updated description"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "updated-post-slug"
+        categoryId:
+          type: "string"
+          minLength: 1
+          example: "cryitfjp2345kl05weoybfk9"
+        status:
+          type: "string"
+          enum:
+            - "published"
+            - "draft"
+          example: "published"
+        tags:
+          type: "array"
+          items:
+            type: "string"
+          example:
+            - "cryitfjp4567no07ygqadhm1"
+          description: "Array of tag IDs. Replaces all existing tags when provided."
+        authors:
+          type: "array"
+          items:
+            type: "string"
+          example:
+            - "cryitfjp3456lm06xfpzcgl0"
+          description: "Array of author IDs. Replaces all existing authors when provided."
+        featured:
+          type: "boolean"
+          example: true
+        coverImage:
+          type: "string"
+          nullable: true
+          format: "uri"
+          example: "https://media.marblecms.com/new-cover.jpg"
+        publishedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-02-01T10:00:00Z"
+        attribution:
+          type: "object"
+          nullable: true
+          properties:
+            author:
+              type: "string"
+              minLength: 1
+            url:
+              type: "string"
+              format: "uri"
+          required:
+            - "author"
+            - "url"
+          description: "Attribution to original author when republishing content"
+    DeleteResponse:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "cryitfjp5678mn09qrstuvwx"
+      required:
+        - "id"
     CategoriesListResponse:
       type: "object"
       properties:
@@ -363,6 +615,64 @@ components:
           $ref: "#/components/schemas/Category"
       required:
         - "category"
+    CreateCategoryResponse:
+      type: "object"
+      properties:
+        category:
+          type: "object"
+          properties:
+            id:
+              type: "string"
+              example: "cryitfjp2345kl05weoybfk9"
+            name:
+              type: "string"
+              example: "Technology"
+            slug:
+              type: "string"
+              example: "technology"
+            description:
+              type: "string"
+              nullable: true
+              example: "Tech news and tutorials"
+          required:
+            - "id"
+            - "name"
+            - "slug"
+            - "description"
+      required:
+        - "category"
+    CreateCategoryBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "Technology"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "technology"
+        description:
+          type: "string"
+          example: "Tech news and tutorials"
+      required:
+        - "name"
+        - "slug"
+    UpdateCategoryBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "Engineering"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "engineering"
+        description:
+          type: "string"
+          nullable: true
+          example: "Engineering articles and tutorials"
     TagsListResponse:
       type: "object"
       properties:
@@ -413,6 +723,64 @@ components:
           $ref: "#/components/schemas/Tag"
       required:
         - "tag"
+    CreateTagResponse:
+      type: "object"
+      properties:
+        tag:
+          type: "object"
+          properties:
+            id:
+              type: "string"
+              example: "cryitfjp4567no07ygqadhm1"
+            name:
+              type: "string"
+              example: "JavaScript"
+            slug:
+              type: "string"
+              example: "javascript"
+            description:
+              type: "string"
+              nullable: true
+              example: "JavaScript tutorials and guides"
+          required:
+            - "id"
+            - "name"
+            - "slug"
+            - "description"
+      required:
+        - "tag"
+    CreateTagBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "JavaScript"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "javascript"
+        description:
+          type: "string"
+          example: "JavaScript tutorials and guides"
+      required:
+        - "name"
+        - "slug"
+    UpdateTagBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "TypeScript"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "typescript"
+        description:
+          type: "string"
+          nullable: true
+          example: "TypeScript tutorials and guides"
     AuthorsListResponse:
       type: "object"
       properties:
@@ -490,6 +858,144 @@ components:
           $ref: "#/components/schemas/Author"
       required:
         - "author"
+    CreateAuthorResponse:
+      type: "object"
+      properties:
+        author:
+          type: "object"
+          properties:
+            id:
+              type: "string"
+              example: "cryitfjp3456lm06xfpzcgl0"
+            name:
+              type: "string"
+              example: "John Doe"
+            slug:
+              type: "string"
+              example: "john-doe"
+            bio:
+              type: "string"
+              nullable: true
+              example: "Technical writer and developer"
+            role:
+              type: "string"
+              nullable: true
+              example: "Editor"
+            image:
+              type: "string"
+              nullable: true
+              example: "https://media.marblecms.com/avatar.jpg"
+            socials:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Social"
+          required:
+            - "id"
+            - "name"
+            - "slug"
+            - "bio"
+            - "role"
+            - "image"
+            - "socials"
+      required:
+        - "author"
+    CreateAuthorBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "John Doe"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "john-doe"
+        bio:
+          type: "string"
+          nullable: true
+          example: "Technical writer and developer"
+        role:
+          type: "string"
+          nullable: true
+          example: "Editor"
+        email:
+          type: "string"
+          nullable: true
+          format: "email"
+          example: "john@example.com"
+        image:
+          type: "string"
+          nullable: true
+          format: "uri"
+          example: "https://media.marblecms.com/avatar.jpg"
+        socials:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SocialInput"
+          description: "Social media links for this author"
+      required:
+        - "name"
+        - "slug"
+    SocialInput:
+      type: "object"
+      properties:
+        platform:
+          type: "string"
+          enum:
+            - "x"
+            - "twitter"
+            - "github"
+            - "facebook"
+            - "instagram"
+            - "youtube"
+            - "tiktok"
+            - "linkedin"
+            - "website"
+            - "onlyfans"
+            - "discord"
+            - "bluesky"
+          example: "x"
+        url:
+          type: "string"
+          format: "uri"
+          example: "https://x.com/johndoe"
+      required:
+        - "platform"
+        - "url"
+    UpdateAuthorBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "John Doe"
+        slug:
+          type: "string"
+          minLength: 1
+          example: "john-doe"
+        bio:
+          type: "string"
+          nullable: true
+          example: "Updated bio"
+        role:
+          type: "string"
+          nullable: true
+          example: "Senior Editor"
+        email:
+          type: "string"
+          nullable: true
+          format: "email"
+          example: "john@example.com"
+        image:
+          type: "string"
+          nullable: true
+          format: "uri"
+          example: "https://media.marblecms.com/new-avatar.jpg"
+        socials:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/SocialInput"
+          description: "Social media links. Replaces all existing socials when provided."
   parameters: {}
 paths:
   /v1/posts:
@@ -652,6 +1158,48 @@ paths:
             type: limit
         outputs:
           numPages: $.pagination.totalPages
+    post:
+      tags:
+        - "Posts"
+      summary: "Create post"
+      description: "Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePostBody"
+      responses:
+        "201":
+          description: "Post created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreatePostResponse"
+        "400":
+          description: "Invalid request body or referenced resources not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "409":
+          description: "Post with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/posts/{identifier}:
     get:
       tags:
@@ -706,6 +1254,102 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerError"
       x-speakeasy-name-override: get
+    patch:
+      tags:
+        - "Posts"
+      summary: "Update post"
+      description: "Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "my-post-slug"
+            description: "Post ID or slug"
+          required: true
+          description: "Post ID or slug"
+          name: "identifier"
+          in: "path"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePostBody"
+      responses:
+        "200":
+          description: "Post updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdatePostResponse"
+        "400":
+          description: "Invalid request body or referenced resources not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Post not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "409":
+          description: "Post with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+    delete:
+      tags:
+        - "Posts"
+      summary: "Delete post"
+      description: "Delete a post by ID or slug. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "my-post-slug"
+            description: "Post ID or slug"
+          required: true
+          description: "Post ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "Post deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Post not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/categories:
     get:
       tags:
@@ -768,6 +1412,48 @@ paths:
             type: limit
         outputs:
           numPages: $.pagination.totalPages
+    post:
+      tags:
+        - "Categories"
+      summary: "Create category"
+      description: "Create a new category. Requires a private API key."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCategoryBody"
+      responses:
+        "201":
+          description: "Category created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateCategoryResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "409":
+          description: "Category with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/categories/{identifier}:
     get:
       tags:
@@ -803,6 +1489,108 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerError"
       x-speakeasy-name-override: get
+    patch:
+      tags:
+        - "Categories"
+      summary: "Update category"
+      description: "Update an existing category by ID or slug. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "technology"
+            description: "Category ID or slug"
+          required: true
+          description: "Category ID or slug"
+          name: "identifier"
+          in: "path"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCategoryBody"
+      responses:
+        "200":
+          description: "Category updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateCategoryResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Category not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "409":
+          description: "Category with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+    delete:
+      tags:
+        - "Categories"
+      summary: "Delete category"
+      description: "Delete a category by ID or slug. Requires a private API key. Cannot delete a category that has posts assigned to it."
+      parameters:
+        - schema:
+            type: "string"
+            example: "technology"
+            description: "Category ID or slug"
+          required: true
+          description: "Category ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "Category deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "400":
+          description: "Category has posts assigned to it"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Category not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/tags:
     get:
       tags:
@@ -865,6 +1653,48 @@ paths:
             type: limit
         outputs:
           numPages: $.pagination.totalPages
+    post:
+      tags:
+        - "Tags"
+      summary: "Create tag"
+      description: "Create a new tag. Requires a private API key."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTagBody"
+      responses:
+        "201":
+          description: "Tag created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateTagResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "409":
+          description: "Tag with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/tags/{identifier}:
     get:
       tags:
@@ -900,6 +1730,102 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerError"
       x-speakeasy-name-override: get
+    patch:
+      tags:
+        - "Tags"
+      summary: "Update tag"
+      description: "Update an existing tag by ID or slug. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "javascript"
+            description: "Tag ID or slug"
+          required: true
+          description: "Tag ID or slug"
+          name: "identifier"
+          in: "path"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTagBody"
+      responses:
+        "200":
+          description: "Tag updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateTagResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Tag not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "409":
+          description: "Tag with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+    delete:
+      tags:
+        - "Tags"
+      summary: "Delete tag"
+      description: "Delete a tag by ID or slug. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "javascript"
+            description: "Tag ID or slug"
+          required: true
+          description: "Tag ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "Tag deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Tag not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/authors:
     get:
       tags:
@@ -962,6 +1888,48 @@ paths:
             type: limit
         outputs:
           numPages: $.pagination.totalPages
+    post:
+      tags:
+        - "Authors"
+      summary: "Create author"
+      description: "Create a new author. Requires a private API key. Hobby plan is limited to 1 author."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAuthorBody"
+      responses:
+        "201":
+          description: "Author created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateAuthorResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation or plan limit reached"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "409":
+          description: "Author with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
   /v1/authors/{identifier}:
     get:
       tags:
@@ -997,3 +1965,99 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerError"
       x-speakeasy-name-override: get
+    patch:
+      tags:
+        - "Authors"
+      summary: "Update author"
+      description: "Update an existing author by ID or slug. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "john-doe"
+            description: "Author ID or slug"
+          required: true
+          description: "Author ID or slug"
+          name: "identifier"
+          in: "path"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAuthorBody"
+      responses:
+        "200":
+          description: "Author updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateAuthorResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Author not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "409":
+          description: "Author with this slug already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+    delete:
+      tags:
+        - "Authors"
+      summary: "Delete author"
+      description: "Delete an author by ID or slug. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "john-doe"
+            description: "Author ID or slug"
+          required: true
+          description: "Author ID or slug"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "Author deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Author not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"

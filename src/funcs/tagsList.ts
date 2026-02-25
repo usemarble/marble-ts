@@ -228,7 +228,7 @@ async function $do(
       tagsList(
         client,
         {
-          ...request,
+          ...request!,
           page: nextPage,
         },
         options,
