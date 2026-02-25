@@ -33,4 +33,4 @@ jobs:
             fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
           "
       - name: Publish to JSR
-        run: npx jsr publish
+        run: npx jsr publish --allow-slow-types
