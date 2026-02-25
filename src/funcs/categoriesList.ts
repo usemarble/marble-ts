@@ -233,7 +233,7 @@ async function $do(
       categoriesList(
         client,
         {
-          ...request,
+          ...request!,
           page: nextPage,
         },
         options,

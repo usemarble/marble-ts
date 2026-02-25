@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
-  docChecksum: 453dd00eddb5e57fad384b8ac3bd561e
+  docChecksum: 0191a972a3297f6eb52ce13bf4a5e1d2
   docVersion: 1.0.0
-  speakeasyVersion: 1.709.4
-  generationVersion: 2.816.0
-  releaseVersion: 1.1.0
-  configChecksum: 972c2821a492e124ea96c9f2765285a4
+  speakeasyVersion: 1.728.0
+  generationVersion: 2.839.0
+  releaseVersion: 1.1.1
+  configChecksum: 58c6a99e2382a4b1c9b1feb03dba11dd
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 91556085-6762-4b0f-93a4-e9ec12f36983
-  pristine_commit_hash: cae634443773e6a8c7b7a9bf1d5afe00bbace0ed
-  pristine_tree_hash: 62837b6bf00dddc11a5483f23e93e90759bf7fb3
+  generation_id: 46d23f03-dd52-4eff-988a-5698dc0d67c7
+  pristine_commit_hash: bb2e29c3876a88562f457177f8d02f99de6253cb
+  pristine_tree_hash: 06b38935fc48883c334d6927144798cfcf435780
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.13
-    core: 3.26.27
+    constsAndDefaults: 0.1.14
+    core: 3.26.34
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.1
     enumUnions: 0.1.0
@@ -26,12 +26,12 @@ features:
     errorUnions: 0.1.1
     globalSecurity: 2.82.15
     globalSecurityCallbacks: 0.1.0
-    globalSecurityFlattening: 0.1.0
+    globalSecurityFlattening: 0.1.1
     globalServerURLs: 2.83.0
     methodArguments: 0.1.2
-    nameOverrides: 2.81.2
+    nameOverrides: 2.81.4
     nullables: 0.1.1
-    pagination: 2.83.0
+    pagination: 2.83.2
     responseFormat: 0.3.0
     retries: 2.83.0
     sdkHooks: 0.4.0
@@ -55,8 +55,8 @@ trackedFiles:
     pristine_git_object: 113eead5093c17d43a46159132885318f281a68a
   .npmignore:
     id: aa70c1f807c3
-    last_write_checksum: sha1:3d5eb92f81539175db1ff0280e0aefbdd701f200
-    pristine_git_object: cf98a6bf092538eb10ff0edc915102682ce9a6e6
+    last_write_checksum: sha1:425e91786e3b6cddd2b364bf3f9f9cd38e3c3e1a
+    pristine_git_object: 134e78a629b846b88e408199011801852bacc600
   FUNCTIONS.md:
     id: 21b9df02aaeb
     last_write_checksum: sha1:16a3ad557b7ac1f5914669d89ebea18255988616
@@ -73,10 +73,6 @@ trackedFiles:
     id: 0ce9707cb848
     last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
     pristine_git_object: 08f95f4552349360b2c0b01802aa71ec3a55d2c2
-  docs/models/attribution.md:
-    id: 988907506f57
-    last_write_checksum: sha1:876694e5eb5a4ddfc240c702f536db3b4b67fba1
-    pristine_git_object: 69f7ff6275778d693e4ee9d57bd1952e1d0afa38
   docs/models/author.md:
     id: b4139065dbed
     last_write_checksum: sha1:bb1c1dce502038dc0ed3556f86d140381fb380f3
@@ -121,6 +117,66 @@ trackedFiles:
     id: dae0eb1df693
     last_write_checksum: sha1:8d00d4961561a5663fa03a4e7ad9e7bfa0556caf
     pristine_git_object: 018a9862ef36715dda72b3ce288ebda8bf5785bc
+  docs/models/createauthorbody.md:
+    id: e598abdd527d
+    last_write_checksum: sha1:468290ac986dac78a39c99adefa236379287c752
+    pristine_git_object: aa2c4c61d0dbc731a062c6cd2a462fe6a8b73eba
+  docs/models/createauthorresponse.md:
+    id: 0c895193689f
+    last_write_checksum: sha1:da0d8ff3260cc3b480c48d22f493d5c95d3d59a5
+    pristine_git_object: fe93b44b2f03c48a2206cdd60a8ff17c008e8ece
+  docs/models/createauthorresponseauthor.md:
+    id: 675ec3296fde
+    last_write_checksum: sha1:248dd442114ae306127cd750e605b3427fc858bc
+    pristine_git_object: 3e98ecec7ca97058293e390f3241226160b5adec
+  docs/models/createcategorybody.md:
+    id: 69083ed248dd
+    last_write_checksum: sha1:30eb183a9721d1bdefe6d34d996bfd4b32b6dbb6
+    pristine_git_object: 514686a3bed32db55ad6c5814da770add2b0f325
+  docs/models/createcategoryresponse.md:
+    id: 039a71cc1d62
+    last_write_checksum: sha1:f8aabf07f2c1cf3cb63803bf0f1a3b4431dce7e7
+    pristine_git_object: c215b4d85062e62004add94a36bcdfe5378019e9
+  docs/models/createcategoryresponsecategory.md:
+    id: e17557a7908a
+    last_write_checksum: sha1:406bdc2217d7b9450a1b0d457ac7b65c1defef73
+    pristine_git_object: 10e880490b6715b45bd1d5821b81c695c32fbf09
+  docs/models/createpostbody.md:
+    id: c17d8ecb0644
+    last_write_checksum: sha1:81d8646134b5833538ddc596edf8bd665d29dafb
+    pristine_git_object: 44866a0838bf37f2c76351162383e227e399884a
+  docs/models/createpostbodyattribution.md:
+    id: 302b610bee84
+    last_write_checksum: sha1:7b07658cd6c1b357df00c633afb025b41c6ef056
+    pristine_git_object: 15bf79ce23e3a748dac73dc83f7aec71e0151f16
+  docs/models/createpostbodystatus.md:
+    id: 0bd4140153cd
+    last_write_checksum: sha1:39733cd6e0af51ef271168789dcdffccbd21d3fc
+    pristine_git_object: 54a5b3193ee0fa84559bee77b3bef614355cb0f2
+  docs/models/createpostresponse.md:
+    id: 29d4157fd2c3
+    last_write_checksum: sha1:c820538f4c515e9b765318f771d0e4f6e3e3c015
+    pristine_git_object: a26a3225bf27ad8e8151d129210ec832857c52eb
+  docs/models/createpostresponsepost.md:
+    id: 96637e42fbaf
+    last_write_checksum: sha1:72d757b1bae53df8b4e005cc132407d29dc31fbc
+    pristine_git_object: d9b9426d43d66e65f5d2e70d148d9c025a972f52
+  docs/models/createtagbody.md:
+    id: 5e837f3903a2
+    last_write_checksum: sha1:52143bf5a77dac4afd789984a37a9cabf9418f85
+    pristine_git_object: fc9f2d7f2757048c54db43f9eb9a6256d4d2ec71
+  docs/models/createtagresponse.md:
+    id: b36b5d5386d2
+    last_write_checksum: sha1:149061419ef2c005e245bd32bd0247f4b74e7fd7
+    pristine_git_object: 56d278f6a9fe2d78a0ccc07845be120b58386b03
+  docs/models/createtagresponsetag.md:
+    id: ab7097065792
+    last_write_checksum: sha1:a445966669e4556e8326533bd5fd5a0e240adc65
+    pristine_git_object: 5fa51063cd500c12342f53ae98b68ceab1e3bb02
+  docs/models/deleteresponse.md:
+    id: c72fc4af94b3
+    last_write_checksum: sha1:3faaf9fc78fba579476c47a0e17deb5c6b4fcca4
+    pristine_git_object: c52b99b55f74fbe26c1e9f10079c3cf3eb5798ca
   docs/models/detail.md:
     id: bfd4e327e742
     last_write_checksum: sha1:ec34fa41f0a8141429379770f72d253bd50c3552
@@ -129,10 +185,18 @@ trackedFiles:
     id: 78f6f9d989a9
     last_write_checksum: sha1:29585bda1baa773215c8ef7378ad0563bd49e252
     pristine_git_object: b4ed733e9a0f8fad2eccdf6932baf106f95f6420
+  docs/models/errors/conflicterror.md:
+    id: 6603f6b5bf79
+    last_write_checksum: sha1:f1b0074e8308736cc14589f92369e92b358697a2
+    pristine_git_object: cc801e68e47d3302932e94023d29c8ad148a6602
   docs/models/errors/errort.md:
     id: 0fc20860e35e
     last_write_checksum: sha1:588d13597447f76763f8680b6dc876491305133a
     pristine_git_object: bc5a7ee92952cd292e0ee2d899f2424d8cdbe276
+  docs/models/errors/forbiddenerror.md:
+    id: 864d9ce736d0
+    last_write_checksum: sha1:82afed02dce832a344599722840404dd7d696a26
+    pristine_git_object: 879babfdc80a63d56fecfc5919af20492fab62bd
   docs/models/errors/getv1authorsbadrequest.md:
     id: 95e93b6c3b12
     last_write_checksum: sha1:96b2afc8e7bd1ed07fbe156110cce22440478c23
@@ -165,6 +229,22 @@ trackedFiles:
     id: 30c48d365f28
     last_write_checksum: sha1:568821a218f222d4da222a8242ff2a2ad5ccbf73
     pristine_git_object: b81af82fab67530b9ec94acd9dfc130c51e3b514
+  docs/models/operations/deletev1authorsidentifierrequest.md:
+    id: f42a1ac1a9c6
+    last_write_checksum: sha1:8ecc57d27d5b954efdaaa59e0513c9f7586010ab
+    pristine_git_object: d7d577413ba11c6128d3f4385dd7a8a2856170ec
+  docs/models/operations/deletev1categoriesidentifierrequest.md:
+    id: 667841bf9daa
+    last_write_checksum: sha1:b748cc0fe23e2da6e26141eb5718bb58f74fb3ab
+    pristine_git_object: c55e4bf3284f60dddc2d5a09cb638a1b014646de
+  docs/models/operations/deletev1postsidentifierrequest.md:
+    id: f78870788a94
+    last_write_checksum: sha1:efc868f4145edef64d883afd6b286daa7f9eeccc
+    pristine_git_object: e2f10552abfee1748d0af738bed8bf47fa85f88e
+  docs/models/operations/deletev1tagsidentifierrequest.md:
+    id: 562cf4d70c1c
+    last_write_checksum: sha1:abdcdf0faabcf15b0727de36607f5bdc3cbc2cc3
+    pristine_git_object: a6a7470baf376411e6305969c704eeeddbf0b92c
   docs/models/operations/featured.md:
     id: 4c6e10be8d77
     last_write_checksum: sha1:fed9621b52bc05d929093a85d6d34bdc51ea0e85
@@ -229,14 +309,38 @@ trackedFiles:
     id: 97e3e83e5b11
     last_write_checksum: sha1:73dd842273bb45cf19233251242e6de857a3e178
     pristine_git_object: 768bff9ae7c163ac9efa5e6071bcbdfeb0cfe150
+  docs/models/operations/patchv1authorsidentifierrequest.md:
+    id: b33a8af1ff79
+    last_write_checksum: sha1:ad3b64af032263d8c306c28b8f3f1ffe8edd12fd
+    pristine_git_object: d187cf4b2af50a65d368cacf8b339894244d64b9
+  docs/models/operations/patchv1categoriesidentifierrequest.md:
+    id: 46c9b423e590
+    last_write_checksum: sha1:3d85f273ab37eb514ec598f285374a42ea27a6bb
+    pristine_git_object: b92485dfcbdc884b81934b238b81589c83c85b10
+  docs/models/operations/patchv1postsidentifierrequest.md:
+    id: 27082950b818
+    last_write_checksum: sha1:666c8639cc8fd08915e76129ef52a48fe27f2d7d
+    pristine_git_object: 8d221e07fe396432db3d4ee27017e30cb86c374c
+  docs/models/operations/patchv1tagsidentifierrequest.md:
+    id: 0ec48ab4f115
+    last_write_checksum: sha1:7b0eadb6f151a7b434e78bb763a4176540cfd947
+    pristine_git_object: 35b6fcee7a19a2f4a1e0f338341f063db84172e5
   docs/models/pagination.md:
     id: a9ff902f6a16
     last_write_checksum: sha1:c7348b0c5ad7363f195d0571954613d31c357471
     pristine_git_object: 0eb288fb329b615c04e3e16aa186d04cf1656b24
+  docs/models/platform.md:
+    id: a8d0f558209c
+    last_write_checksum: sha1:8af4c5fe10402d4152405492573e051ac454a148
+    pristine_git_object: 2f15b388c504092d289ed7aaef5bdf73c8b01c59
   docs/models/post.md:
     id: 6a612582ecd0
-    last_write_checksum: sha1:8f3133bbffbde4f7c4342e15d1e6290d87e7f982
-    pristine_git_object: fa01ad9d79b778ce5610cd55726efa920bc28d2a
+    last_write_checksum: sha1:43a5e289558be5a1682fc033ac9e805cfd338609
+    pristine_git_object: 261df4fcc0878d7d863c03ee3ed34d010633388b
+  docs/models/postattribution.md:
+    id: 08d9ab559a8c
+    last_write_checksum: sha1:07476274ddee1f710948bd86251e5339483df40f
+    pristine_git_object: aabb224895e4580f382650f2637d72cecb3bd3f8
   docs/models/postresponse.md:
     id: "460545805396"
     last_write_checksum: sha1:1dc887efc793a58e02659aaa27c63b9e617efca5
@@ -253,6 +357,10 @@ trackedFiles:
     id: 46386e3afd6c
     last_write_checksum: sha1:1b32398f5a06ed358a78c34dab82845389b95857
     pristine_git_object: 98ba17e858881184a682aaf53c47279e2af73810
+  docs/models/socialinput.md:
+    id: 39529b89b409
+    last_write_checksum: sha1:f99959df6e03ea13263c05f29ff184f4ac6c0096
+    pristine_git_object: f2d1b4127237dcd6e0f6095fd87f2468bb3250a8
   docs/models/socialref.md:
     id: f2546de20b41
     last_write_checksum: sha1:e71a9d6867088a7a15815ec819899d2f3fcd4e85
@@ -277,22 +385,54 @@ trackedFiles:
     id: 0c37f679c3ee
     last_write_checksum: sha1:62507f3e5d16f00ee1f04fe674ba66b10a4a20d5
     pristine_git_object: 93c3c0ef1868302ae656a1ba36acb5bcb85cb358
+  docs/models/updateauthorbody.md:
+    id: 3643e0fb6552
+    last_write_checksum: sha1:0b962ce2254dc5dced1baca3d445eec7457ba043
+    pristine_git_object: 52f7f86d6188d808e710fd135e7b81130ff39ada
+  docs/models/updatecategorybody.md:
+    id: 07c47f434a6f
+    last_write_checksum: sha1:e4c0828e7491602011378f24270514918f313d02
+    pristine_git_object: c8f61dfb537c8e5da4afa0495d67028714bc5762
+  docs/models/updatepostbody.md:
+    id: 6281fc95f5e7
+    last_write_checksum: sha1:f368e6921cc13fdfa85107c181b9ec40b48e0681
+    pristine_git_object: 77f3608210a899fae0e11f5212931f2fb029bc54
+  docs/models/updatepostbodyattribution.md:
+    id: 4cfb9b856622
+    last_write_checksum: sha1:b0e9cd0f75ee81b4fd1127739dacaca519d2c0fe
+    pristine_git_object: 11149c66376b031a3b9090e03e8856e0b932d1c6
+  docs/models/updatepostbodystatus.md:
+    id: e1d5131daa25
+    last_write_checksum: sha1:a2721dfee17e4910da5005416299137d139f5570
+    pristine_git_object: d4a080846f46ab8acccc235ba9701b0377ea2f9a
+  docs/models/updatepostresponse.md:
+    id: 363bfd6d44a9
+    last_write_checksum: sha1:c43be437003bff932e6a82f1128e56d9a9161f3d
+    pristine_git_object: 90f52aa788e370df0e63ab7216f7b9712e9c23d8
+  docs/models/updatepostresponsepost.md:
+    id: 17ab368fded3
+    last_write_checksum: sha1:61a0a3712fcb69816458d22068d46235b50a2aca
+    pristine_git_object: dab45a333a07c513eb58e52ef85ca3fbf9e13d42
+  docs/models/updatetagbody.md:
+    id: dad8e8a2f398
+    last_write_checksum: sha1:50d9bc19d531066fa0cb4924452410a8786d5cd7
+    pristine_git_object: dcc83631625b9024a0b28e12b75f5a24c7d5c918
   docs/sdks/authors/README.md:
     id: 094549b98536
-    last_write_checksum: sha1:54e8c064f911265af2a8d0d1e1db870de660748e
-    pristine_git_object: 83e3b0b6a691154fbfe9c3bbbb48bdceed52c858
+    last_write_checksum: sha1:57bcbf3482cd3281ecaa1d856ab2aba63bee5df7
+    pristine_git_object: 6626a6bb0b2162c5d46afc1337f805bc1e8fff76
   docs/sdks/categories/README.md:
     id: 2e253d7225b0
-    last_write_checksum: sha1:3a74c14dc077d32796738bd3afbf3b057105b41d
-    pristine_git_object: 3751908a0044c959848eca5fab0cd40bb5ed6aeb
+    last_write_checksum: sha1:1bcdb66a5a8deb1b5a2db11f83c3a1f8f1de2d35
+    pristine_git_object: bcfbff0b7683233045f5761bc5d12fd4027f7a73
   docs/sdks/posts/README.md:
     id: 688ed1fc5d91
-    last_write_checksum: sha1:7a724b9e066760825c27e30e448aa167aa17f362
-    pristine_git_object: 78d4982ca4254030bd143ee5e26e012528129e51
+    last_write_checksum: sha1:6a4f32ff462b2e6ae722ebf4310cef6f362926c4
+    pristine_git_object: ddab9b1eff56c594d7b9824f9395287fa4d1da18
   docs/sdks/tags/README.md:
     id: 971f8a95d807
-    last_write_checksum: sha1:516bb6ea8f3a6360c8ee3e974269bbd657a8bae3
-    pristine_git_object: 1537ac408017a5a7c11df8a3ddb7c5c41d002c45
+    last_write_checksum: sha1:4b77da1b5e726f51fda25b14b14f2457a824d072
+    pristine_git_object: 85878fb20f605c0616f4f35c9251c14575131004
   eslint.config.mjs:
     id: 461c8d07f6da
     last_write_checksum: sha1:9398f326377fe47f67af2df6eb6370750c0790b4
@@ -315,48 +455,96 @@ trackedFiles:
     pristine_git_object: e71dfe3f0a1d6fe1d85f98a70041a293f44a59d5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:9bcd19d148c96e5a0bf4acbfa49a4dfae9b8f8c0
-    pristine_git_object: 63e60351f4fb28dab051d6876cc4282687670c43
+    last_write_checksum: sha1:18f70ad6516d2c1936231f18be898823e5b4768c
+    pristine_git_object: 32551719dc0449432540e635dce080d09d8e3592
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:3ac8fe327895e9ee2d11f8c0628173d9b1359cb6
-    pristine_git_object: 72af401e1971b8afc1100977cf6b7f3b8a200ca4
+    last_write_checksum: sha1:41d2c480e044d0f952ac1cffbd2ac9a1eec673b2
+    pristine_git_object: 7b881032d4c2bf5b3e0fe452774a12786900f0ee
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
     pristine_git_object: e5a9fd1f230e2fed6dd1153b2055add249b3818b
+  src/funcs/authorsDeleteV1AuthorsIdentifier.ts:
+    id: 09aca9c81f9d
+    last_write_checksum: sha1:f764ae3c38da0a3edb017e43ebf256427c2ba0cd
+    pristine_git_object: 1c159ffc5ca340917635482fa15bcfe1b44b6a2e
   src/funcs/authorsGet.ts:
     id: 922c77418d6b
     last_write_checksum: sha1:aea5cb500160344927bd4e7653c124f817554ad5
     pristine_git_object: a80a15692c7fcef3cf8c8cfca2a90137e04afbe6
   src/funcs/authorsList.ts:
     id: aaabf8c56e54
-    last_write_checksum: sha1:6d0b0d56c4f27d0b975067dd26f8c1029b8f35bd
-    pristine_git_object: 1f09ae89a4a9dc5080a25cdb045bc8d5b88d57df
+    last_write_checksum: sha1:4193ce974fc69b3fe1c904f187401eaf3d1f9ece
+    pristine_git_object: 545c60c9e7669dff22de9da98edfa1e047c2a71d
+  src/funcs/authorsPatchV1AuthorsIdentifier.ts:
+    id: 1a16bfbeff62
+    last_write_checksum: sha1:7acae12b040b859d852dba7e161158e224df21e7
+    pristine_git_object: e42a0218ca8ecb834609a3170f2acf94daae43e0
+  src/funcs/authorsPostV1Authors.ts:
+    id: b28a8afebbc6
+    last_write_checksum: sha1:7d2de3acbf68c5e48c038020abf65986d8d3ad6e
+    pristine_git_object: 94ce5cbe153ce4cea298a39a11bd19d369969617
+  src/funcs/categoriesDeleteV1CategoriesIdentifier.ts:
+    id: 60b8539d9271
+    last_write_checksum: sha1:232797f16eb9df27516efdcd3ac12fd3fb9aeccf
+    pristine_git_object: 2c07c012d39aac0671ae1158a65560ae6149dd47
   src/funcs/categoriesGet.ts:
     id: 22c3b1f4195c
     last_write_checksum: sha1:eb2e697e2fdd57c118e55cd91ad00c73c27a6e77
     pristine_git_object: 0afb5777fbe8522131c4427c4e61ef40a4859ce7
   src/funcs/categoriesList.ts:
     id: 34fb161f76f6
-    last_write_checksum: sha1:885e55494386d2a17488dfca4dad749d323cf0c4
-    pristine_git_object: 426ab4c0daec6495a22af0e2792e5ee93558bb2c
+    last_write_checksum: sha1:e6a1ca097b0a9463fbacc0863380433c0ef4669e
+    pristine_git_object: 51d1e5d884c6511f4bc0876c1265c763b1fc17ad
+  src/funcs/categoriesPatchV1CategoriesIdentifier.ts:
+    id: 7fd81eb9b058
+    last_write_checksum: sha1:b592c1c7365c1117ba0f4c65171b3f48e26520ab
+    pristine_git_object: 01fc317a81ada1ee198eab8faeaeed6835574ad8
+  src/funcs/categoriesPostV1Categories.ts:
+    id: 84359c783bf5
+    last_write_checksum: sha1:f3744a17ed78d66d4a396928171a033cd8a46f3b
+    pristine_git_object: c0b1001dff5715ee98542d279f1ca3e2a0d5f6f4
+  src/funcs/postsDeleteV1PostsIdentifier.ts:
+    id: 19294b382e14
+    last_write_checksum: sha1:c94e8bc5683cd5b8cafca1d4dd8907cb9d1d58ee
+    pristine_git_object: 7b8bc3cfd6cba37015f1235c47a31e82a832b934
   src/funcs/postsGet.ts:
     id: 843d8259b45d
     last_write_checksum: sha1:46c1dcb07333e66a56634f4d29cfb2c5f08f2677
     pristine_git_object: d663707945bf9da506192404ee7b735dbb7f4bbc
   src/funcs/postsList.ts:
     id: 5e1081f97b2d
-    last_write_checksum: sha1:011d011a118a967b668f85d7d06c622261c6d532
-    pristine_git_object: 055b917b5162727e8a9d96597e8127b3c293c24c
+    last_write_checksum: sha1:86713b182409c59552be280c1c845f66446313b7
+    pristine_git_object: 226c5d56098c70b7d867a4303dc594dee809b933
+  src/funcs/postsPatchV1PostsIdentifier.ts:
+    id: 503f21b3739e
+    last_write_checksum: sha1:add9e4865cb8f1012fb3cf4a287e0e859f1143d0
+    pristine_git_object: ce736efa7f3dc495137c3468f64739cc786a126a
+  src/funcs/postsPostV1Posts.ts:
+    id: 1576085fa9be
+    last_write_checksum: sha1:3f5915e64f50a51bec56a70ef1c3ae9cd70bb0e3
+    pristine_git_object: 47954e2eed79b73ac1a2fa2335939f53c9fcb98f
+  src/funcs/tagsDeleteV1TagsIdentifier.ts:
+    id: 4438c9a46f59
+    last_write_checksum: sha1:1caa1d5aff5f2d80d0f5d1691c6ace025c0e0654
+    pristine_git_object: 7de478d29f6ecf0ffa752ff639994ca8dea59cba
   src/funcs/tagsGet.ts:
     id: 462e2fcddbb2
     last_write_checksum: sha1:edef6387490916d3ad55727f7941a03617665df3
     pristine_git_object: fcc296e7f0739f588f9656911717380ff31d29f3
   src/funcs/tagsList.ts:
     id: 3c705a55fa1e
-    last_write_checksum: sha1:4519182ce1567794dc1a6ff2d6a30be06b90302a
-    pristine_git_object: 5134bcc9ec26ef3340607330cb184454d48ff6d7
+    last_write_checksum: sha1:78aa5f13111a30ab7a93c7090f311f75e7299271
+    pristine_git_object: 78da41d3a394d8246faf8a3384df9e0a0965967e
+  src/funcs/tagsPatchV1TagsIdentifier.ts:
+    id: 2d154393e829
+    last_write_checksum: sha1:cb363a001db0cf685860ca251c8acb719244be1d
+    pristine_git_object: 49ea9e67214ce6dd5cf208699e7925cdc5045a94
+  src/funcs/tagsPostV1Tags.ts:
+    id: 696a6cbf3651
+    last_write_checksum: sha1:f28d35efcd9d2b882ac662642275d7a973979430
+    pristine_git_object: 0adfc4ed1ec4c47738d6c30e0686b4dc8b353d32
   src/hooks/hooks.ts:
     id: a2463fc6f69b
     last_write_checksum: sha1:3a90d88b4c6c07247db8e5f6441a79538232394e
@@ -379,8 +567,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:85b9247f67c321cdee7b388f2933b66d9bf01df3
-    pristine_git_object: ef5197b58902a2094092c87882c0a0dc7a6edd53
+    last_write_checksum: sha1:6362a9d590ee76a2bcb8f7100ed1a45b15ceb0e7
+    pristine_git_object: 3387a6ab999e63ad636f73594f47f8f10267e3c3
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -473,14 +661,58 @@ trackedFiles:
     id: 97bc3b82a087
     last_write_checksum: sha1:947077261b4b4a7b7e39d8442513c0ab16cb9b37
     pristine_git_object: e5fc05a8b4030bb138ad83fcbf7220af9e5e08e9
+  src/models/createauthorbody.ts:
+    id: aa6640d6e632
+    last_write_checksum: sha1:319647bc4ecd1eae54ba0821534bcce6e17e24e7
+    pristine_git_object: cba33d72853c191b14f72b31b85fac7d29dd8b50
+  src/models/createauthorresponse.ts:
+    id: 33e49120fc39
+    last_write_checksum: sha1:d667b9f79fb356ed9ff68815b275ab7e178ab058
+    pristine_git_object: 1586e2565a8fcfd0a82bb4c74a3f1f040333949e
+  src/models/createcategorybody.ts:
+    id: d73c9eeda92a
+    last_write_checksum: sha1:c9c6b1d81e921e6196ce0a9cf126cc7f57c687df
+    pristine_git_object: 7ef2cd4e4767a1700e410a088854ce5cab972053
+  src/models/createcategoryresponse.ts:
+    id: b84e07a2e737
+    last_write_checksum: sha1:b01bbbe7130aeb61b0fcaeb4a64838b6a7557173
+    pristine_git_object: 0821f7eaade825870a6ebbb219687c065c31f3ff
+  src/models/createpostbody.ts:
+    id: a75d512d87e8
+    last_write_checksum: sha1:ae22327a6633215fdcbd8e63fc70836034b4b371
+    pristine_git_object: 2b923fdcf15692e7f70305fa3df44942f858ba68
+  src/models/createpostresponse.ts:
+    id: 3361357bb7c7
+    last_write_checksum: sha1:a243346a15d92276c8709a16b947d823c507adf4
+    pristine_git_object: 6cea5feaf4c8e40203885f114182459b587e01ce
+  src/models/createtagbody.ts:
+    id: 0588c80b33ce
+    last_write_checksum: sha1:a6ddf36ac78d62904e7b1be3c7e79a41912c61b7
+    pristine_git_object: e51e7cea6e356f381d48f6893d50fbed5f702168
+  src/models/createtagresponse.ts:
+    id: d6a68d93ce31
+    last_write_checksum: sha1:3f2622925a798a161e3f2ce9b91d71be459f0374
+    pristine_git_object: 23df77b336afa9a7f1510fd15290f51672b271cf
+  src/models/deleteresponse.ts:
+    id: 2daa82fb61f1
+    last_write_checksum: sha1:ae45930248afe32beab253b933c6fa778675d513
+    pristine_git_object: e0a9f1c1137f5b7f45376840e444778c4d965570
   src/models/error.ts:
     id: d53a586acbe6
     last_write_checksum: sha1:8e2e957701a4617060a9a457bd227973fd133228
     pristine_git_object: 46a6dc6c87e68c7e53672f1ab26eda52507665e6
+  src/models/errors/conflicterror.ts:
+    id: 198a1b6dab7f
+    last_write_checksum: sha1:4f4bd94033be4d7422cf73f5387032886d6d93f5
+    pristine_git_object: 1e69a4a9f560dbc2647ef31e38fa30ca8c8beb1e
   src/models/errors/error.ts:
     id: b25549ecd884
     last_write_checksum: sha1:513236b2a864811f88f4d7d15cc48fbeaba6d25a
     pristine_git_object: 8b245dc85aaad55d0668993dc80827c7701d41b9
+  src/models/errors/forbiddenerror.ts:
+    id: 75d38f5b1fa3
+    last_write_checksum: sha1:fe4b8e300005afb3da4d2fe3e62bb7c61ddd147d
+    pristine_git_object: 6e2b0418b29b236cb5f7cefe734c7b858b1d395d
   src/models/errors/getv1authors.ts:
     id: 870adc1a27f9
     last_write_checksum: sha1:87969aaaebce6c1c415f3381651b7a48317eac7d
@@ -503,8 +735,8 @@ trackedFiles:
     pristine_git_object: b34f612124c797c2a1106b9735708f679a90b74f
   src/models/errors/index.ts:
     id: c4e22507cb83
-    last_write_checksum: sha1:e171f0b0a42071230d674c7a0ef79aab5b27a16a
-    pristine_git_object: b607ee8af08f9bb3c5ab6473ffa14ffe7ce3c822
+    last_write_checksum: sha1:491a98abd0bf70c85fd4f292bab45bac338aa536
+    pristine_git_object: 2b05e05fac899ec2479a40e748e0c8bd52b1fbe2
   src/models/errors/marbledefaulterror.ts:
     id: 8947897b8918
     last_write_checksum: sha1:be163ceefa8c0e0b2c03e1c133149db1babde355
@@ -535,8 +767,24 @@ trackedFiles:
     pristine_git_object: 41cde36f2261ea3cdbbfc5e45306738968b3796a
   src/models/index.ts:
     id: f93644b0f37e
-    last_write_checksum: sha1:6cd892b467a354c808983ac3c3e361e4ed4b1fc3
-    pristine_git_object: f7d1656aecd1e8b13ec1d323058f0751a8ee9e58
+    last_write_checksum: sha1:109683099b7921d3987d3b2d20dd5457bd2757e7
+    pristine_git_object: f02f0b44090e31d6a29c1868d7ab884e752219d0
+  src/models/operations/deletev1authorsidentifier.ts:
+    id: df3fa0357102
+    last_write_checksum: sha1:fbc4be7ee8a7e8a123c64f4159f99c9e11f4c1d4
+    pristine_git_object: 4d4e78b2e943588c29a55d17f7f0aab294b448ae
+  src/models/operations/deletev1categoriesidentifier.ts:
+    id: a04886690138
+    last_write_checksum: sha1:b20d941bd9742e2af495c07d2cbbb222676ad8b9
+    pristine_git_object: 33b8b54d42c8d756cf91ca8d1f4347ab93873eb0
+  src/models/operations/deletev1postsidentifier.ts:
+    id: 4a066f5fb2d3
+    last_write_checksum: sha1:7b90b4faf96a13ed229fb4fc774892891b6ba2b5
+    pristine_git_object: 805eecc1b2144b20aca2ac85fecdb777fb269fc8
+  src/models/operations/deletev1tagsidentifier.ts:
+    id: 8c133e69f728
+    last_write_checksum: sha1:546dd16798ffba58a8a5dbbfa109b47923c7c5f7
+    pristine_git_object: a82ded23d196d21c8c79aee9a72bb14a94ec5c07
   src/models/operations/getv1authors.ts:
     id: 8e1e31e0098a
     last_write_checksum: sha1:85b59469e984fb5ba7364b357065fdc1e530814f
@@ -571,8 +819,24 @@ trackedFiles:
     pristine_git_object: 0c69e07fe2cf9baae057640c851aff77be972549
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:d1b536b8b81d1cfdd1e971e53028ca18028147d7
-    pristine_git_object: 454c34af53400e44f2403c2e7b670fa292073456
+    last_write_checksum: sha1:615965226f3e5cafd4cc00bc9a6e36ab9bc90192
+    pristine_git_object: 3171f56c2a9d3481a3ab6a5bae1e0106241979ef
+  src/models/operations/patchv1authorsidentifier.ts:
+    id: acc9284f63cc
+    last_write_checksum: sha1:8b78e33a6241923faa6bd457639ca7f670597ea0
+    pristine_git_object: 9c8d317bb7f90c4b2a79b2c8f1f1c12fd9142200
+  src/models/operations/patchv1categoriesidentifier.ts:
+    id: 835504bd76d2
+    last_write_checksum: sha1:2f574c001527632497adb8e978d4297a0948e2b9
+    pristine_git_object: bb4fe216798c3d81e68c021e321b7808465a9d8e
+  src/models/operations/patchv1postsidentifier.ts:
+    id: 9fa165bb6d5f
+    last_write_checksum: sha1:82897b86600147e80a345a87d3a4951f082d2d9a
+    pristine_git_object: 1fc2e650cb4b3d53d41d98a49c77e5a83a02c8a0
+  src/models/operations/patchv1tagsidentifier.ts:
+    id: fd718367fa43
+    last_write_checksum: sha1:5fb5b534595b168e11540afb12cf3b739a02bed7
+    pristine_git_object: 98989207073ec0429b259d7d131e79c0981e7876
   src/models/pagenotfounderror.ts:
     id: 9f1dd014974a
     last_write_checksum: sha1:ea9e61166e41de12084baf5b371580086e8e95f6
@@ -583,8 +847,8 @@ trackedFiles:
     pristine_git_object: 32d8f05b77a53feb60b1270110c7a0b4160c07be
   src/models/post.ts:
     id: b3a3adebd438
-    last_write_checksum: sha1:e321b0b6f1439187c9015ce61d9c604cd5b1098d
-    pristine_git_object: 47f184f9eaacdf9252778f8c63d71d87c3cbb27a
+    last_write_checksum: sha1:6a73e6521d3b3a174f722c36b3515d9e00d9adc9
+    pristine_git_object: 108bf6bf498fa17c215738d442acaa892741597c
   src/models/postresponse.ts:
     id: 09c17c5eb329
     last_write_checksum: sha1:9940a8c95f0dfa440d7fff4e35e6769292bd8804
@@ -601,6 +865,10 @@ trackedFiles:
     id: e2e5d6d4fd33
     last_write_checksum: sha1:db661546a57b8967164323aafcaa638237c30749
     pristine_git_object: f2d940715ec85c26ddc2d5c53815102afeb5a7d3
+  src/models/socialinput.ts:
+    id: 8f1359e8df6f
+    last_write_checksum: sha1:4714e100d7de95b625231b644c9ba7648a8a3d0d
+    pristine_git_object: 0a7353bb6ba38576dc63ac9b951238edc8b4336c
   src/models/socialref.ts:
     id: eda98191f9ee
     last_write_checksum: sha1:01de7c0a4197c1fdd47c65c8b019cc2d18106711
@@ -621,30 +889,50 @@ trackedFiles:
     id: dc7ab8ef8d2a
     last_write_checksum: sha1:a804908dc65f8e7fe98ae4ab9a52528b8cc3ffbf
     pristine_git_object: cea24a093bd0306182a6a6da7fba16032bf5eb31
+  src/models/updateauthorbody.ts:
+    id: a3c3f976b7a9
+    last_write_checksum: sha1:c6b0d89b766218773a4a4a9284ffb17c030b465c
+    pristine_git_object: 94332870ff39a9195159594dcbf427058b07a500
+  src/models/updatecategorybody.ts:
+    id: fecc937f6fba
+    last_write_checksum: sha1:90c8c0622d6a583a93d409ba28843b8e39ca04a2
+    pristine_git_object: e91370b267a9f9ea986f74a204c103c50762e0e1
+  src/models/updatepostbody.ts:
+    id: b5d765bdf2e3
+    last_write_checksum: sha1:79e0a1fc0ed3c0cdb463c5378337d183cfa62e68
+    pristine_git_object: 856ab9ab097b67605a283c494131d8b7c635800f
+  src/models/updatepostresponse.ts:
+    id: cadb0307445d
+    last_write_checksum: sha1:9531e325f5db811b7d2a6cadb134e00beb685093
+    pristine_git_object: 512be90e48aa4964dd9ce8d1b05246635f01d35a
+  src/models/updatetagbody.ts:
+    id: 7e8bc34abe17
+    last_write_checksum: sha1:c61b3aebc57d63bcf410c93a33b6bf1b159eaa9f
+    pristine_git_object: 1c70dda08be4cb87dd44bd9be89d86852d8ffb95
   src/sdk/authors.ts:
     id: 38d6c049db54
-    last_write_checksum: sha1:515a3a2367ea6ec6be43de965b5860016c6e906e
-    pristine_git_object: aabb99b17b7d383793fe4c8ec2fa1a82d8ba1605
+    last_write_checksum: sha1:754e4c73d38e8d18a49cfb5b0177e18bab4fdee8
+    pristine_git_object: cd169687ffe1fc01ed91600fcaedc82cc671ed3f
   src/sdk/categories.ts:
     id: dd687ec18f95
-    last_write_checksum: sha1:d5ac3311137abbc879effb0103876a6c0696ab77
-    pristine_git_object: 6b0c768ecc5cceb1a9ca5c476486be8b403edfa4
+    last_write_checksum: sha1:da15306de7742e48b05ced770c29e36bfa796139
+    pristine_git_object: 46fb36b346afe37f7ca581e113d37fd934e2e763
   src/sdk/index.ts:
     id: a857902a703f
     last_write_checksum: sha1:ed6d64f2a6135349aa8498b8d8cff9ba85c7fb8f
     pristine_git_object: ecac2264817bb369ff2dbf0f0e9029807e67ff77
   src/sdk/posts.ts:
     id: 6787631da7f6
-    last_write_checksum: sha1:ad98e239e1915e512495276140ac5a68b6a8e7e3
-    pristine_git_object: 365e12d0a5ee6646658ca80392cb86388ac8eabc
+    last_write_checksum: sha1:359392035f4e8e0a958517cb882abcaf201bff12
+    pristine_git_object: ffa229b8d90b6017d100b9f181a2cedb0882d7f5
   src/sdk/sdk.ts:
     id: 784571af2f69
     last_write_checksum: sha1:babff02ad08f10876d726b3fd6a218c4032e615f
     pristine_git_object: 9e1ea11c82efd7ee20466773b33c1a701328854e
   src/sdk/tags.ts:
     id: b83eb1bf926f
-    last_write_checksum: sha1:53b4e65a37a182c8c9e35d4776b8942980214c91
-    pristine_git_object: 30f45468da1352d942c2b662b61beea26c9c5c29
+    last_write_checksum: sha1:caca7d69274e97809aa5a90454da3c25d6566bde
+    pristine_git_object: 8b6d13d0b6aa2656c979555b76ad37574ccdaac0
   src/types/async.ts:
     id: fac8da972f86
     last_write_checksum: sha1:3ff07b3feaf390ec1aeb18ff938e139c6c4a9585
@@ -814,4 +1102,216 @@ examples:
           application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
         "500":
           application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  post_/v1/posts:
+    speakeasy-default-post-/v1-/posts:
+      requestBody:
+        application/json: {"title": "Getting Started with Next.js", "content": "<p>Hello world</p>", "description": "A beginner's guide to Next.js", "slug": "getting-started-with-nextjs", "categoryId": "cryitfjp2345kl05weoybfk9", "status": "draft", "tags": ["cryitfjp4567no07ygqadhm1"], "authors": ["cryitfjp3456lm06xfpzcgl0"], "featured": false, "coverImage": "https://media.marblecms.com/cover.jpg", "publishedAt": "2024-01-15T10:00:00Z"}
+      responses:
+        "201":
+          application/json: {"post": {"id": "cryitfjp5678mn09qrstuvwx", "slug": "getting-started-with-nextjs", "title": "Getting Started with Next.js", "status": "draft", "featured": false, "publishedAt": "2024-01-15T10:00:00.000Z", "createdAt": "2024-01-15T10:00:00.000Z"}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  patch_/v1/posts/{identifier}:
+    speakeasy-default-patch-/v1-/posts/{identifier}:
+      parameters:
+        path:
+          identifier: "my-post-slug"
+      requestBody:
+        application/json: {"title": "Updated Post Title", "content": "<p>Updated content</p>", "description": "Updated description", "slug": "updated-post-slug", "categoryId": "cryitfjp2345kl05weoybfk9", "status": "published", "tags": ["cryitfjp4567no07ygqadhm1"], "authors": ["cryitfjp3456lm06xfpzcgl0"], "featured": true, "coverImage": "https://media.marblecms.com/new-cover.jpg", "publishedAt": "2024-02-01T10:00:00Z"}
+      responses:
+        "200":
+          application/json: {"post": {"id": "cryitfjp5678mn09qrstuvwx", "slug": "updated-post-slug", "title": "Updated Post Title", "status": "published", "featured": true, "publishedAt": "2024-02-01T10:00:00.000Z", "updatedAt": "2024-02-01T12:00:00.000Z"}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  delete_/v1/posts/{identifier}:
+    speakeasy-default-delete-/v1-/posts/{identifier}:
+      parameters:
+        path:
+          identifier: "my-post-slug"
+      responses:
+        "200":
+          application/json: {"id": "cryitfjp5678mn09qrstuvwx"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  post_/v1/categories:
+    speakeasy-default-post-/v1-/categories:
+      requestBody:
+        application/json: {"name": "Technology", "slug": "technology", "description": "Tech news and tutorials"}
+      responses:
+        "201":
+          application/json: {"category": {"id": "cryitfjp2345kl05weoybfk9", "name": "Technology", "slug": "technology", "description": "Tech news and tutorials"}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  patch_/v1/categories/{identifier}:
+    speakeasy-default-patch-/v1-/categories/{identifier}:
+      parameters:
+        path:
+          identifier: "technology"
+      requestBody:
+        application/json: {"name": "Engineering", "slug": "engineering", "description": "Engineering articles and tutorials"}
+      responses:
+        "200":
+          application/json: {"category": {"id": "cryitfjp2345kl05weoybfk9", "name": "Technology", "slug": "technology", "description": "Tech news and tutorials"}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  delete_/v1/categories/{identifier}:
+    speakeasy-default-delete-/v1-/categories/{identifier}:
+      parameters:
+        path:
+          identifier: "technology"
+      responses:
+        "200":
+          application/json: {"id": "cryitfjp5678mn09qrstuvwx"}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  post_/v1/tags:
+    speakeasy-default-post-/v1-/tags:
+      requestBody:
+        application/json: {"name": "JavaScript", "slug": "javascript", "description": "JavaScript tutorials and guides"}
+      responses:
+        "201":
+          application/json: {"tag": {"id": "cryitfjp4567no07ygqadhm1", "name": "JavaScript", "slug": "javascript", "description": "JavaScript tutorials and guides"}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  patch_/v1/tags/{identifier}:
+    speakeasy-default-patch-/v1-/tags/{identifier}:
+      parameters:
+        path:
+          identifier: "javascript"
+      requestBody:
+        application/json: {"name": "TypeScript", "slug": "typescript", "description": "TypeScript tutorials and guides"}
+      responses:
+        "200":
+          application/json: {"tag": {"id": "cryitfjp4567no07ygqadhm1", "name": "JavaScript", "slug": "javascript", "description": "JavaScript tutorials and guides"}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  delete_/v1/tags/{identifier}:
+    speakeasy-default-delete-/v1-/tags/{identifier}:
+      parameters:
+        path:
+          identifier: "javascript"
+      responses:
+        "200":
+          application/json: {"id": "cryitfjp5678mn09qrstuvwx"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  post_/v1/authors:
+    speakeasy-default-post-/v1-/authors:
+      requestBody:
+        application/json: {"name": "John Doe", "slug": "john-doe", "bio": "Technical writer and developer", "role": "Editor", "email": "john@example.com", "image": "https://media.marblecms.com/avatar.jpg", "socials": [{"platform": "x", "url": "https://x.com/johndoe"}]}
+      responses:
+        "201":
+          application/json: {"author": {"id": "cryitfjp3456lm06xfpzcgl0", "name": "John Doe", "slug": "john-doe", "bio": "Technical writer and developer", "role": "Editor", "image": "https://media.marblecms.com/avatar.jpg", "socials": [{"url": "https://twitter.com/johndoe", "platform": "twitter"}]}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  patch_/v1/authors/{identifier}:
+    speakeasy-default-patch-/v1-/authors/{identifier}:
+      parameters:
+        path:
+          identifier: "john-doe"
+      requestBody:
+        application/json: {"name": "John Doe", "slug": "john-doe", "bio": "Updated bio", "role": "Senior Editor", "email": "john@example.com", "image": "https://media.marblecms.com/new-avatar.jpg", "socials": [{"platform": "x", "url": "https://x.com/johndoe"}]}
+      responses:
+        "200":
+          application/json: {"author": {"id": "cryitfjp3456lm06xfpzcgl0", "name": "John Doe", "slug": "john-doe", "bio": "Technical writer and developer", "role": "Editor", "image": "https://media.marblecms.com/avatar.jpg", "socials": [{"url": "https://twitter.com/johndoe", "platform": "twitter"}]}}
+        "400":
+          application/json: {"error": "Invalid query parameters", "details": [{"field": "limit", "message": "Expected number, received string"}], "message": "Validation failed"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "409":
+          application/json: {"error": "Slug already in use", "message": "A resource with this slug already exists in this workspace"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
+  delete_/v1/authors/{identifier}:
+    speakeasy-default-delete-/v1-/authors/{identifier}:
+      parameters:
+        path:
+          identifier: "john-doe"
+      responses:
+        "200":
+          application/json: {"id": "cryitfjp5678mn09qrstuvwx"}
+        "403":
+          application/json: {"error": "Forbidden", "message": "Write operations require a private API key (msk_...). Public keys are read-only."}
+        "404":
+          application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
+        "500":
+          application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `marble.posts.post/v1/posts()`: **Added**
+  * `marble.posts.patch/v1/posts/{identifier}()`: **Added**
+  * `marble.posts.delete/v1/posts/{identifier}()`: **Added**
+  * `marble.categories.post/v1/categories()`: **Added**
+  * `marble.categories.patch/v1/categories/{identifier}()`: **Added**
+  * `marble.categories.delete/v1/categories/{identifier}()`: **Added**
+  * `marble.tags.post/v1/tags()`: **Added**
+  * `marble.tags.patch/v1/tags/{identifier}()`: **Added**
+  * `marble.tags.delete/v1/tags/{identifier}()`: **Added**
+  * `marble.authors.post/v1/authors()`: **Added**
+  * `marble.authors.patch/v1/authors/{identifier}()`: **Added**
+  * `marble.authors.delete/v1/authors/{identifier}()`: **Added**
