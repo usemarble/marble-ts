@@ -12,8 +12,20 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     permissions:
       contents: read
-      id-token: write
+      id-token: write  # Required for JSR OIDC auth - no token secret needed
     steps:
       - uses: actions/checkout@v5
+        with:
+          # workflow_run checks out default branch by default - use the commit that triggered Publish
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - run: npm ci
+      - name: Patch zod version for JSR compatibility
+        run: |
+          # JSR's npm specifier doesn't support "||" in version ranges (e.g. ^3.25.65 || ^4.0.0)
+          # Pin to zod 4 since we use zod/v4-mini
+          sed -i 's/"zod":"\^3\.25\.65 || \^4\.0\.0"/"zod":"^4.0.0"/' package.json
       - name: Publish to JSR
         run: npx jsr publish
