@@ -26,6 +26,11 @@ jobs:
         run: |
           # JSR's npm specifier doesn't support "||" in version ranges (e.g. ^3.25.65 || ^4.0.0)
           # Pin to zod 4 since we use zod/v4-mini
-          sed -i 's/"zod":"\^3\.25\.65 || \^4\.0\.0"/"zod":"^4.0.0"/' package.json
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            if (pkg.dependencies?.zod) pkg.dependencies.zod = '^4.0.0';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+          "
       - name: Publish to JSR
         run: npx jsr publish
