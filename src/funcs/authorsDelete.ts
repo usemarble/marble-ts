@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -23,25 +23,25 @@ import { MarbleError } from "../models/errors/marbleerror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as models from "../models/index.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create author
+ * Delete author
  *
  * @remarks
- * Create a new author. Requires a private API key. Hobby plan is limited to 1 author.
+ * Delete an author by ID or slug. Requires a private API key.
  */
-export function authorsPostV1Authors(
+export function authorsDelete(
   client: MarbleCore,
-  request: models.CreateAuthorBody,
+  request: operations.DeleteV1AuthorsIdentifierRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.CreateAuthorResponse,
-    | errors.ErrorT
+    models.DeleteResponse,
     | errors.ForbiddenError
-    | errors.ConflictError
+    | errors.NotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -62,15 +62,14 @@ export function authorsPostV1Authors(
 
 async function $do(
   client: MarbleCore,
-  request: models.CreateAuthorBody,
+  request: operations.DeleteV1AuthorsIdentifierRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.CreateAuthorResponse,
-      | errors.ErrorT
+      models.DeleteResponse,
       | errors.ForbiddenError
-      | errors.ConflictError
+      | errors.NotFoundError
       | errors.ServerError
       | MarbleError
       | ResponseValidationError
@@ -86,19 +85,29 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(models.CreateAuthorBody$outboundSchema, value),
+    (value) =>
+      z.parse(
+        operations.DeleteV1AuthorsIdentifierRequest$outboundSchema,
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = null;
 
-  const path = pathToFunc("/v1/authors")();
+  const pathParams = {
+    identifier: encodeSimple("identifier", payload.identifier, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+
+  const path = pathToFunc("/v1/authors/{identifier}")(pathParams);
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -109,7 +118,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "post_/v1/authors",
+    operationID: "delete_/v1/authors/{identifier}",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -123,7 +132,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "DELETE",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -138,7 +147,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "409", "4XX", "500", "5XX"],
+    errorCodes: ["403", "404", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -152,10 +161,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.CreateAuthorResponse,
-    | errors.ErrorT
+    models.DeleteResponse,
     | errors.ForbiddenError
-    | errors.ConflictError
+    | errors.NotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -166,10 +174,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, models.CreateAuthorResponse$inboundSchema),
-    M.jsonErr(400, errors.ErrorT$inboundSchema),
+    M.json(200, models.DeleteResponse$inboundSchema),
     M.jsonErr(403, errors.ForbiddenError$inboundSchema),
-    M.jsonErr(409, errors.ConflictError$inboundSchema),
+    M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

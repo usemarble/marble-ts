@@ -27,18 +27,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create tag
+ * Create post
  *
  * @remarks
- * Create a new tag. Requires a private API key.
+ * Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used.
  */
-export function tagsPostV1Tags(
+export function postsCreate(
   client: MarbleCore,
-  request: models.CreateTagBody,
+  request: models.CreatePostBody,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.CreateTagResponse,
+    models.CreatePostResponse,
     | errors.ErrorT
     | errors.ForbiddenError
     | errors.ConflictError
@@ -62,12 +62,12 @@ export function tagsPostV1Tags(
 
 async function $do(
   client: MarbleCore,
-  request: models.CreateTagBody,
+  request: models.CreatePostBody,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.CreateTagResponse,
+      models.CreatePostResponse,
       | errors.ErrorT
       | errors.ForbiddenError
       | errors.ConflictError
@@ -86,7 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(models.CreateTagBody$outboundSchema, value),
+    (value) => z.parse(models.CreatePostBody$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -95,7 +95,7 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/v1/tags")();
+  const path = pathToFunc("/v1/posts")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -109,7 +109,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "post_/v1/tags",
+    operationID: "post_/v1/posts",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -152,7 +152,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.CreateTagResponse,
+    models.CreatePostResponse,
     | errors.ErrorT
     | errors.ForbiddenError
     | errors.ConflictError
@@ -166,7 +166,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, models.CreateTagResponse$inboundSchema),
+    M.json(201, models.CreatePostResponse$inboundSchema),
     M.jsonErr(400, errors.ErrorT$inboundSchema),
     M.jsonErr(403, errors.ForbiddenError$inboundSchema),
     M.jsonErr(409, errors.ConflictError$inboundSchema),

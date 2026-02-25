@@ -5,10 +5,10 @@
 ### Available Operations
 
 * [list](#list) - List authors
-* [postV1Authors](#postv1authors) - Create author
+* [create](#create) - Create author
 * [get](#get) - Get author
-* [patchV1AuthorsIdentifier](#patchv1authorsidentifier) - Update author
-* [deleteV1AuthorsIdentifier](#deletev1authorsidentifier) - Delete author
+* [update](#update) - Update author
+* [delete](#delete) - Delete author
 
 ## list
 
@@ -86,7 +86,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## postV1Authors
+## create
 
 Create a new author. Requires a private API key. Hobby plan is limited to 1 author.
 
@@ -101,7 +101,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.authors.postV1Authors({
+  const result = await marble.authors.create({
     name: "John Doe",
     slug: "john-doe",
     bio: "Technical writer and developer",
@@ -128,7 +128,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { authorsPostV1Authors } from "@usemarble/sdk/funcs/authorsPostV1Authors.js";
+import { authorsCreate } from "@usemarble/sdk/funcs/authorsCreate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -137,7 +137,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await authorsPostV1Authors(marble, {
+  const res = await authorsCreate(marble, {
     name: "John Doe",
     slug: "john-doe",
     bio: "Technical writer and developer",
@@ -155,7 +155,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("authorsPostV1Authors failed:", res.error);
+    console.log("authorsCreate failed:", res.error);
   }
 }
 
@@ -260,7 +260,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## patchV1AuthorsIdentifier
+## update
 
 Update an existing author by ID or slug. Requires a private API key.
 
@@ -275,7 +275,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.authors.patchV1AuthorsIdentifier({
+  const result = await marble.authors.update({
     identifier: "john-doe",
     body: {
       name: "John Doe",
@@ -305,7 +305,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { authorsPatchV1AuthorsIdentifier } from "@usemarble/sdk/funcs/authorsPatchV1AuthorsIdentifier.js";
+import { authorsUpdate } from "@usemarble/sdk/funcs/authorsUpdate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -314,7 +314,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await authorsPatchV1AuthorsIdentifier(marble, {
+  const res = await authorsUpdate(marble, {
     identifier: "john-doe",
     body: {
       name: "John Doe",
@@ -335,7 +335,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("authorsPatchV1AuthorsIdentifier failed:", res.error);
+    console.log("authorsUpdate failed:", res.error);
   }
 }
 
@@ -366,7 +366,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## deleteV1AuthorsIdentifier
+## delete
 
 Delete an author by ID or slug. Requires a private API key.
 
@@ -381,7 +381,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.authors.deleteV1AuthorsIdentifier({
+  const result = await marble.authors.delete({
     identifier: "john-doe",
   });
 
@@ -397,7 +397,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { authorsDeleteV1AuthorsIdentifier } from "@usemarble/sdk/funcs/authorsDeleteV1AuthorsIdentifier.js";
+import { authorsDelete } from "@usemarble/sdk/funcs/authorsDelete.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -406,14 +406,14 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await authorsDeleteV1AuthorsIdentifier(marble, {
+  const res = await authorsDelete(marble, {
     identifier: "john-doe",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("authorsDeleteV1AuthorsIdentifier failed:", res.error);
+    console.log("authorsDelete failed:", res.error);
   }
 }
 

@@ -80,6 +80,114 @@ actions:
       created_at: 1767909442042
       reviewed_at: 1767909620890
       type: method-name
+  - target: $["paths"]["/v1/posts"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.posts.create()
+      before: sdk.posts.postV1Posts()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/posts/{identifier}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.posts.update()
+      before: sdk.posts.patchV1PostsIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/posts/{identifier}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.posts.delete()
+      before: sdk.posts.deleteV1PostsIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/categories"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.categories.create()
+      before: sdk.categories.postV1Categories()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/categories/{identifier}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.categories.update()
+      before: sdk.categories.patchV1CategoriesIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/categories/{identifier}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.categories.delete()
+      before: sdk.categories.deleteV1CategoriesIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/tags"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.tags.create()
+      before: sdk.tags.postV1Tags()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/tags/{identifier}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.tags.update()
+      before: sdk.tags.patchV1TagsIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/tags/{identifier}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.tags.delete()
+      before: sdk.tags.deleteV1TagsIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/authors"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.authors.create()
+      before: sdk.authors.postV1Authors()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/authors/{identifier}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.authors.update()
+      before: sdk.authors.patchV1AuthorsIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
+  - target: $["paths"]["/v1/authors/{identifier}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.authors.delete()
+      before: sdk.authors.deleteV1AuthorsIdentifier()
+      created_at: 1767909442042
+      reviewed_at: 1767909620890
+      type: method-name
   - target: $["paths"]["/v1/posts"]["get"]
     update:
       x-speakeasy-pagination:

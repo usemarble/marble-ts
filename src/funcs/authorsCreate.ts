@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -23,26 +23,24 @@ import { MarbleError } from "../models/errors/marbleerror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as models from "../models/index.js";
-import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update category
+ * Create author
  *
  * @remarks
- * Update an existing category by ID or slug. Requires a private API key.
+ * Create a new author. Requires a private API key. Hobby plan is limited to 1 author.
  */
-export function categoriesPatchV1CategoriesIdentifier(
+export function authorsCreate(
   client: MarbleCore,
-  request: operations.PatchV1CategoriesIdentifierRequest,
+  request: models.CreateAuthorBody,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.CreateCategoryResponse,
+    models.CreateAuthorResponse,
     | errors.ErrorT
     | errors.ForbiddenError
-    | errors.NotFoundError
     | errors.ConflictError
     | errors.ServerError
     | MarbleError
@@ -64,15 +62,14 @@ export function categoriesPatchV1CategoriesIdentifier(
 
 async function $do(
   client: MarbleCore,
-  request: operations.PatchV1CategoriesIdentifierRequest,
+  request: models.CreateAuthorBody,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.CreateCategoryResponse,
+      models.CreateAuthorResponse,
       | errors.ErrorT
       | errors.ForbiddenError
-      | errors.NotFoundError
       | errors.ConflictError
       | errors.ServerError
       | MarbleError
@@ -89,27 +86,16 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      z.parse(
-        operations.PatchV1CategoriesIdentifierRequest$outboundSchema,
-        value,
-      ),
+    (value) => z.parse(models.CreateAuthorBody$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.body, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const pathParams = {
-    identifier: encodeSimple("identifier", payload.identifier, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-
-  const path = pathToFunc("/v1/categories/{identifier}")(pathParams);
+  const path = pathToFunc("/v1/authors")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -123,7 +109,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "patch_/v1/categories/{identifier}",
+    operationID: "post_/v1/authors",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -137,7 +123,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PATCH",
+    method: "POST",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -152,7 +138,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "404", "409", "4XX", "500", "5XX"],
+    errorCodes: ["400", "403", "409", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -166,10 +152,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.CreateCategoryResponse,
+    models.CreateAuthorResponse,
     | errors.ErrorT
     | errors.ForbiddenError
-    | errors.NotFoundError
     | errors.ConflictError
     | errors.ServerError
     | MarbleError
@@ -181,10 +166,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.CreateCategoryResponse$inboundSchema),
+    M.json(201, models.CreateAuthorResponse$inboundSchema),
     M.jsonErr(400, errors.ErrorT$inboundSchema),
     M.jsonErr(403, errors.ForbiddenError$inboundSchema),
-    M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(409, errors.ConflictError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),

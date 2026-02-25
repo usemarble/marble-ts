@@ -28,14 +28,14 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete author
+ * Delete post
  *
  * @remarks
- * Delete an author by ID or slug. Requires a private API key.
+ * Delete a post by ID or slug. Requires a private API key.
  */
-export function authorsDeleteV1AuthorsIdentifier(
+export function postsDelete(
   client: MarbleCore,
-  request: operations.DeleteV1AuthorsIdentifierRequest,
+  request: operations.DeleteV1PostsIdentifierRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -62,7 +62,7 @@ export function authorsDeleteV1AuthorsIdentifier(
 
 async function $do(
   client: MarbleCore,
-  request: operations.DeleteV1AuthorsIdentifierRequest,
+  request: operations.DeleteV1PostsIdentifierRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -86,10 +86,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      z.parse(
-        operations.DeleteV1AuthorsIdentifierRequest$outboundSchema,
-        value,
-      ),
+      z.parse(operations.DeleteV1PostsIdentifierRequest$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -105,7 +102,7 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/v1/authors/{identifier}")(pathParams);
+  const path = pathToFunc("/v1/posts/{identifier}")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -118,7 +115,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "delete_/v1/authors/{identifier}",
+    operationID: "delete_/v1/posts/{identifier}",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,

@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Create a new category. Requires a private API key.
  */
-export function categoriesPostV1Categories(
+export function categoriesCreate(
   client: MarbleCore,
   request: models.CreateCategoryBody,
   options?: RequestOptions,

@@ -28,18 +28,18 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Update post
+ * Update author
  *
  * @remarks
- * Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key.
+ * Update an existing author by ID or slug. Requires a private API key.
  */
-export function postsPatchV1PostsIdentifier(
+export function authorsUpdate(
   client: MarbleCore,
-  request: operations.PatchV1PostsIdentifierRequest,
+  request: operations.PatchV1AuthorsIdentifierRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.UpdatePostResponse,
+    models.CreateAuthorResponse,
     | errors.ErrorT
     | errors.ForbiddenError
     | errors.NotFoundError
@@ -64,12 +64,12 @@ export function postsPatchV1PostsIdentifier(
 
 async function $do(
   client: MarbleCore,
-  request: operations.PatchV1PostsIdentifierRequest,
+  request: operations.PatchV1AuthorsIdentifierRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.UpdatePostResponse,
+      models.CreateAuthorResponse,
       | errors.ErrorT
       | errors.ForbiddenError
       | errors.NotFoundError
@@ -90,7 +90,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      z.parse(operations.PatchV1PostsIdentifierRequest$outboundSchema, value),
+      z.parse(operations.PatchV1AuthorsIdentifierRequest$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -106,7 +106,7 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/v1/posts/{identifier}")(pathParams);
+  const path = pathToFunc("/v1/authors/{identifier}")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -120,7 +120,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "patch_/v1/posts/{identifier}",
+    operationID: "patch_/v1/authors/{identifier}",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -163,7 +163,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.UpdatePostResponse,
+    models.CreateAuthorResponse,
     | errors.ErrorT
     | errors.ForbiddenError
     | errors.NotFoundError
@@ -178,7 +178,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.UpdatePostResponse$inboundSchema),
+    M.json(200, models.CreateAuthorResponse$inboundSchema),
     M.jsonErr(400, errors.ErrorT$inboundSchema),
     M.jsonErr(403, errors.ForbiddenError$inboundSchema),
     M.jsonErr(404, errors.NotFoundError$inboundSchema),

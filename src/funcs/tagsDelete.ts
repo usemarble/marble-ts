@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Delete a tag by ID or slug. Requires a private API key.
  */
-export function tagsDeleteV1TagsIdentifier(
+export function tagsDelete(
   client: MarbleCore,
   request: operations.DeleteV1TagsIdentifierRequest,
   options?: RequestOptions,

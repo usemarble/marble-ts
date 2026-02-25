@@ -5,10 +5,10 @@
 ### Available Operations
 
 * [list](#list) - List tags
-* [postV1Tags](#postv1tags) - Create tag
+* [create](#create) - Create tag
 * [get](#get) - Get tag
-* [patchV1TagsIdentifier](#patchv1tagsidentifier) - Update tag
-* [deleteV1TagsIdentifier](#deletev1tagsidentifier) - Delete tag
+* [update](#update) - Update tag
+* [delete](#delete) - Delete tag
 
 ## list
 
@@ -86,7 +86,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## postV1Tags
+## create
 
 Create a new tag. Requires a private API key.
 
@@ -101,7 +101,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.tags.postV1Tags({
+  const result = await marble.tags.create({
     name: "JavaScript",
     slug: "javascript",
     description: "JavaScript tutorials and guides",
@@ -119,7 +119,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { tagsPostV1Tags } from "@usemarble/sdk/funcs/tagsPostV1Tags.js";
+import { tagsCreate } from "@usemarble/sdk/funcs/tagsCreate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -128,7 +128,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await tagsPostV1Tags(marble, {
+  const res = await tagsCreate(marble, {
     name: "JavaScript",
     slug: "javascript",
     description: "JavaScript tutorials and guides",
@@ -137,7 +137,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("tagsPostV1Tags failed:", res.error);
+    console.log("tagsCreate failed:", res.error);
   }
 }
 
@@ -242,7 +242,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## patchV1TagsIdentifier
+## update
 
 Update an existing tag by ID or slug. Requires a private API key.
 
@@ -257,7 +257,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.tags.patchV1TagsIdentifier({
+  const result = await marble.tags.update({
     identifier: "javascript",
     body: {
       name: "TypeScript",
@@ -278,7 +278,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { tagsPatchV1TagsIdentifier } from "@usemarble/sdk/funcs/tagsPatchV1TagsIdentifier.js";
+import { tagsUpdate } from "@usemarble/sdk/funcs/tagsUpdate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -287,7 +287,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await tagsPatchV1TagsIdentifier(marble, {
+  const res = await tagsUpdate(marble, {
     identifier: "javascript",
     body: {
       name: "TypeScript",
@@ -299,7 +299,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("tagsPatchV1TagsIdentifier failed:", res.error);
+    console.log("tagsUpdate failed:", res.error);
   }
 }
 
@@ -330,7 +330,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## deleteV1TagsIdentifier
+## delete
 
 Delete a tag by ID or slug. Requires a private API key.
 
@@ -345,7 +345,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.tags.deleteV1TagsIdentifier({
+  const result = await marble.tags.delete({
     identifier: "javascript",
   });
 
@@ -361,7 +361,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { tagsDeleteV1TagsIdentifier } from "@usemarble/sdk/funcs/tagsDeleteV1TagsIdentifier.js";
+import { tagsDelete } from "@usemarble/sdk/funcs/tagsDelete.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -370,14 +370,14 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await tagsDeleteV1TagsIdentifier(marble, {
+  const res = await tagsDelete(marble, {
     identifier: "javascript",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("tagsDeleteV1TagsIdentifier failed:", res.error);
+    console.log("tagsDelete failed:", res.error);
   }
 }
 

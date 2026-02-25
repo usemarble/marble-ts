@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Update an existing tag by ID or slug. Requires a private API key.
  */
-export function tagsPatchV1TagsIdentifier(
+export function tagsUpdate(
   client: MarbleCore,
   request: operations.PatchV1TagsIdentifierRequest,
   options?: RequestOptions,

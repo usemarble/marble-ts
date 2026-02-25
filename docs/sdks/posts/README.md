@@ -5,10 +5,10 @@
 ### Available Operations
 
 * [list](#list) - List posts
-* [postV1Posts](#postv1posts) - Create post
+* [create](#create) - Create post
 * [get](#get) - Get post
-* [patchV1PostsIdentifier](#patchv1postsidentifier) - Update post
-* [deleteV1PostsIdentifier](#deletev1postsidentifier) - Delete post
+* [update](#update) - Update post
+* [delete](#delete) - Delete post
 
 ## list
 
@@ -126,7 +126,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## postV1Posts
+## create
 
 Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used.
 
@@ -141,7 +141,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.posts.postV1Posts({
+  const result = await marble.posts.create({
     title: "Getting Started with Next.js",
     content: "<p>Hello world</p>",
     description: "A beginner's guide to Next.js",
@@ -170,7 +170,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { postsPostV1Posts } from "@usemarble/sdk/funcs/postsPostV1Posts.js";
+import { postsCreate } from "@usemarble/sdk/funcs/postsCreate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -179,7 +179,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await postsPostV1Posts(marble, {
+  const res = await postsCreate(marble, {
     title: "Getting Started with Next.js",
     content: "<p>Hello world</p>",
     description: "A beginner's guide to Next.js",
@@ -199,7 +199,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("postsPostV1Posts failed:", res.error);
+    console.log("postsCreate failed:", res.error);
   }
 }
 
@@ -306,7 +306,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## patchV1PostsIdentifier
+## update
 
 Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key.
 
@@ -321,7 +321,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.posts.patchV1PostsIdentifier({
+  const result = await marble.posts.update({
     identifier: "my-post-slug",
     body: {
       title: "Updated Post Title",
@@ -354,7 +354,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { postsPatchV1PostsIdentifier } from "@usemarble/sdk/funcs/postsPatchV1PostsIdentifier.js";
+import { postsUpdate } from "@usemarble/sdk/funcs/postsUpdate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -363,7 +363,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await postsPatchV1PostsIdentifier(marble, {
+  const res = await postsUpdate(marble, {
     identifier: "my-post-slug",
     body: {
       title: "Updated Post Title",
@@ -387,7 +387,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("postsPatchV1PostsIdentifier failed:", res.error);
+    console.log("postsUpdate failed:", res.error);
   }
 }
 
@@ -418,7 +418,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## deleteV1PostsIdentifier
+## delete
 
 Delete a post by ID or slug. Requires a private API key.
 
@@ -433,7 +433,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.posts.deleteV1PostsIdentifier({
+  const result = await marble.posts.delete({
     identifier: "my-post-slug",
   });
 
@@ -449,7 +449,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { postsDeleteV1PostsIdentifier } from "@usemarble/sdk/funcs/postsDeleteV1PostsIdentifier.js";
+import { postsDelete } from "@usemarble/sdk/funcs/postsDelete.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -458,14 +458,14 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await postsDeleteV1PostsIdentifier(marble, {
+  const res = await postsDelete(marble, {
     identifier: "my-post-slug",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("postsDeleteV1PostsIdentifier failed:", res.error);
+    console.log("postsDelete failed:", res.error);
   }
 }
 

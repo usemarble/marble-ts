@@ -178,34 +178,34 @@ run();
 ### [Authors](docs/sdks/authors/README.md)
 
 * [list](docs/sdks/authors/README.md#list) - List authors
-* [postV1Authors](docs/sdks/authors/README.md#postv1authors) - Create author
+* [create](docs/sdks/authors/README.md#create) - Create author
 * [get](docs/sdks/authors/README.md#get) - Get author
-* [patchV1AuthorsIdentifier](docs/sdks/authors/README.md#patchv1authorsidentifier) - Update author
-* [deleteV1AuthorsIdentifier](docs/sdks/authors/README.md#deletev1authorsidentifier) - Delete author
+* [update](docs/sdks/authors/README.md#update) - Update author
+* [delete](docs/sdks/authors/README.md#delete) - Delete author
 
 ### [Categories](docs/sdks/categories/README.md)
 
 * [list](docs/sdks/categories/README.md#list) - List categories
-* [postV1Categories](docs/sdks/categories/README.md#postv1categories) - Create category
+* [create](docs/sdks/categories/README.md#create) - Create category
 * [get](docs/sdks/categories/README.md#get) - Get category
-* [patchV1CategoriesIdentifier](docs/sdks/categories/README.md#patchv1categoriesidentifier) - Update category
-* [deleteV1CategoriesIdentifier](docs/sdks/categories/README.md#deletev1categoriesidentifier) - Delete category
+* [update](docs/sdks/categories/README.md#update) - Update category
+* [delete](docs/sdks/categories/README.md#delete) - Delete category
 
 ### [Posts](docs/sdks/posts/README.md)
 
 * [list](docs/sdks/posts/README.md#list) - List posts
-* [postV1Posts](docs/sdks/posts/README.md#postv1posts) - Create post
+* [create](docs/sdks/posts/README.md#create) - Create post
 * [get](docs/sdks/posts/README.md#get) - Get post
-* [patchV1PostsIdentifier](docs/sdks/posts/README.md#patchv1postsidentifier) - Update post
-* [deleteV1PostsIdentifier](docs/sdks/posts/README.md#deletev1postsidentifier) - Delete post
+* [update](docs/sdks/posts/README.md#update) - Update post
+* [delete](docs/sdks/posts/README.md#delete) - Delete post
 
 ### [Tags](docs/sdks/tags/README.md)
 
 * [list](docs/sdks/tags/README.md#list) - List tags
-* [postV1Tags](docs/sdks/tags/README.md#postv1tags) - Create tag
+* [create](docs/sdks/tags/README.md#create) - Create tag
 * [get](docs/sdks/tags/README.md#get) - Get tag
-* [patchV1TagsIdentifier](docs/sdks/tags/README.md#patchv1tagsidentifier) - Update tag
-* [deleteV1TagsIdentifier](docs/sdks/tags/README.md#deletev1tagsidentifier) - Delete tag
+* [update](docs/sdks/tags/README.md#update) - Update tag
+* [delete](docs/sdks/tags/README.md#delete) - Delete tag
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -225,26 +225,26 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`authorsDeleteV1AuthorsIdentifier`](docs/sdks/authors/README.md#deletev1authorsidentifier) - Delete author
+- [`authorsCreate`](docs/sdks/authors/README.md#create) - Create author
+- [`authorsDelete`](docs/sdks/authors/README.md#delete) - Delete author
 - [`authorsGet`](docs/sdks/authors/README.md#get) - Get author
 - [`authorsList`](docs/sdks/authors/README.md#list) - List authors
-- [`authorsPatchV1AuthorsIdentifier`](docs/sdks/authors/README.md#patchv1authorsidentifier) - Update author
-- [`authorsPostV1Authors`](docs/sdks/authors/README.md#postv1authors) - Create author
-- [`categoriesDeleteV1CategoriesIdentifier`](docs/sdks/categories/README.md#deletev1categoriesidentifier) - Delete category
+- [`authorsUpdate`](docs/sdks/authors/README.md#update) - Update author
+- [`categoriesCreate`](docs/sdks/categories/README.md#create) - Create category
+- [`categoriesDelete`](docs/sdks/categories/README.md#delete) - Delete category
 - [`categoriesGet`](docs/sdks/categories/README.md#get) - Get category
 - [`categoriesList`](docs/sdks/categories/README.md#list) - List categories
-- [`categoriesPatchV1CategoriesIdentifier`](docs/sdks/categories/README.md#patchv1categoriesidentifier) - Update category
-- [`categoriesPostV1Categories`](docs/sdks/categories/README.md#postv1categories) - Create category
-- [`postsDeleteV1PostsIdentifier`](docs/sdks/posts/README.md#deletev1postsidentifier) - Delete post
+- [`categoriesUpdate`](docs/sdks/categories/README.md#update) - Update category
+- [`postsCreate`](docs/sdks/posts/README.md#create) - Create post
+- [`postsDelete`](docs/sdks/posts/README.md#delete) - Delete post
 - [`postsGet`](docs/sdks/posts/README.md#get) - Get post
 - [`postsList`](docs/sdks/posts/README.md#list) - List posts
-- [`postsPatchV1PostsIdentifier`](docs/sdks/posts/README.md#patchv1postsidentifier) - Update post
-- [`postsPostV1Posts`](docs/sdks/posts/README.md#postv1posts) - Create post
-- [`tagsDeleteV1TagsIdentifier`](docs/sdks/tags/README.md#deletev1tagsidentifier) - Delete tag
+- [`postsUpdate`](docs/sdks/posts/README.md#update) - Update post
+- [`tagsCreate`](docs/sdks/tags/README.md#create) - Create tag
+- [`tagsDelete`](docs/sdks/tags/README.md#delete) - Delete tag
 - [`tagsGet`](docs/sdks/tags/README.md#get) - Get tag
 - [`tagsList`](docs/sdks/tags/README.md#list) - List tags
-- [`tagsPatchV1TagsIdentifier`](docs/sdks/tags/README.md#patchv1tagsidentifier) - Update tag
-- [`tagsPostV1Tags`](docs/sdks/tags/README.md#postv1tags) - Create tag
+- [`tagsUpdate`](docs/sdks/tags/README.md#update) - Update tag
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->

@@ -1200,6 +1200,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: create
   /v1/posts/{identifier}:
     get:
       tags:
@@ -1311,6 +1312,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: update
     delete:
       tags:
         - "Posts"
@@ -1350,6 +1352,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: delete
   /v1/categories:
     get:
       tags:
@@ -1454,6 +1457,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: create
   /v1/categories/{identifier}:
     get:
       tags:
@@ -1546,6 +1550,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: update
     delete:
       tags:
         - "Categories"
@@ -1591,6 +1596,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: delete
   /v1/tags:
     get:
       tags:
@@ -1695,6 +1701,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: create
   /v1/tags/{identifier}:
     get:
       tags:
@@ -1787,6 +1794,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: update
     delete:
       tags:
         - "Tags"
@@ -1826,6 +1834,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: delete
   /v1/authors:
     get:
       tags:
@@ -1930,6 +1939,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: create
   /v1/authors/{identifier}:
     get:
       tags:
@@ -2022,6 +2032,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: update
     delete:
       tags:
         - "Authors"
@@ -2061,3 +2072,4 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: delete

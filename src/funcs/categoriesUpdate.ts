@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -28,20 +28,22 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete post
+ * Update category
  *
  * @remarks
- * Delete a post by ID or slug. Requires a private API key.
+ * Update an existing category by ID or slug. Requires a private API key.
  */
-export function postsDeleteV1PostsIdentifier(
+export function categoriesUpdate(
   client: MarbleCore,
-  request: operations.DeleteV1PostsIdentifierRequest,
+  request: operations.PatchV1CategoriesIdentifierRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.DeleteResponse,
+    models.CreateCategoryResponse,
+    | errors.ErrorT
     | errors.ForbiddenError
     | errors.NotFoundError
+    | errors.ConflictError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -62,14 +64,16 @@ export function postsDeleteV1PostsIdentifier(
 
 async function $do(
   client: MarbleCore,
-  request: operations.DeleteV1PostsIdentifierRequest,
+  request: operations.PatchV1CategoriesIdentifierRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.DeleteResponse,
+      models.CreateCategoryResponse,
+      | errors.ErrorT
       | errors.ForbiddenError
       | errors.NotFoundError
+      | errors.ConflictError
       | errors.ServerError
       | MarbleError
       | ResponseValidationError
@@ -86,14 +90,17 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      z.parse(operations.DeleteV1PostsIdentifierRequest$outboundSchema, value),
+      z.parse(
+        operations.PatchV1CategoriesIdentifierRequest$outboundSchema,
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     identifier: encodeSimple("identifier", payload.identifier, {
@@ -102,9 +109,10 @@ async function $do(
     }),
   };
 
-  const path = pathToFunc("/v1/posts/{identifier}")(pathParams);
+  const path = pathToFunc("/v1/categories/{identifier}")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -115,7 +123,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "delete_/v1/posts/{identifier}",
+    operationID: "patch_/v1/categories/{identifier}",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -129,7 +137,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "DELETE",
+    method: "PATCH",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -144,7 +152,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["403", "404", "4XX", "500", "5XX"],
+    errorCodes: ["400", "403", "404", "409", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -158,9 +166,11 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.DeleteResponse,
+    models.CreateCategoryResponse,
+    | errors.ErrorT
     | errors.ForbiddenError
     | errors.NotFoundError
+    | errors.ConflictError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -171,9 +181,11 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.DeleteResponse$inboundSchema),
+    M.json(200, models.CreateCategoryResponse$inboundSchema),
+    M.jsonErr(400, errors.ErrorT$inboundSchema),
     M.jsonErr(403, errors.ForbiddenError$inboundSchema),
     M.jsonErr(404, errors.NotFoundError$inboundSchema),
+    M.jsonErr(409, errors.ConflictError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

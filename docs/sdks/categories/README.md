@@ -5,10 +5,10 @@
 ### Available Operations
 
 * [list](#list) - List categories
-* [postV1Categories](#postv1categories) - Create category
+* [create](#create) - Create category
 * [get](#get) - Get category
-* [patchV1CategoriesIdentifier](#patchv1categoriesidentifier) - Update category
-* [deleteV1CategoriesIdentifier](#deletev1categoriesidentifier) - Delete category
+* [update](#update) - Update category
+* [delete](#delete) - Delete category
 
 ## list
 
@@ -86,7 +86,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## postV1Categories
+## create
 
 Create a new category. Requires a private API key.
 
@@ -101,7 +101,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.categories.postV1Categories({
+  const result = await marble.categories.create({
     name: "Technology",
     slug: "technology",
     description: "Tech news and tutorials",
@@ -119,7 +119,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { categoriesPostV1Categories } from "@usemarble/sdk/funcs/categoriesPostV1Categories.js";
+import { categoriesCreate } from "@usemarble/sdk/funcs/categoriesCreate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -128,7 +128,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await categoriesPostV1Categories(marble, {
+  const res = await categoriesCreate(marble, {
     name: "Technology",
     slug: "technology",
     description: "Tech news and tutorials",
@@ -137,7 +137,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("categoriesPostV1Categories failed:", res.error);
+    console.log("categoriesCreate failed:", res.error);
   }
 }
 
@@ -242,7 +242,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## patchV1CategoriesIdentifier
+## update
 
 Update an existing category by ID or slug. Requires a private API key.
 
@@ -257,7 +257,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.categories.patchV1CategoriesIdentifier({
+  const result = await marble.categories.update({
     identifier: "technology",
     body: {
       name: "Engineering",
@@ -278,7 +278,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { categoriesPatchV1CategoriesIdentifier } from "@usemarble/sdk/funcs/categoriesPatchV1CategoriesIdentifier.js";
+import { categoriesUpdate } from "@usemarble/sdk/funcs/categoriesUpdate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -287,7 +287,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await categoriesPatchV1CategoriesIdentifier(marble, {
+  const res = await categoriesUpdate(marble, {
     identifier: "technology",
     body: {
       name: "Engineering",
@@ -299,7 +299,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("categoriesPatchV1CategoriesIdentifier failed:", res.error);
+    console.log("categoriesUpdate failed:", res.error);
   }
 }
 
@@ -330,7 +330,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## deleteV1CategoriesIdentifier
+## delete
 
 Delete a category by ID or slug. Requires a private API key. Cannot delete a category that has posts assigned to it.
 
@@ -345,7 +345,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.categories.deleteV1CategoriesIdentifier({
+  const result = await marble.categories.delete({
     identifier: "technology",
   });
 
@@ -361,7 +361,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { categoriesDeleteV1CategoriesIdentifier } from "@usemarble/sdk/funcs/categoriesDeleteV1CategoriesIdentifier.js";
+import { categoriesDelete } from "@usemarble/sdk/funcs/categoriesDelete.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -370,14 +370,14 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await categoriesDeleteV1CategoriesIdentifier(marble, {
+  const res = await categoriesDelete(marble, {
     identifier: "technology",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("categoriesDeleteV1CategoriesIdentifier failed:", res.error);
+    console.log("categoriesDelete failed:", res.error);
   }
 }
 
