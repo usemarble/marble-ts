@@ -12,7 +12,6 @@ let value: GetV1PostsResponse = {
         id: "cryitfjp5678mn09qrstuvwx",
         slug: "getting-started-with-nextjs",
         title: "Getting Started with Next.js",
-        content: "<p>Hello world</p>",
         featured: false,
         coverImage: "https://media.marblecms.com/cover.jpg",
         description: "A beginner's guide to Next.js",
@@ -37,6 +36,7 @@ let value: GetV1PostsResponse = {
             description: "JavaScript tutorials",
           },
         ],
+        content: "<p>Hello world</p>",
       },
     ],
     pagination: {

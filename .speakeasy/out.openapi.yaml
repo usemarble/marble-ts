@@ -22,13 +22,13 @@ components:
         posts:
           type: "array"
           items:
-            $ref: "#/components/schemas/Post"
+            $ref: "#/components/schemas/PostListItem"
         pagination:
           $ref: "#/components/schemas/Pagination"
       required:
         - "posts"
         - "pagination"
-    Post:
+    PostListItem:
       type: "object"
       properties:
         id:
@@ -40,9 +40,6 @@ components:
         title:
           type: "string"
           example: "Getting Started with Next.js"
-        content:
-          type: "string"
-          example: "<p>Hello world</p>"
         featured:
           type: "boolean"
           example: false
@@ -86,11 +83,14 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/TagRef"
+        content:
+          type: "string"
+          example: "<p>Hello world</p>"
+          description: "Full post content. Only included when content=true (default)."
       required:
         - "id"
         - "slug"
         - "title"
-        - "content"
         - "featured"
         - "coverImage"
         - "description"
@@ -301,6 +301,78 @@ components:
           $ref: "#/components/schemas/Post"
       required:
         - "post"
+    Post:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "cryitfjp5678mn09qrstuvwx"
+        slug:
+          type: "string"
+          example: "getting-started-with-nextjs"
+        title:
+          type: "string"
+          example: "Getting Started with Next.js"
+        featured:
+          type: "boolean"
+          example: false
+        coverImage:
+          type: "string"
+          nullable: true
+          example: "https://media.marblecms.com/cover.jpg"
+        description:
+          type: "string"
+          example: "A beginner's guide to Next.js"
+        publishedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-15T10:00:00Z"
+        updatedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-16T12:00:00Z"
+        attribution:
+          type: "object"
+          nullable: true
+          properties:
+            author:
+              type: "string"
+              example: "John Doe"
+            url:
+              type: "string"
+              format: "uri"
+              example: "https://original-source.com/article"
+          required:
+            - "author"
+            - "url"
+          description: "Attribution to the original author when republishing content"
+        authors:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/AuthorRef"
+        category:
+          $ref: "#/components/schemas/CategoryRef"
+        tags:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TagRef"
+        content:
+          type: "string"
+          example: "<p>Hello world</p>"
+      required:
+        - "id"
+        - "slug"
+        - "title"
+        - "featured"
+        - "coverImage"
+        - "description"
+        - "publishedAt"
+        - "updatedAt"
+        - "attribution"
+        - "authors"
+        - "category"
+        - "tags"
+        - "content"
     NotFound:
       type: "object"
       properties:
@@ -1124,6 +1196,18 @@ paths:
           required: false
           description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
           name: "status"
+          in: "query"
+        - schema:
+            type: "string"
+            enum:
+              - "true"
+              - "false"
+            default: "true"
+            example: "false"
+            description: "Include full post content in response (default: true). Set to false for lightweight list responses."
+          required: false
+          description: "Include full post content in response (default: true). Set to false for lightweight list responses."
+          name: "content"
           in: "query"
       responses:
         "200":

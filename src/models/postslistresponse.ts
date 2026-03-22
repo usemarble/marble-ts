@@ -7,10 +7,10 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import { Pagination, Pagination$inboundSchema } from "./pagination.js";
-import { Post, Post$inboundSchema } from "./post.js";
+import { PostListItem, PostListItem$inboundSchema } from "./postlistitem.js";
 
 export type PostsListResponse = {
-  posts: Array<Post>;
+  posts: Array<PostListItem>;
   pagination: Pagination;
 };
 
@@ -19,7 +19,7 @@ export const PostsListResponse$inboundSchema: z.ZodMiniType<
   PostsListResponse,
   unknown
 > = z.object({
-  posts: z.array(Post$inboundSchema),
+  posts: z.array(PostListItem$inboundSchema),
   pagination: Pagination$inboundSchema,
 });
 

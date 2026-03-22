@@ -1,11 +1,11 @@
-# Post
+# PostListItem
 
 ## Example Usage
 
 ```typescript
-import { Post } from "@usemarble/sdk/models";
+import { PostListItem } from "@usemarble/sdk/models";
 
-let value: Post = {
+let value: PostListItem = {
   id: "cryitfjp5678mn09qrstuvwx",
   slug: "getting-started-with-nextjs",
   title: "Getting Started with Next.js",
@@ -18,22 +18,7 @@ let value: Post = {
     author: "John Doe",
     url: "https://original-source.com/article",
   },
-  authors: [
-    {
-      id: "cryitfjp1234jl04vdnycek8",
-      name: "John Doe",
-      image: "https://media.marblecms.com/avatar.jpg",
-      bio: "Technical writer and developer",
-      role: "Editor",
-      slug: "john-doe",
-      socials: [
-        {
-          url: "https://twitter.com/johndoe",
-          platform: "twitter",
-        },
-      ],
-    },
-  ],
+  authors: [],
   category: {
     id: "cryitfjp1234jl04vdnycek8",
     name: "Technology",
@@ -57,8 +42,8 @@ let value: Post = {
 | `description`                                                                                 | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | A beginner's guide to Next.js                                                                 |
 | `publishedAt`                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           | 2024-01-15T10:00:00Z                                                                          |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | N/A                                                                                           | 2024-01-16T12:00:00Z                                                                          |
-| `attribution`                                                                                 | [models.PostAttribution](../models/postattribution.md)                                        | :heavy_check_mark:                                                                            | Attribution to the original author when republishing content                                  |                                                                                               |
+| `attribution`                                                                                 | [models.PostListItemAttribution](../models/postlistitemattribution.md)                        | :heavy_check_mark:                                                                            | Attribution to the original author when republishing content                                  |                                                                                               |
 | `authors`                                                                                     | [models.AuthorRef](../models/authorref.md)[]                                                  | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `category`                                                                                    | [models.CategoryRef](../models/categoryref.md)                                                | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
 | `tags`                                                                                        | [models.TagRef](../models/tagref.md)[]                                                        | :heavy_check_mark:                                                                            | N/A                                                                                           |                                                                                               |
-| `content`                                                                                     | *string*                                                                                      | :heavy_check_mark:                                                                            | N/A                                                                                           | <p>Hello world</p>                                                                            |
+| `content`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | Full post content. Only included when content=true (default).                                 | <p>Hello world</p>                                                                            |

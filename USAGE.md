@@ -27,6 +27,7 @@ async function run() {
     query: "nextjs",
     format: "html",
     featured: "true",
+    content: "false",
   });
 
   for await (const page of result) {

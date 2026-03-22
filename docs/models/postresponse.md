@@ -10,7 +10,6 @@ let value: PostResponse = {
     id: "cryitfjp5678mn09qrstuvwx",
     slug: "getting-started-with-nextjs",
     title: "Getting Started with Next.js",
-    content: "<p>Hello world</p>",
     featured: false,
     coverImage: "https://media.marblecms.com/cover.jpg",
     description: "A beginner's guide to Next.js",
@@ -28,7 +27,12 @@ let value: PostResponse = {
         bio: "Technical writer and developer",
         role: "Editor",
         slug: "john-doe",
-        socials: [],
+        socials: [
+          {
+            url: "https://twitter.com/johndoe",
+            platform: "twitter",
+          },
+        ],
       },
     ],
     category: {
@@ -45,6 +49,7 @@ let value: PostResponse = {
         description: "JavaScript tutorials",
       },
     ],
+    content: "<p>Hello world</p>",
   },
 };
 ```
