@@ -23,7 +23,6 @@ export type Post = {
   id: string;
   slug: string;
   title: string;
-  content: string;
   featured: boolean;
   coverImage: string | null;
   description: string;
@@ -36,6 +35,7 @@ export type Post = {
   authors: Array<AuthorRef>;
   category: CategoryRef;
   tags: Array<TagRef>;
+  content: string;
 };
 
 /** @internal */
@@ -62,7 +62,6 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   id: types.string(),
   slug: types.string(),
   title: types.string(),
-  content: types.string(),
   featured: types.boolean(),
   coverImage: types.nullable(types.string()),
   description: types.string(),
@@ -72,6 +71,7 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   authors: z.array(AuthorRef$inboundSchema),
   category: CategoryRef$inboundSchema,
   tags: z.array(TagRef$inboundSchema),
+  content: types.string(),
 });
 
 export function postFromJSON(

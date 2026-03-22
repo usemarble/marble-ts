@@ -24,6 +24,7 @@ export * from "./error.js";
 export * from "./pagenotfounderror.js";
 export * from "./pagination.js";
 export * from "./post.js";
+export * from "./postlistitem.js";
 export * from "./postresponse.js";
 export * from "./postslistresponse.js";
 export * from "./security.js";

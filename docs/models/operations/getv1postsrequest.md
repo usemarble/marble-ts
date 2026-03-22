@@ -25,6 +25,7 @@ let value: GetV1PostsRequest = {
   query: "nextjs",
   format: "html",
   featured: "true",
+  content: "false",
 };
 ```
 
@@ -43,3 +44,4 @@ let value: GetV1PostsRequest = {
 | `format`                                                                                                 | [models.ContentFormat](../../models/contentformat.md)                                                    | :heavy_minus_sign:                                                                                       | Content format (html or markdown)                                                                        | html                                                                                                     |
 | `featured`                                                                                               | [operations.Featured](../../models/operations/featured.md)                                               | :heavy_minus_sign:                                                                                       | Filter by featured status                                                                                | true                                                                                                     |
 | `status`                                                                                                 | [operations.GetV1PostsStatus](../../models/operations/getv1postsstatus.md)                               | :heavy_minus_sign:                                                                                       | Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. | published                                                                                                |
+| `content`                                                                                                | [operations.Content](../../models/operations/content.md)                                                 | :heavy_minus_sign:                                                                                       | Include full post content in response (default: true). Set to false for lightweight list responses.      | false                                                                                                    |
