@@ -49,6 +49,7 @@ async function run() {
     query: "nextjs",
     format: "html",
     featured: "true",
+    content: "false",
   });
   if (res.ok) {
     const { value: result } = res;

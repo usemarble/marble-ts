@@ -4,12 +4,20 @@
 
 import * as z from "zod/v4-mini";
 import { safeParse } from "../lib/schemas.js";
+import * as openEnums from "../types/enums.js";
+import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { AuthorRef, AuthorRef$inboundSchema } from "./authorref.js";
 import { CategoryRef, CategoryRef$inboundSchema } from "./categoryref.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import { TagRef, TagRef$inboundSchema } from "./tagref.js";
+
+export const PostStatus = {
+  Published: "published",
+  Draft: "draft",
+} as const;
+export type PostStatus = OpenEnum<typeof PostStatus>;
 
 /**
  * Attribution to the original author when republishing content
@@ -23,7 +31,7 @@ export type Post = {
   id: string;
   slug: string;
   title: string;
-  content: string;
+  status: PostStatus;
   featured: boolean;
   coverImage: string | null;
   description: string;
@@ -36,7 +44,12 @@ export type Post = {
   authors: Array<AuthorRef>;
   category: CategoryRef;
   tags: Array<TagRef>;
+  content: string;
 };
+
+/** @internal */
+export const PostStatus$inboundSchema: z.ZodMiniType<PostStatus, unknown> =
+  openEnums.inboundSchema(PostStatus);
 
 /** @internal */
 export const PostAttribution$inboundSchema: z.ZodMiniType<
@@ -62,7 +75,7 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   id: types.string(),
   slug: types.string(),
   title: types.string(),
-  content: types.string(),
+  status: PostStatus$inboundSchema,
   featured: types.boolean(),
   coverImage: types.nullable(types.string()),
   description: types.string(),
@@ -72,6 +85,7 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   authors: z.array(AuthorRef$inboundSchema),
   category: CategoryRef$inboundSchema,
   tags: z.array(TagRef$inboundSchema),
+  content: types.string(),
 });
 
 export function postFromJSON(

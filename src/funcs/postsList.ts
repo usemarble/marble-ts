@@ -115,6 +115,7 @@ async function $do(
       "tags": payload?.tags,
     }, { explode: false }),
     encodeFormQuery({
+      "content": payload?.content,
       "featured": payload?.featured,
       "format": payload?.format,
       "limit": payload?.limit,

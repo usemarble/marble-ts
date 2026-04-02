@@ -47,6 +47,18 @@ export const GetV1PostsStatus = {
  */
 export type GetV1PostsStatus = ClosedEnum<typeof GetV1PostsStatus>;
 
+/**
+ * Include full post content in response (default: true). Set to false for lightweight list responses.
+ */
+export const Content = {
+  True: "true",
+  False: "false",
+} as const;
+/**
+ * Include full post content in response (default: true). Set to false for lightweight list responses.
+ */
+export type Content = ClosedEnum<typeof Content>;
+
 export type GetV1PostsRequest = {
   /**
    * Number of posts per page (1-100)
@@ -92,6 +104,10 @@ export type GetV1PostsRequest = {
    * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
    */
   status?: GetV1PostsStatus | undefined;
+  /**
+   * Include full post content in response (default: true). Set to false for lightweight list responses.
+   */
+  content?: Content | undefined;
 };
 
 export type GetV1PostsResponse = {
@@ -112,6 +128,11 @@ export const GetV1PostsStatus$outboundSchema: z.ZodMiniEnum<
 > = z.enum(GetV1PostsStatus);
 
 /** @internal */
+export const Content$outboundSchema: z.ZodMiniEnum<typeof Content> = z.enum(
+  Content,
+);
+
+/** @internal */
 export type GetV1PostsRequest$Outbound = {
   limit?: number | undefined;
   page?: number | undefined;
@@ -124,6 +145,7 @@ export type GetV1PostsRequest$Outbound = {
   format?: string | undefined;
   featured?: string | undefined;
   status: string;
+  content: string;
 };
 
 /** @internal */
@@ -142,6 +164,7 @@ export const GetV1PostsRequest$outboundSchema: z.ZodMiniType<
   format: z.optional(models.ContentFormat$outboundSchema),
   featured: z.optional(Featured$outboundSchema),
   status: z._default(GetV1PostsStatus$outboundSchema, "published"),
+  content: z._default(Content$outboundSchema, "true"),
 });
 
 export function getV1PostsRequestToJSON(
