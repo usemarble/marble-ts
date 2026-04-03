@@ -10,7 +10,7 @@ let value: PostResponse = {
     id: "cryitfjp5678mn09qrstuvwx",
     slug: "getting-started-with-nextjs",
     title: "Getting Started with Next.js",
-    content: "<p>Hello world</p>",
+    status: "published",
     featured: false,
     coverImage: "https://media.marblecms.com/cover.jpg",
     description: "A beginner's guide to Next.js",
@@ -45,6 +45,15 @@ let value: PostResponse = {
         description: "JavaScript tutorials",
       },
     ],
+    fields: {
+      "release_date": "2024-01-15",
+      "priority_score": 5,
+      "hashtags": [
+        "#javascript",
+        "#nextjs",
+      ],
+    },
+    content: "<p>Hello world</p>",
   },
 };
 ```
