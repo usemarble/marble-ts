@@ -20,7 +20,7 @@ let value: PostsListResponse = {
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `posts`                                      | [models.Post](../models/post.md)[]           | :heavy_check_mark:                           | N/A                                          |
-| `pagination`                                 | [models.Pagination](../models/pagination.md) | :heavy_check_mark:                           | N/A                                          |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `posts`                                            | [models.PostListItem](../models/postlistitem.md)[] | :heavy_check_mark:                                 | N/A                                                |
+| `pagination`                                       | [models.Pagination](../models/pagination.md)       | :heavy_check_mark:                                 | N/A                                                |
