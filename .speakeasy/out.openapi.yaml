@@ -40,9 +40,12 @@ components:
         title:
           type: "string"
           example: "Getting Started with Next.js"
-        content:
+        status:
           type: "string"
-          example: "<p>Hello world</p>"
+          enum:
+            - "published"
+            - "draft"
+          example: "published"
         featured:
           type: "boolean"
           example: false
@@ -86,11 +89,32 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/TagRef"
+        fields:
+          type: "object"
+          additionalProperties:
+            anyOf:
+              - type: "string"
+              - type: "number"
+              - type: "boolean"
+              - type: "array"
+                items:
+                  type: "string"
+              - nullable: true
+          description: "Custom field values keyed by field key"
+          example:
+            release_date: "2024-01-15"
+            priority_score: 5
+            hashtags:
+              - "#javascript"
+              - "#nextjs"
+        content:
+          type: "string"
+          example: "<p>Hello world</p>"
       required:
         - "id"
         - "slug"
         - "title"
-        - "content"
+        - "status"
         - "featured"
         - "coverImage"
         - "description"
@@ -100,6 +124,8 @@ components:
         - "authors"
         - "category"
         - "tags"
+        - "fields"
+        - "content"
     AuthorRef:
       type: "object"
       properties:
