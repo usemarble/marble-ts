@@ -64,21 +64,6 @@ components:
           type: "string"
           format: "date-time"
           example: "2024-01-16T12:00:00Z"
-        attribution:
-          type: "object"
-          nullable: true
-          properties:
-            author:
-              type: "string"
-              example: "John Doe"
-            url:
-              type: "string"
-              format: "uri"
-              example: "https://original-source.com/article"
-          required:
-            - "author"
-            - "url"
-          description: "Attribution to the original author when republishing content"
         authors:
           type: "array"
           items:
@@ -120,7 +105,6 @@ components:
         - "description"
         - "publishedAt"
         - "updatedAt"
-        - "attribution"
         - "authors"
         - "category"
         - "tags"
@@ -456,20 +440,6 @@ components:
           format: "date-time"
           example: "2024-01-15T10:00:00Z"
           description: "ISO 8601 datetime. Defaults to current time if omitted."
-        attribution:
-          type: "object"
-          nullable: true
-          properties:
-            author:
-              type: "string"
-              minLength: 1
-            url:
-              type: "string"
-              format: "uri"
-          required:
-            - "author"
-            - "url"
-          description: "Attribution to original author when republishing content"
       required:
         - "title"
         - "content"
@@ -569,20 +539,6 @@ components:
           type: "string"
           format: "date-time"
           example: "2024-02-01T10:00:00Z"
-        attribution:
-          type: "object"
-          nullable: true
-          properties:
-            author:
-              type: "string"
-              minLength: 1
-            url:
-              type: "string"
-              format: "uri"
-          required:
-            - "author"
-            - "url"
-          description: "Attribution to original author when republishing content"
     DeleteResponse:
       type: "object"
       properties:

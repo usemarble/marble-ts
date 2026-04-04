@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
-  docChecksum: ddf9d0a83931857a58f38b9ec8160e2d
+  docChecksum: 315674438fd1aec879b6fc9e51f7b0c2
   docVersion: 1.0.0
   speakeasyVersion: 1.761.1
   generationVersion: 2.879.6
-  releaseVersion: 1.1.3
-  configChecksum: 8f804d38d597d57188b90f27509505c9
+  releaseVersion: 1.1.4
+  configChecksum: cdc37f9ee5b458ba77cd6a298fc45470
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 1ed9ccfc-3c41-4d82-8c09-d5367fd23de4
-  pristine_commit_hash: 7a42b22bab9bf284017629d5a3412a2d87d484d5
-  pristine_tree_hash: aafcff4c37836eabb88836cc4150db5679fa0ee7
+  generation_id: 3aace69f-1fde-44ea-8917-b25c298ab020
+  pristine_commit_hash: 18567eb4255328f46bb0fcfb1db89559e684a5e6
+  pristine_tree_hash: dd7e52fb03c9627dff0885a13a76dc23d6ff1f7e
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -143,12 +143,8 @@ trackedFiles:
     pristine_git_object: 10e880490b6715b45bd1d5821b81c695c32fbf09
   docs/models/createpostbody.md:
     id: c17d8ecb0644
-    last_write_checksum: sha1:81d8646134b5833538ddc596edf8bd665d29dafb
-    pristine_git_object: 44866a0838bf37f2c76351162383e227e399884a
-  docs/models/createpostbodyattribution.md:
-    id: 302b610bee84
-    last_write_checksum: sha1:7b07658cd6c1b357df00c633afb025b41c6ef056
-    pristine_git_object: 15bf79ce23e3a748dac73dc83f7aec71e0151f16
+    last_write_checksum: sha1:ba8f1e7b20ace4cb0d41cffc475c99af4b33dfd2
+    pristine_git_object: 1c1cb9215cb7e6a88fe7ac6d61c24d2df09ab08b
   docs/models/createpostbodystatus.md:
     id: 0bd4140153cd
     last_write_checksum: sha1:39733cd6e0af51ef271168789dcdffccbd21d3fc
@@ -291,8 +287,8 @@ trackedFiles:
     pristine_git_object: a1082930ca975eacb592bfaeb05f29e5f8ee0d89
   docs/models/operations/getv1postsresponse.md:
     id: c5b63e59bfbf
-    last_write_checksum: sha1:2eef6a6e5ae74d62761ae2f26c22b07617306663
-    pristine_git_object: 8ac1d8df332dd522c9176303047c52604e2d8436
+    last_write_checksum: sha1:b6474a1d9e9aad58d7783fa5cefffe97ac9d3834
+    pristine_git_object: 3bbe031450da4df8636b0b2b7564dfa319bf6f16
   docs/models/operations/getv1postsstatus.md:
     id: 10bfb5f3db51
     last_write_checksum: sha1:25bf1f54aea8d869e2d855472a89d65c44a01b0e
@@ -339,16 +335,12 @@ trackedFiles:
     pristine_git_object: 2f15b388c504092d289ed7aaef5bdf73c8b01c59
   docs/models/post.md:
     id: 6a612582ecd0
-    last_write_checksum: sha1:8cca94bf8a24e5699d65ddc19b3c1e3ce2e6efbe
-    pristine_git_object: 991216cfe7c20bba3146875359b59dceb3c1a1c1
-  docs/models/postattribution.md:
-    id: 08d9ab559a8c
-    last_write_checksum: sha1:07476274ddee1f710948bd86251e5339483df40f
-    pristine_git_object: aabb224895e4580f382650f2637d72cecb3bd3f8
+    last_write_checksum: sha1:98c9d44b34205bfa9c77ce9adf2b3cd2ef907874
+    pristine_git_object: 9edcbbb5ed812fde820db1adfea583803372b89d
   docs/models/postresponse.md:
     id: "460545805396"
-    last_write_checksum: sha1:57856dac4a43ceffe74329515d73c5803225dec1
-    pristine_git_object: 847184eb09dd1c3d4f6a20b78f357b193677acd5
+    last_write_checksum: sha1:0494015b0376c61802c39d437e311f84a5e67f07
+    pristine_git_object: 25383fe3121899a64b8b8010476b4bf6a985a082
   docs/models/postslistresponse.md:
     id: 94e953e3cb27
     last_write_checksum: sha1:ce9d9a07abb465ff76287c438495da2061487b7a
@@ -403,12 +395,8 @@ trackedFiles:
     pristine_git_object: c8f61dfb537c8e5da4afa0495d67028714bc5762
   docs/models/updatepostbody.md:
     id: 6281fc95f5e7
-    last_write_checksum: sha1:f368e6921cc13fdfa85107c181b9ec40b48e0681
-    pristine_git_object: 77f3608210a899fae0e11f5212931f2fb029bc54
-  docs/models/updatepostbodyattribution.md:
-    id: 4cfb9b856622
-    last_write_checksum: sha1:b0e9cd0f75ee81b4fd1127739dacaca519d2c0fe
-    pristine_git_object: 11149c66376b031a3b9090e03e8856e0b932d1c6
+    last_write_checksum: sha1:147cd4ef0719a40d0813a9f7a0b0fbc59fab4819
+    pristine_git_object: 6987fd42a3f2ca39056981c5e7011b1bd8fa4bb6
   docs/models/updatepostbodystatus.md:
     id: e1d5131daa25
     last_write_checksum: sha1:a2721dfee17e4910da5005416299137d139f5570
@@ -463,12 +451,12 @@ trackedFiles:
     pristine_git_object: e71dfe3f0a1d6fe1d85f98a70041a293f44a59d5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:0f719793fcffdec7168aee51f70b2925242cf81b
-    pristine_git_object: 6a87b0802853a896732fa5f18c35c6663547b25e
+    last_write_checksum: sha1:6b84cbb69dc78a1c55c0fabd47e8d04a6ef780d6
+    pristine_git_object: 11b2d47208e0969cdc071f6391fb180302ab6c4a
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:b6f2d51bab90a88dc4a98ec855445ccd2ce7994a
-    pristine_git_object: dae9dcd2c5b2773c4edcad2c88bdb42d8a495ea3
+    last_write_checksum: sha1:8b93f7d2203db7600464ebfaabb05e52be86aa63
+    pristine_git_object: 6334061c252aaab8725a2be6117f96c99d6a3f33
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
@@ -575,8 +563,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:d40cc6ca8cc4581c8a670697f9ef4adeeaf629fb
-    pristine_git_object: 8d1d9a8e012b27bbf8088985de71b2528834cb37
+    last_write_checksum: sha1:fa1af50468d90bdef79ca90026b3418d4119b5f5
+    pristine_git_object: 361a801d663ef4c321b4dca497fd4f2670512840
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -687,8 +675,8 @@ trackedFiles:
     pristine_git_object: 0821f7eaade825870a6ebbb219687c065c31f3ff
   src/models/createpostbody.ts:
     id: a75d512d87e8
-    last_write_checksum: sha1:ae22327a6633215fdcbd8e63fc70836034b4b371
-    pristine_git_object: 2b923fdcf15692e7f70305fa3df44942f858ba68
+    last_write_checksum: sha1:329abe07dd7626291073a293482813999265e868
+    pristine_git_object: 3556650bcbbf8a4c6241df00d61fb399bb6448dd
   src/models/createpostresponse.ts:
     id: 3361357bb7c7
     last_write_checksum: sha1:a243346a15d92276c8709a16b947d823c507adf4
@@ -855,8 +843,8 @@ trackedFiles:
     pristine_git_object: 32d8f05b77a53feb60b1270110c7a0b4160c07be
   src/models/post.ts:
     id: b3a3adebd438
-    last_write_checksum: sha1:613bec37538606cbba4e49078740194b4deef371
-    pristine_git_object: 662cecad6969c729581cfc4fa991ce954d4792a0
+    last_write_checksum: sha1:2831bbbb6dabedc5939fd512789769cdb37de637
+    pristine_git_object: ab3c31aeea5982fa8ed126698e23dfc6508afcc4
   src/models/postresponse.ts:
     id: 09c17c5eb329
     last_write_checksum: sha1:9940a8c95f0dfa440d7fff4e35e6769292bd8804
@@ -907,8 +895,8 @@ trackedFiles:
     pristine_git_object: e91370b267a9f9ea986f74a204c103c50762e0e1
   src/models/updatepostbody.ts:
     id: b5d765bdf2e3
-    last_write_checksum: sha1:79e0a1fc0ed3c0cdb463c5378337d183cfa62e68
-    pristine_git_object: 856ab9ab097b67605a283c494131d8b7c635800f
+    last_write_checksum: sha1:21dd351c00ef886c34e6f8c93678c7b0d78e9096
+    pristine_git_object: fcd32884c2a57c764cef2758788d46d4da62934f
   src/models/updatepostresponse.ts:
     id: cadb0307445d
     last_write_checksum: sha1:9531e325f5db811b7d2a6cadb134e00beb685093
@@ -1030,7 +1018,7 @@ examples:
           status: "published"
       responses:
         "200":
-          application/json: {"post": {"id": "cryitfjp5678mn09qrstuvwx", "slug": "getting-started-with-nextjs", "title": "Getting Started with Next.js", "status": "published", "featured": false, "coverImage": "https://media.marblecms.com/cover.jpg", "description": "A beginner's guide to Next.js", "publishedAt": "2024-01-15T10:00:00Z", "updatedAt": "2024-01-16T12:00:00Z", "attribution": null, "authors": [{"id": "clx123abc", "name": "John Doe", "image": "https://cdn.example.com/avatar.jpg", "bio": "Technical writer and developer", "role": "Editor", "slug": "john-doe", "socials": [{"url": "https://twitter.com/johndoe", "platform": "twitter"}]}], "category": {"id": "cryitfjp1234jl04vdnycek8", "name": "Technology", "slug": "technology", "description": "Tech news and tutorials"}, "tags": [], "fields": {"release_date": "2024-01-15", "priority_score": 5, "hashtags": ["#javascript", "#nextjs"]}, "content": "<p>Hello world</p>"}}
+          application/json: {"post": {"id": "cryitfjp5678mn09qrstuvwx", "slug": "getting-started-with-nextjs", "title": "Getting Started with Next.js", "status": "published", "featured": false, "coverImage": "https://media.marblecms.com/cover.jpg", "description": "A beginner's guide to Next.js", "publishedAt": "2024-01-15T10:00:00Z", "updatedAt": "2024-01-16T12:00:00Z", "authors": [{"id": "clx123abc", "name": "John Doe", "image": "https://cdn.example.com/avatar.jpg", "bio": "Technical writer and developer", "role": "Editor", "slug": "john-doe", "socials": [{"url": "https://twitter.com/johndoe", "platform": "twitter"}]}], "category": {"id": "cryitfjp1234jl04vdnycek8", "name": "Technology", "slug": "technology", "description": "Tech news and tutorials"}, "tags": [], "fields": {"release_date": "2024-01-15", "priority_score": 5, "hashtags": ["#javascript", "#nextjs"]}, "content": "<p>Hello world</p>"}}
         "404":
           application/json: {"error": "Post not found", "message": "The requested resource does not exist"}
         "500":
@@ -1309,7 +1297,4 @@ examples:
         "500":
           application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `marble.posts.list()`:  `response.posts[]` **Changed**
-  * `marble.posts.get()`:  `response.post` **Changed**
+releaseNotes: "## Typescript SDK Changes:\n* `marble.posts.list()`:  `response.posts[].attribution` **Removed** (Breaking ⚠️)\n* `marble.posts.create()`: \n  *  `request.attribution` **Removed** (Breaking ⚠️)\n* `marble.posts.get()`:  `response.post.attribution` **Removed** (Breaking ⚠️)\n* `marble.posts.update()`: \n  *  `request.body.attribution` **Removed** (Breaking ⚠️)\n"

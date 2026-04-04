@@ -11,14 +11,6 @@ export const UpdatePostBodyStatus = {
 } as const;
 export type UpdatePostBodyStatus = ClosedEnum<typeof UpdatePostBodyStatus>;
 
-/**
- * Attribution to original author when republishing content
- */
-export type UpdatePostBodyAttribution = {
-  author: string;
-  url: string;
-};
-
 export type UpdatePostBody = {
   title?: string | undefined;
   content?: string | undefined;
@@ -37,39 +29,12 @@ export type UpdatePostBody = {
   featured?: boolean | undefined;
   coverImage?: string | null | undefined;
   publishedAt?: Date | undefined;
-  /**
-   * Attribution to original author when republishing content
-   */
-  attribution?: UpdatePostBodyAttribution | null | undefined;
 };
 
 /** @internal */
 export const UpdatePostBodyStatus$outboundSchema: z.ZodMiniEnum<
   typeof UpdatePostBodyStatus
 > = z.enum(UpdatePostBodyStatus);
-
-/** @internal */
-export type UpdatePostBodyAttribution$Outbound = {
-  author: string;
-  url: string;
-};
-
-/** @internal */
-export const UpdatePostBodyAttribution$outboundSchema: z.ZodMiniType<
-  UpdatePostBodyAttribution$Outbound,
-  UpdatePostBodyAttribution
-> = z.object({
-  author: z.string(),
-  url: z.string(),
-});
-
-export function updatePostBodyAttributionToJSON(
-  updatePostBodyAttribution: UpdatePostBodyAttribution,
-): string {
-  return JSON.stringify(
-    UpdatePostBodyAttribution$outboundSchema.parse(updatePostBodyAttribution),
-  );
-}
 
 /** @internal */
 export type UpdatePostBody$Outbound = {
@@ -84,7 +49,6 @@ export type UpdatePostBody$Outbound = {
   featured?: boolean | undefined;
   coverImage?: string | null | undefined;
   publishedAt?: string | undefined;
-  attribution?: UpdatePostBodyAttribution$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -103,9 +67,6 @@ export const UpdatePostBody$outboundSchema: z.ZodMiniType<
   featured: z.optional(z.boolean()),
   coverImage: z.optional(z.nullable(z.string())),
   publishedAt: z.optional(z.pipe(z.date(), z.transform(v => v.toISOString()))),
-  attribution: z.optional(
-    z.nullable(z.lazy(() => UpdatePostBodyAttribution$outboundSchema)),
-  ),
 });
 
 export function updatePostBodyToJSON(updatePostBody: UpdatePostBody): string {

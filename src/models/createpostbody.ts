@@ -11,14 +11,6 @@ export const CreatePostBodyStatus = {
 } as const;
 export type CreatePostBodyStatus = ClosedEnum<typeof CreatePostBodyStatus>;
 
-/**
- * Attribution to original author when republishing content
- */
-export type CreatePostBodyAttribution = {
-  author: string;
-  url: string;
-};
-
 export type CreatePostBody = {
   title: string;
   content: string;
@@ -40,39 +32,12 @@ export type CreatePostBody = {
    * ISO 8601 datetime. Defaults to current time if omitted.
    */
   publishedAt?: Date | undefined;
-  /**
-   * Attribution to original author when republishing content
-   */
-  attribution?: CreatePostBodyAttribution | null | undefined;
 };
 
 /** @internal */
 export const CreatePostBodyStatus$outboundSchema: z.ZodMiniEnum<
   typeof CreatePostBodyStatus
 > = z.enum(CreatePostBodyStatus);
-
-/** @internal */
-export type CreatePostBodyAttribution$Outbound = {
-  author: string;
-  url: string;
-};
-
-/** @internal */
-export const CreatePostBodyAttribution$outboundSchema: z.ZodMiniType<
-  CreatePostBodyAttribution$Outbound,
-  CreatePostBodyAttribution
-> = z.object({
-  author: z.string(),
-  url: z.string(),
-});
-
-export function createPostBodyAttributionToJSON(
-  createPostBodyAttribution: CreatePostBodyAttribution,
-): string {
-  return JSON.stringify(
-    CreatePostBodyAttribution$outboundSchema.parse(createPostBodyAttribution),
-  );
-}
 
 /** @internal */
 export type CreatePostBody$Outbound = {
@@ -87,7 +52,6 @@ export type CreatePostBody$Outbound = {
   featured: boolean;
   coverImage?: string | null | undefined;
   publishedAt?: string | undefined;
-  attribution?: CreatePostBodyAttribution$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -106,9 +70,6 @@ export const CreatePostBody$outboundSchema: z.ZodMiniType<
   featured: z._default(z.boolean(), false),
   coverImage: z.optional(z.nullable(z.string())),
   publishedAt: z.optional(z.pipe(z.date(), z.transform(v => v.toISOString()))),
-  attribution: z.optional(
-    z.nullable(z.lazy(() => CreatePostBodyAttribution$outboundSchema)),
-  ),
 });
 
 export function createPostBodyToJSON(createPostBody: CreatePostBody): string {

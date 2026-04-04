@@ -16,21 +16,7 @@ let value: PostResponse = {
     description: "A beginner's guide to Next.js",
     publishedAt: new Date("2024-01-15T10:00:00Z"),
     updatedAt: new Date("2024-01-16T12:00:00Z"),
-    attribution: {
-      author: "John Doe",
-      url: "https://original-source.com/article",
-    },
-    authors: [
-      {
-        id: "cryitfjp1234jl04vdnycek8",
-        name: "John Doe",
-        image: "https://media.marblecms.com/avatar.jpg",
-        bio: "Technical writer and developer",
-        role: "Editor",
-        slug: "john-doe",
-        socials: [],
-      },
-    ],
+    authors: [],
     category: {
       id: "cryitfjp1234jl04vdnycek8",
       name: "Technology",
