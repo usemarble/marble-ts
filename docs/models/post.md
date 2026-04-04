@@ -15,10 +15,6 @@ let value: Post = {
   description: "A beginner's guide to Next.js",
   publishedAt: new Date("2024-01-15T10:00:00Z"),
   updatedAt: new Date("2024-01-16T12:00:00Z"),
-  attribution: {
-    author: "John Doe",
-    url: "https://original-source.com/article",
-  },
   authors: [
     {
       id: "cryitfjp1234jl04vdnycek8",
@@ -36,7 +32,14 @@ let value: Post = {
     slug: "technology",
     description: "Tech news and tutorials",
   },
-  tags: [],
+  tags: [
+    {
+      id: "cryitfjp1234jl04vdnycek8",
+      name: "JavaScript",
+      slug: "javascript",
+      description: "JavaScript tutorials",
+    },
+  ],
   fields: {
     "release_date": "2024-01-15",
     "priority_score": 5,
@@ -62,7 +65,6 @@ let value: Post = {
 | `description`                                                                                   | *string*                                                                                        | :heavy_check_mark:                                                                              | N/A                                                                                             | A beginner's guide to Next.js                                                                   |
 | `publishedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)   | :heavy_check_mark:                                                                              | N/A                                                                                             | 2024-01-15T10:00:00Z                                                                            |
 | `updatedAt`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)   | :heavy_check_mark:                                                                              | N/A                                                                                             | 2024-01-16T12:00:00Z                                                                            |
-| `attribution`                                                                                   | [models.PostAttribution](../models/postattribution.md)                                          | :heavy_check_mark:                                                                              | Attribution to the original author when republishing content                                    |                                                                                                 |
 | `authors`                                                                                       | [models.AuthorRef](../models/authorref.md)[]                                                    | :heavy_check_mark:                                                                              | N/A                                                                                             |                                                                                                 |
 | `category`                                                                                      | [models.CategoryRef](../models/categoryref.md)                                                  | :heavy_check_mark:                                                                              | N/A                                                                                             |                                                                                                 |
 | `tags`                                                                                          | [models.TagRef](../models/tagref.md)[]                                                          | :heavy_check_mark:                                                                              | N/A                                                                                             |                                                                                                 |

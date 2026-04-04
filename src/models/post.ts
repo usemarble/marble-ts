@@ -20,14 +20,6 @@ export const PostStatus = {
 } as const;
 export type PostStatus = OpenEnum<typeof PostStatus>;
 
-/**
- * Attribution to the original author when republishing content
- */
-export type PostAttribution = {
-  author: string;
-  url: string;
-};
-
 export type Fields = string | number | boolean | Array<string> | any;
 
 export type Post = {
@@ -40,10 +32,6 @@ export type Post = {
   description: string;
   publishedAt: Date;
   updatedAt: Date;
-  /**
-   * Attribution to the original author when republishing content
-   */
-  attribution: PostAttribution | null;
   authors: Array<AuthorRef>;
   category: CategoryRef;
   tags: Array<TagRef>;
@@ -59,25 +47,6 @@ export type Post = {
 /** @internal */
 export const PostStatus$inboundSchema: z.ZodMiniType<PostStatus, unknown> =
   openEnums.inboundSchema(PostStatus);
-
-/** @internal */
-export const PostAttribution$inboundSchema: z.ZodMiniType<
-  PostAttribution,
-  unknown
-> = z.object({
-  author: types.string(),
-  url: types.string(),
-});
-
-export function postAttributionFromJSON(
-  jsonString: string,
-): SafeParseResult<PostAttribution, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostAttribution$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostAttribution' from JSON`,
-  );
-}
 
 /** @internal */
 export const Fields$inboundSchema: z.ZodMiniType<Fields, unknown> = smartUnion([
@@ -109,7 +78,6 @@ export const Post$inboundSchema: z.ZodMiniType<Post, unknown> = z.object({
   description: types.string(),
   publishedAt: types.date(),
   updatedAt: types.date(),
-  attribution: types.nullable(z.lazy(() => PostAttribution$inboundSchema)),
   authors: z.array(AuthorRef$inboundSchema),
   category: CategoryRef$inboundSchema,
   tags: z.array(TagRef$inboundSchema),
