@@ -2,7 +2,7 @@ overlay: 1.0.0
 x-speakeasy-jsonpath: rfc9535
 info:
   title: Speakeasy Modifications
-  version: 0.0.7
+  version: 0.0.8
   x-speakeasy-metadata:
     after: ""
     before: ""
@@ -251,4 +251,65 @@ actions:
           numPages: $.pagination.totalPages
     x-speakeasy-metadata:
       created_at: 1767916752892
+      type: user-edit
+  - target: $["paths"]["/v1/media"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.media.list()
+      before: sdk.Media.get_/v1/media()
+      created_at: 1778294466001
+      reviewed_at: 1778294466001
+      type: method-name
+  - target: $["paths"]["/v1/media/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.media.get()
+      before: sdk.Media.get_/v1/media/{id}()
+      created_at: 1778294466002
+      reviewed_at: 1778294466002
+      type: method-name
+  - target: $["paths"]["/v1/media/{id}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.media.update()
+      before: sdk.media.patchV1MediaId()
+      created_at: 1778294466003
+      reviewed_at: 1778294466003
+      type: method-name
+  - target: $["paths"]["/v1/media/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.media.delete()
+      before: sdk.media.deleteV1MediaId()
+      created_at: 1778294466004
+      reviewed_at: 1778294466004
+      type: method-name
+  - target: $["paths"]["/v1/media/upload"]["post"]
+    update:
+      x-speakeasy-name-override: upload
+    x-speakeasy-metadata:
+      after: sdk.media.upload()
+      before: sdk.media.postV1MediaUpload()
+      created_at: 1778294466005
+      reviewed_at: 1778294466005
+      type: method-name
+  - target: $["paths"]["/v1/media"]["get"]
+    update:
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          numPages: $.pagination.totalPages
+    x-speakeasy-metadata:
+      created_at: 1778294466006
       type: user-edit
