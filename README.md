@@ -22,6 +22,7 @@ Marble API: A headless CMS API for managing and delivering content programmatica
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
   * [Pagination](#pagination)
+  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -191,6 +192,14 @@ run();
 * [update](docs/sdks/categories/README.md#update) - Update category
 * [delete](docs/sdks/categories/README.md#delete) - Delete category
 
+### [Media](docs/sdks/media/README.md)
+
+* [getV1Media](docs/sdks/media/README.md#getv1media) - List media assets
+* [getV1MediaId](docs/sdks/media/README.md#getv1mediaid) - Get media asset
+* [patchV1MediaId](docs/sdks/media/README.md#patchv1mediaid) - Update media asset
+* [deleteV1MediaId](docs/sdks/media/README.md#deletev1mediaid) - Delete media asset
+* [postV1MediaUpload](docs/sdks/media/README.md#postv1mediaupload) - Upload media asset
+
 ### [Posts](docs/sdks/posts/README.md)
 
 * [list](docs/sdks/posts/README.md#list) - List posts
@@ -235,6 +244,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`categoriesGet`](docs/sdks/categories/README.md#get) - Get category
 - [`categoriesList`](docs/sdks/categories/README.md#list) - List categories
 - [`categoriesUpdate`](docs/sdks/categories/README.md#update) - Update category
+- [`mediaDeleteV1MediaId`](docs/sdks/media/README.md#deletev1mediaid) - Delete media asset
+- [`mediaGetV1Media`](docs/sdks/media/README.md#getv1media) - List media assets
+- [`mediaGetV1MediaId`](docs/sdks/media/README.md#getv1mediaid) - Get media asset
+- [`mediaPatchV1MediaId`](docs/sdks/media/README.md#patchv1mediaid) - Update media asset
+- [`mediaPostV1MediaUpload`](docs/sdks/media/README.md#postv1mediaupload) - Upload media asset
 - [`postsCreate`](docs/sdks/posts/README.md#create) - Create post
 - [`postsDelete`](docs/sdks/posts/README.md#delete) - Delete post
 - [`postsGet`](docs/sdks/posts/README.md#get) - Get post
@@ -300,6 +314,41 @@ run();
 
 ```
 <!-- End Pagination [pagination] -->
+
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { Marble } from "@usemarble/sdk";
+
+const marble = new Marble({
+  apiKey: process.env["MARBLE_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await marble.media.postV1MediaUpload({
+    name: "Hero image",
+    alt: "Dashboard screenshot",
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -498,11 +547,11 @@ run();
 
 
 **Inherit from [`MarbleError`](./src/models/errors/marbleerror.ts)**:
-* [`ErrorT`](./src/models/errors/errort.ts): Status code `400`. Applicable to 13 of 20 methods.*
-* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 12 of 20 methods.*
-* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 12 of 20 methods.*
-* [`ConflictError`](./src/models/errors/conflicterror.ts): Status code `409`. Applicable to 8 of 20 methods.*
-* [`PageNotFoundError`](./src/models/errors/pagenotfounderror.ts): Invalid query parameters or page number. Status code `400`. Applicable to 4 of 20 methods.*
+* [`ErrorT`](./src/models/errors/errort.ts): Applicable to 16 of 25 methods.*
+* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 15 of 25 methods.*
+* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 15 of 25 methods.*
+* [`ConflictError`](./src/models/errors/conflicterror.ts): Status code `409`. Applicable to 8 of 25 methods.*
+* [`PageNotFoundError`](./src/models/errors/pagenotfounderror.ts): Applicable to 5 of 25 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>

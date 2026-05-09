@@ -13,14 +13,14 @@ import * as models from "../index.js";
 /**
  * Sort order by publishedAt
  */
-export const Order = {
+export const GetV1PostsOrder = {
   Asc: "asc",
   Desc: "desc",
 } as const;
 /**
  * Sort order by publishedAt
  */
-export type Order = ClosedEnum<typeof Order>;
+export type GetV1PostsOrder = ClosedEnum<typeof GetV1PostsOrder>;
 
 /**
  * Filter by featured status
@@ -59,7 +59,7 @@ export type GetV1PostsRequest = {
   /**
    * Sort order by publishedAt
    */
-  order?: Order | undefined;
+  order?: GetV1PostsOrder | undefined;
   /**
    * Category slugs to include
    */
@@ -99,7 +99,9 @@ export type GetV1PostsResponse = {
 };
 
 /** @internal */
-export const Order$outboundSchema: z.ZodMiniEnum<typeof Order> = z.enum(Order);
+export const GetV1PostsOrder$outboundSchema: z.ZodMiniEnum<
+  typeof GetV1PostsOrder
+> = z.enum(GetV1PostsOrder);
 
 /** @internal */
 export const Featured$outboundSchema: z.ZodMiniEnum<typeof Featured> = z.enum(
@@ -133,7 +135,7 @@ export const GetV1PostsRequest$outboundSchema: z.ZodMiniType<
 > = z.object({
   limit: z.optional(z.int()),
   page: z.optional(z.int()),
-  order: z._default(Order$outboundSchema, "desc"),
+  order: z._default(GetV1PostsOrder$outboundSchema, "desc"),
   categories: z.optional(z.array(z.string())),
   excludeCategories: z.optional(z.array(z.string())),
   tags: z.optional(z.array(z.string())),
