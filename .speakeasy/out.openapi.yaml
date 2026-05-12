@@ -978,6 +978,122 @@ components:
           items:
             $ref: "#/components/schemas/SocialInput"
           description: "Social media links. Replaces all existing socials when provided."
+    MediaListResponse:
+      type: "object"
+      properties:
+        media:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Media"
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+      required:
+        - "media"
+        - "pagination"
+    Media:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "cryitfjp1234jl04vdnycek8"
+        name:
+          type: "string"
+          example: "Hero image"
+        url:
+          type: "string"
+          format: "uri"
+          example: "https://cdn.marblecms.com/media/hero.jpg"
+        alt:
+          type: "string"
+          nullable: true
+          example: "A dashboard screenshot"
+        size:
+          type: "integer"
+          example: 382019
+          description: "File size in bytes"
+        mimeType:
+          type: "string"
+          nullable: true
+          example: "image/jpeg"
+        width:
+          type: "integer"
+          nullable: true
+          example: 1600
+        height:
+          type: "integer"
+          nullable: true
+          example: 900
+        duration:
+          type: "integer"
+          nullable: true
+          example: 12000
+          description: "Duration in milliseconds"
+        blurHash:
+          type: "string"
+          nullable: true
+          example: "LEHV6nWB2yk8pyo0adR*.7kCMdnj"
+        type:
+          $ref: "#/components/schemas/MediaType"
+        createdAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-15T10:00:00Z"
+        updatedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-16T12:00:00Z"
+      required:
+        - "id"
+        - "name"
+        - "url"
+        - "alt"
+        - "size"
+        - "mimeType"
+        - "width"
+        - "height"
+        - "duration"
+        - "blurHash"
+        - "type"
+        - "createdAt"
+        - "updatedAt"
+    MediaType:
+      type: "string"
+      enum:
+        - "image"
+        - "video"
+        - "audio"
+        - "document"
+    MediaResponse:
+      type: "object"
+      properties:
+        media:
+          $ref: "#/components/schemas/Media"
+      required:
+        - "media"
+    UpdateMediaBody:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          minLength: 1
+          example: "Updated hero image"
+        alt:
+          type: "string"
+          nullable: true
+          example: "Dashboard with a post editor open"
+    UploadMediaBody:
+      type: "object"
+      properties:
+        file:
+          type: "string"
+          format: "binary"
+          description: "Media file to upload. Maximum size: 5 MiB."
+        name:
+          type: "string"
+          example: "Hero image"
+        alt:
+          type: "string"
+          example: "Dashboard screenshot"
   parameters: {}
 paths:
   /v1/posts:
@@ -2055,3 +2171,253 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerError"
       x-speakeasy-name-override: delete
+  /v1/media:
+    get:
+      tags:
+        - "Media"
+      summary: "List media assets"
+      description: "Retrieve media assets for the authenticated workspace."
+      parameters:
+        - schema:
+            type: "integer"
+            minimum: 1
+            maximum: 100
+            default: 10
+            example: "10"
+            description: "Number of items per page (1-100)"
+          required: false
+          description: "Number of items per page (1-100)"
+          name: "limit"
+          in: "query"
+        - schema:
+            type: "integer"
+            minimum: 0
+            exclusiveMinimum: true
+            default: 1
+            example: "1"
+            description: "Page number"
+          required: false
+          description: "Page number"
+          name: "page"
+          in: "query"
+        - schema:
+            type: "string"
+            example: "hero"
+            description: "Search media by name, alt text, URL, or MIME type"
+          required: false
+          description: "Search media by name, alt text, URL, or MIME type"
+          name: "query"
+          in: "query"
+        - schema:
+            allOf:
+              - $ref: "#/components/schemas/MediaType"
+              - example: "image"
+                description: "Filter by inferred media type"
+          required: false
+          description: "Filter by inferred media type"
+          name: "type"
+          in: "query"
+        - schema:
+            type: "string"
+            enum:
+              - "asc"
+              - "desc"
+            default: "desc"
+            example: "desc"
+            description: "Sort order by creation date"
+          required: false
+          description: "Sort order by creation date"
+          name: "order"
+          in: "query"
+      responses:
+        "200":
+          description: "Media assets retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaListResponse"
+        "400":
+          description: "Invalid query parameters"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: "Page number does not exist"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PageNotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+  /v1/media/{id}:
+    get:
+      tags:
+        - "Media"
+      summary: "Get media asset"
+      description: "Retrieve a single media asset by ID."
+      parameters:
+        - schema:
+            type: "string"
+            example: "cryitfjp1234jl04vdnycek8"
+            description: "Media asset ID"
+          required: true
+          description: "Media asset ID"
+          name: "id"
+          in: "path"
+      responses:
+        "200":
+          description: "Media asset retrieved successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaResponse"
+        "404":
+          description: "Media asset not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+    patch:
+      tags:
+        - "Media"
+      summary: "Update media asset"
+      description: "Update media asset metadata. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "cryitfjp1234jl04vdnycek8"
+            description: "Media asset ID"
+          required: true
+          description: "Media asset ID"
+          name: "id"
+          in: "path"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMediaBody"
+      responses:
+        "200":
+          description: "Media asset updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Media asset not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+    delete:
+      tags:
+        - "Media"
+      summary: "Delete media asset"
+      description: "Delete a media asset and its R2 object. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "cryitfjp1234jl04vdnycek8"
+            description: "Media asset ID"
+          required: true
+          description: "Media asset ID"
+          name: "id"
+          in: "path"
+      responses:
+        "200":
+          description: "Media asset deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Media asset not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+  /v1/media/upload:
+    post:
+      tags:
+        - "Media"
+      summary: "Upload media asset"
+      description: "Upload a media file and create a media asset. Requires a private API key. Maximum file size is 5 MiB."
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/UploadMediaBody"
+      responses:
+        "201":
+          description: "Media asset uploaded successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaResponse"
+        "400":
+          description: "Invalid upload request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "Public API key used for write operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "413":
+          description: "File exceeds the upload size limit"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"

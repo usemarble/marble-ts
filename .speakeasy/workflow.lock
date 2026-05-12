@@ -1,9 +1,9 @@
-speakeasyVersion: 1.761.1
+speakeasyVersion: 1.762.0
 sources:
     Marble API:
         sourceNamespace: marble-api
-        sourceRevisionDigest: sha256:e005dea3602f5c6aeb1e21aa94610251075b7fb1185d094c99cda9795dae2350
-        sourceBlobDigest: sha256:b41f525320a1e114af81eb9f848b9d7217b959dd6d10bc91b9d1eb318e9d1dd7
+        sourceRevisionDigest: sha256:5176f0c1522a5c7977501346287b51395425a242849dcca449529e48bda7ca90
+        sourceBlobDigest: sha256:ef73305a95e8b13e35c8d9430e048998aeaf9c5a2a38f4e3c7a6f16e70552a44
         tags:
             - latest
             - 1.0.0
@@ -11,10 +11,10 @@ targets:
     marble:
         source: Marble API
         sourceNamespace: marble-api
-        sourceRevisionDigest: sha256:e005dea3602f5c6aeb1e21aa94610251075b7fb1185d094c99cda9795dae2350
-        sourceBlobDigest: sha256:b41f525320a1e114af81eb9f848b9d7217b959dd6d10bc91b9d1eb318e9d1dd7
+        sourceRevisionDigest: sha256:5176f0c1522a5c7977501346287b51395425a242849dcca449529e48bda7ca90
+        sourceBlobDigest: sha256:ef73305a95e8b13e35c8d9430e048998aeaf9c5a2a38f4e3c7a6f16e70552a44
         codeSamplesNamespace: marble-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:d980b5dae6f211026c76194abfdd23a8cab9edd945f4940266a6e33ddd88047f
+        codeSamplesRevisionDigest: sha256:cce551098eb613df34178b3a7f1521fc45b6f63bd19c43e25d15de212943fab9
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
