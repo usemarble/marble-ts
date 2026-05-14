@@ -3,7 +3,12 @@
  */
 
 import * as z from "zod/v4-mini";
+import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 /**
  * Filter by inferred media type
@@ -54,6 +59,10 @@ export type GetV1MediaRequest = {
   order?: GetV1MediaOrder | undefined;
 };
 
+export type GetV1MediaResponse = {
+  result: models.MediaListResponse;
+};
+
 /** @internal */
 export const Type$outboundSchema: z.ZodMiniEnum<typeof Type> = z.enum(Type);
 
@@ -88,5 +97,30 @@ export function getV1MediaRequestToJSON(
 ): string {
   return JSON.stringify(
     GetV1MediaRequest$outboundSchema.parse(getV1MediaRequest),
+  );
+}
+
+/** @internal */
+export const GetV1MediaResponse$inboundSchema: z.ZodMiniType<
+  GetV1MediaResponse,
+  unknown
+> = z.pipe(
+  z.object({
+    Result: models.MediaListResponse$inboundSchema,
+  }),
+  z.transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  }),
+);
+
+export function getV1MediaResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<GetV1MediaResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetV1MediaResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV1MediaResponse' from JSON`,
   );
 }

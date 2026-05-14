@@ -194,11 +194,11 @@ run();
 
 ### [Media](docs/sdks/media/README.md)
 
-* [getV1Media](docs/sdks/media/README.md#getv1media) - List media assets
-* [getV1MediaId](docs/sdks/media/README.md#getv1mediaid) - Get media asset
-* [patchV1MediaId](docs/sdks/media/README.md#patchv1mediaid) - Update media asset
-* [deleteV1MediaId](docs/sdks/media/README.md#deletev1mediaid) - Delete media asset
-* [postV1MediaUpload](docs/sdks/media/README.md#postv1mediaupload) - Upload media asset
+* [list](docs/sdks/media/README.md#list) - List media assets
+* [get](docs/sdks/media/README.md#get) - Get media asset
+* [update](docs/sdks/media/README.md#update) - Update media asset
+* [delete](docs/sdks/media/README.md#delete) - Delete media asset
+* [upload](docs/sdks/media/README.md#upload) - Upload media asset
 
 ### [Posts](docs/sdks/posts/README.md)
 
@@ -244,11 +244,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`categoriesGet`](docs/sdks/categories/README.md#get) - Get category
 - [`categoriesList`](docs/sdks/categories/README.md#list) - List categories
 - [`categoriesUpdate`](docs/sdks/categories/README.md#update) - Update category
-- [`mediaDeleteV1MediaId`](docs/sdks/media/README.md#deletev1mediaid) - Delete media asset
-- [`mediaGetV1Media`](docs/sdks/media/README.md#getv1media) - List media assets
-- [`mediaGetV1MediaId`](docs/sdks/media/README.md#getv1mediaid) - Get media asset
-- [`mediaPatchV1MediaId`](docs/sdks/media/README.md#patchv1mediaid) - Update media asset
-- [`mediaPostV1MediaUpload`](docs/sdks/media/README.md#postv1mediaupload) - Upload media asset
+- [`mediaDelete`](docs/sdks/media/README.md#delete) - Delete media asset
+- [`mediaGet`](docs/sdks/media/README.md#get) - Get media asset
+- [`mediaList`](docs/sdks/media/README.md#list) - List media assets
+- [`mediaUpdate`](docs/sdks/media/README.md#update) - Update media asset
+- [`mediaUpload`](docs/sdks/media/README.md#upload) - Upload media asset
 - [`postsCreate`](docs/sdks/posts/README.md#create) - Create post
 - [`postsDelete`](docs/sdks/posts/README.md#delete) - Delete post
 - [`postsGet`](docs/sdks/posts/README.md#get) - Get post
@@ -337,7 +337,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.media.postV1MediaUpload({
+  const result = await marble.media.upload({
     name: "Hero image",
     alt: "Dashboard screenshot",
   });

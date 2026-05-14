@@ -4,12 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { appendForm, normalizeBlob } from "../lib/encodings.js";
-import {
-  bytesToBlob,
-  getContentTypeFromFileName,
-  readableStreamToArrayBuffer,
-} from "../lib/files.js";
+import { encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -29,26 +24,24 @@ import { MarbleError } from "../models/errors/marbleerror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as models from "../models/index.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
-import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
-import { isReadableStream } from "../types/streams.js";
 
 /**
- * Upload media asset
+ * Get media asset
  *
  * @remarks
- * Upload a media file and create a media asset. Requires a private API key. Maximum file size is 5 MiB.
+ * Retrieve a single media asset by ID.
  */
-export function mediaPostV1MediaUpload(
+export function mediaGet(
   client: MarbleCore,
-  request: models.UploadMediaBody,
+  request: operations.GetV1MediaIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     models.MediaResponse,
-    | errors.ForbiddenError
-    | errors.ErrorT
+    | errors.NotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -69,14 +62,13 @@ export function mediaPostV1MediaUpload(
 
 async function $do(
   client: MarbleCore,
-  request: models.UploadMediaBody,
+  request: operations.GetV1MediaIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       models.MediaResponse,
-      | errors.ForbiddenError
-      | errors.ErrorT
+      | errors.NotFoundError
       | errors.ServerError
       | MarbleError
       | ResponseValidationError
@@ -92,50 +84,22 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(models.UploadMediaBody$outboundSchema, value),
+    (value) => z.parse(operations.GetV1MediaIdRequest$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = new FormData();
+  const body = null;
 
-  if (payload.alt !== undefined) {
-    appendForm(body, "alt", payload.alt);
-  }
-  if (payload.file !== undefined) {
-    if (isBlobLike(payload.file)) {
-      const file = payload.file;
-      const blob = await normalizeBlob(file);
-      const name = "name" in file ? (file.name as string) : undefined;
-      appendForm(body, "file", blob, name);
-    } else if (isReadableStream(payload.file.content)) {
-      const buffer = await readableStreamToArrayBuffer(payload.file.content);
-      const contentType = getContentTypeFromFileName(payload.file.fileName)
-        || "application/octet-stream";
-      appendForm(
-        body,
-        "file",
-        bytesToBlob(buffer, contentType),
-        payload.file.fileName,
-      );
-    } else {
-      const contentType = getContentTypeFromFileName(payload.file.fileName)
-        || "application/octet-stream";
-      appendForm(
-        body,
-        "file",
-        bytesToBlob(payload.file.content, contentType),
-        payload.file.fileName,
-      );
-    }
-  }
-  if (payload.name !== undefined) {
-    appendForm(body, "name", payload.name);
-  }
-
-  const path = pathToFunc("/v1/media/upload")();
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+  const path = pathToFunc("/v1/media/{id}")(pathParams);
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -148,7 +112,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "post_/v1/media/upload",
+    operationID: "get_/v1/media/{id}",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -162,7 +126,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
@@ -193,8 +157,7 @@ async function $do(
 
   const [result] = await M.match<
     models.MediaResponse,
-    | errors.ForbiddenError
-    | errors.ErrorT
+    | errors.NotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -205,9 +168,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(201, models.MediaResponse$inboundSchema),
-    M.jsonErr(403, errors.ForbiddenError$inboundSchema),
-    M.jsonErr([400, 413], errors.ErrorT$inboundSchema),
+    M.json(200, models.MediaResponse$inboundSchema),
+    M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),

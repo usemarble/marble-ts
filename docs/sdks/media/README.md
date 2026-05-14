@@ -4,13 +4,13 @@
 
 ### Available Operations
 
-* [getV1Media](#getv1media) - List media assets
-* [getV1MediaId](#getv1mediaid) - Get media asset
-* [patchV1MediaId](#patchv1mediaid) - Update media asset
-* [deleteV1MediaId](#deletev1mediaid) - Delete media asset
-* [postV1MediaUpload](#postv1mediaupload) - Upload media asset
+* [list](#list) - List media assets
+* [get](#get) - Get media asset
+* [update](#update) - Update media asset
+* [delete](#delete) - Delete media asset
+* [upload](#upload) - Upload media asset
 
-## getV1Media
+## list
 
 Retrieve media assets for the authenticated workspace.
 
@@ -25,12 +25,14 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.media.getV1Media({
+  const result = await marble.media.list({
     query: "hero",
     type: "image",
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -42,7 +44,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { mediaGetV1Media } from "@usemarble/sdk/funcs/mediaGetV1Media.js";
+import { mediaList } from "@usemarble/sdk/funcs/mediaList.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -51,15 +53,17 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await mediaGetV1Media(marble, {
+  const res = await mediaList(marble, {
     query: "hero",
     type: "image",
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
-    console.log("mediaGetV1Media failed:", res.error);
+    console.log("mediaList failed:", res.error);
   }
 }
 
@@ -77,7 +81,7 @@ run();
 
 ### Response
 
-**Promise\<[models.MediaListResponse](../../models/medialistresponse.md)\>**
+**Promise\<[operations.GetV1MediaResponse](../../models/operations/getv1mediaresponse.md)\>**
 
 ### Errors
 
@@ -88,7 +92,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## getV1MediaId
+## get
 
 Retrieve a single media asset by ID.
 
@@ -103,7 +107,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.media.getV1MediaId({
+  const result = await marble.media.get({
     id: "cryitfjp1234jl04vdnycek8",
   });
 
@@ -119,7 +123,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { mediaGetV1MediaId } from "@usemarble/sdk/funcs/mediaGetV1MediaId.js";
+import { mediaGet } from "@usemarble/sdk/funcs/mediaGet.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -128,14 +132,14 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await mediaGetV1MediaId(marble, {
+  const res = await mediaGet(marble, {
     id: "cryitfjp1234jl04vdnycek8",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("mediaGetV1MediaId failed:", res.error);
+    console.log("mediaGet failed:", res.error);
   }
 }
 
@@ -163,7 +167,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## patchV1MediaId
+## update
 
 Update media asset metadata. Requires a private API key.
 
@@ -178,7 +182,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.media.patchV1MediaId({
+  const result = await marble.media.update({
     id: "cryitfjp1234jl04vdnycek8",
     body: {
       name: "Updated hero image",
@@ -198,7 +202,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { mediaPatchV1MediaId } from "@usemarble/sdk/funcs/mediaPatchV1MediaId.js";
+import { mediaUpdate } from "@usemarble/sdk/funcs/mediaUpdate.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -207,7 +211,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await mediaPatchV1MediaId(marble, {
+  const res = await mediaUpdate(marble, {
     id: "cryitfjp1234jl04vdnycek8",
     body: {
       name: "Updated hero image",
@@ -218,7 +222,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("mediaPatchV1MediaId failed:", res.error);
+    console.log("mediaUpdate failed:", res.error);
   }
 }
 
@@ -248,7 +252,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## deleteV1MediaId
+## delete
 
 Delete a media asset and its R2 object. Requires a private API key.
 
@@ -263,7 +267,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.media.deleteV1MediaId({
+  const result = await marble.media.delete({
     id: "cryitfjp1234jl04vdnycek8",
   });
 
@@ -279,7 +283,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { mediaDeleteV1MediaId } from "@usemarble/sdk/funcs/mediaDeleteV1MediaId.js";
+import { mediaDelete } from "@usemarble/sdk/funcs/mediaDelete.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -288,14 +292,14 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await mediaDeleteV1MediaId(marble, {
+  const res = await mediaDelete(marble, {
     id: "cryitfjp1234jl04vdnycek8",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("mediaDeleteV1MediaId failed:", res.error);
+    console.log("mediaDelete failed:", res.error);
   }
 }
 
@@ -324,7 +328,7 @@ run();
 | errors.ServerError        | 500                       | application/json          |
 | errors.MarbleDefaultError | 4XX, 5XX                  | \*/\*                     |
 
-## postV1MediaUpload
+## upload
 
 Upload a media file and create a media asset. Requires a private API key. Maximum file size is 5 MiB.
 
@@ -339,7 +343,7 @@ const marble = new Marble({
 });
 
 async function run() {
-  const result = await marble.media.postV1MediaUpload({
+  const result = await marble.media.upload({
     name: "Hero image",
     alt: "Dashboard screenshot",
   });
@@ -356,7 +360,7 @@ The standalone function version of this method:
 
 ```typescript
 import { MarbleCore } from "@usemarble/sdk/core.js";
-import { mediaPostV1MediaUpload } from "@usemarble/sdk/funcs/mediaPostV1MediaUpload.js";
+import { mediaUpload } from "@usemarble/sdk/funcs/mediaUpload.js";
 
 // Use `MarbleCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -365,7 +369,7 @@ const marble = new MarbleCore({
 });
 
 async function run() {
-  const res = await mediaPostV1MediaUpload(marble, {
+  const res = await mediaUpload(marble, {
     name: "Hero image",
     alt: "Dashboard screenshot",
   });
@@ -373,7 +377,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("mediaPostV1MediaUpload failed:", res.error);
+    console.log("mediaUpload failed:", res.error);
   }
 }
 

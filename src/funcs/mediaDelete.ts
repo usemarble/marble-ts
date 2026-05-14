@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Delete a media asset and its R2 object. Requires a private API key.
  */
-export function mediaDeleteV1MediaId(
+export function mediaDelete(
   client: MarbleCore,
   request: operations.DeleteV1MediaIdRequest,
   options?: RequestOptions,
