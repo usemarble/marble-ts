@@ -4,7 +4,8 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { dlv } from "../lib/dlv.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -23,36 +24,43 @@ import * as errors from "../models/errors/index.js";
 import { MarbleError } from "../models/errors/marbleerror.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
+import {
+  createPageIterator,
+  haltIterator,
+  PageIterator,
+  Paginator,
+} from "../types/operations.js";
 
 /**
- * Update media asset
+ * List media assets
  *
  * @remarks
- * Update media asset metadata. Requires a private API key.
+ * Retrieve media assets for the authenticated workspace.
  */
-export function mediaPatchV1MediaId(
+export function mediaList(
   client: MarbleCore,
-  request: operations.PatchV1MediaIdRequest,
+  request?: operations.GetV1MediaRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
-  Result<
-    models.MediaResponse,
-    | errors.ErrorT
-    | errors.ForbiddenError
-    | errors.NotFoundError
-    | errors.ServerError
-    | MarbleError
-    | ResponseValidationError
-    | ConnectionError
-    | RequestAbortedError
-    | RequestTimeoutError
-    | InvalidRequestError
-    | UnexpectedClientError
-    | SDKValidationError
+  PageIterator<
+    Result<
+      operations.GetV1MediaResponse,
+      | errors.ErrorT
+      | errors.PageNotFoundError
+      | errors.ServerError
+      | MarbleError
+      | ResponseValidationError
+      | ConnectionError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
+    >,
+    { page: number }
   >
 > {
   return new APIPromise($do(
@@ -64,49 +72,53 @@ export function mediaPatchV1MediaId(
 
 async function $do(
   client: MarbleCore,
-  request: operations.PatchV1MediaIdRequest,
+  request?: operations.GetV1MediaRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
-    Result<
-      models.MediaResponse,
-      | errors.ErrorT
-      | errors.ForbiddenError
-      | errors.NotFoundError
-      | errors.ServerError
-      | MarbleError
-      | ResponseValidationError
-      | ConnectionError
-      | RequestAbortedError
-      | RequestTimeoutError
-      | InvalidRequestError
-      | UnexpectedClientError
-      | SDKValidationError
+    PageIterator<
+      Result<
+        operations.GetV1MediaResponse,
+        | errors.ErrorT
+        | errors.PageNotFoundError
+        | errors.ServerError
+        | MarbleError
+        | ResponseValidationError
+        | ConnectionError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | InvalidRequestError
+        | UnexpectedClientError
+        | SDKValidationError
+      >,
+      { page: number }
     >,
     APICall,
   ]
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(operations.PatchV1MediaIdRequest$outboundSchema, value),
+    (value) =>
+      z.parse(z.optional(operations.GetV1MediaRequest$outboundSchema), value),
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return [parsed, { status: "invalid" }];
+    return [haltIterator(parsed), { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.body, { explode: true });
+  const body = null;
 
-  const pathParams = {
-    id: encodeSimple("id", payload.id, {
-      explode: false,
-      charEncoding: "percent",
-    }),
-  };
-  const path = pathToFunc("/v1/media/{id}")(pathParams);
+  const path = pathToFunc("/v1/media")();
+
+  const query = encodeFormQuery({
+    "limit": payload?.limit,
+    "order": payload?.order,
+    "page": payload?.page,
+    "query": payload?.query,
+    "type": payload?.type,
+  });
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -117,7 +129,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "patch_/v1/media/{id}",
+    operationID: "get_/v1/media",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -131,16 +143,17 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "PATCH",
+    method: "GET",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return [requestRes, { status: "invalid" }];
+    return [haltIterator(requestRes), { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -152,7 +165,7 @@ async function $do(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return [doResult, { status: "request-error", request: req }];
+    return [haltIterator(doResult), { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -160,11 +173,10 @@ async function $do(
     HttpMeta: { Response: response, Request: req },
   };
 
-  const [result] = await M.match<
-    models.MediaResponse,
+  const [result, raw] = await M.match<
+    operations.GetV1MediaResponse,
     | errors.ErrorT
-    | errors.ForbiddenError
-    | errors.NotFoundError
+    | errors.PageNotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -175,17 +187,70 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.MediaResponse$inboundSchema),
+    M.json(200, operations.GetV1MediaResponse$inboundSchema, { key: "Result" }),
     M.jsonErr(400, errors.ErrorT$inboundSchema),
-    M.jsonErr(403, errors.ForbiddenError$inboundSchema),
-    M.jsonErr(404, errors.NotFoundError$inboundSchema),
+    M.jsonErr(404, errors.PageNotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
-    return [result, { status: "complete", request: req, response }];
+    return [haltIterator(result), {
+      status: "complete",
+      request: req,
+      response,
+    }];
   }
 
-  return [result, { status: "complete", request: req, response }];
+  const nextFunc = (
+    responseData: unknown,
+  ): {
+    next: Paginator<
+      Result<
+        operations.GetV1MediaResponse,
+        | errors.ErrorT
+        | errors.PageNotFoundError
+        | errors.ServerError
+        | MarbleError
+        | ResponseValidationError
+        | ConnectionError
+        | RequestAbortedError
+        | RequestTimeoutError
+        | InvalidRequestError
+        | UnexpectedClientError
+        | SDKValidationError
+      >
+    >;
+    "~next"?: { page: number };
+  } => {
+    const page = request?.page ?? 1;
+    const nextPage = page + 1;
+    const numPages = dlv(responseData, "pagination.totalPages");
+    if (typeof numPages !== "number" || numPages <= page) {
+      return { next: () => null };
+    }
+
+    if (!responseData) {
+      return { next: () => null };
+    }
+
+    const nextVal = () =>
+      mediaList(
+        client,
+        {
+          ...request!,
+          page: nextPage,
+        },
+        options,
+      );
+
+    return { next: nextVal, "~next": { page: nextPage } };
+  };
+
+  const page = { ...result, ...nextFunc(raw) };
+  return [{ ...page, ...createPageIterator(page, (v) => !v.ok) }, {
+    status: "complete",
+    request: req,
+    response,
+  }];
 }

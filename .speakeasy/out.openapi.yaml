@@ -2254,6 +2254,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: list
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          numPages: $.pagination.totalPages
   /v1/media/{id}:
     get:
       tags:
@@ -2288,6 +2300,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: get
     patch:
       tags:
         - "Media"
@@ -2339,6 +2352,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: update
     delete:
       tags:
         - "Media"
@@ -2378,6 +2392,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: delete
   /v1/media/upload:
     post:
       tags:
@@ -2421,3 +2436,4 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: upload

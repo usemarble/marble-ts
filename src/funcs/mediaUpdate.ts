@@ -4,7 +4,7 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { encodeFormQuery } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -29,20 +29,21 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * List media assets
+ * Update media asset
  *
  * @remarks
- * Retrieve media assets for the authenticated workspace.
+ * Update media asset metadata. Requires a private API key.
  */
-export function mediaGetV1Media(
+export function mediaUpdate(
   client: MarbleCore,
-  request?: operations.GetV1MediaRequest | undefined,
+  request: operations.PatchV1MediaIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.MediaListResponse,
+    models.MediaResponse,
     | errors.ErrorT
-    | errors.PageNotFoundError
+    | errors.ForbiddenError
+    | errors.NotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -63,14 +64,15 @@ export function mediaGetV1Media(
 
 async function $do(
   client: MarbleCore,
-  request?: operations.GetV1MediaRequest | undefined,
+  request: operations.PatchV1MediaIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.MediaListResponse,
+      models.MediaResponse,
       | errors.ErrorT
-      | errors.PageNotFoundError
+      | errors.ForbiddenError
+      | errors.NotFoundError
       | errors.ServerError
       | MarbleError
       | ResponseValidationError
@@ -86,27 +88,25 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      z.parse(z.optional(operations.GetV1MediaRequest$outboundSchema), value),
+    (value) => z.parse(operations.PatchV1MediaIdRequest$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body = encodeJSON("body", payload.body, { explode: true });
 
-  const path = pathToFunc("/v1/media")();
-
-  const query = encodeFormQuery({
-    "limit": payload?.limit,
-    "order": payload?.order,
-    "page": payload?.page,
-    "query": payload?.query,
-    "type": payload?.type,
-  });
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
+  const path = pathToFunc("/v1/media/{id}")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -117,7 +117,7 @@ async function $do(
   const context = {
     options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "get_/v1/media",
+    operationID: "patch_/v1/media/{id}",
     oAuth2Scopes: null,
 
     resolvedSecurity: requestSecurity,
@@ -131,11 +131,10 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "GET",
+    method: "PATCH",
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
@@ -162,9 +161,10 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.MediaListResponse,
+    models.MediaResponse,
     | errors.ErrorT
-    | errors.PageNotFoundError
+    | errors.ForbiddenError
+    | errors.NotFoundError
     | errors.ServerError
     | MarbleError
     | ResponseValidationError
@@ -175,9 +175,10 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, models.MediaListResponse$inboundSchema),
+    M.json(200, models.MediaResponse$inboundSchema),
     M.jsonErr(400, errors.ErrorT$inboundSchema),
-    M.jsonErr(404, errors.PageNotFoundError$inboundSchema),
+    M.jsonErr(403, errors.ForbiddenError$inboundSchema),
+    M.jsonErr(404, errors.NotFoundError$inboundSchema),
     M.jsonErr(500, errors.ServerError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
