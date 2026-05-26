@@ -88,7 +88,7 @@ run();
 
 ## create
 
-Create a new author. Requires a private API key. Hobby plan is limited to 1 author.
+Create a new author. Requires a private API key. Plan limits apply.
 
 ### Example Usage
 

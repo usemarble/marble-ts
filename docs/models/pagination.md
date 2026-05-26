@@ -22,6 +22,6 @@ let value: Pagination = {
 | `limit`            | *number*           | :heavy_check_mark: | N/A                | 10                 |
 | `currentPage`      | *number*           | :heavy_check_mark: | N/A                | 1                  |
 | `nextPage`         | *number*           | :heavy_check_mark: | N/A                | 2                  |
-| `previousPage`     | *number*           | :heavy_check_mark: | N/A                | <nil>              |
+| `previousPage`     | *number*           | :heavy_check_mark: | N/A                | null               |
 | `totalPages`       | *number*           | :heavy_check_mark: | N/A                | 5                  |
 | `totalItems`       | *number*           | :heavy_check_mark: | N/A                | 42                 |

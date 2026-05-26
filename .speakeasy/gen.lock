@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 09ace5d6-2450-4685-aba1-9fca7e90771a
 management:
-  docChecksum: 073a0783cad61b84f2cdc6bf555a5b72
+  docChecksum: 359d1b49126c407cd6c997660e93cb64
   docVersion: 1.0.0
-  speakeasyVersion: 1.763.0
-  generationVersion: 2.884.0
-  releaseVersion: 1.2.1
-  configChecksum: 0e4b12e0c0da7da770bd681d48959364
+  speakeasyVersion: 1.765.1
+  generationVersion: 2.886.1
+  releaseVersion: 1.2.2
+  configChecksum: f0d215e24677ce0f7123c2cb5880c1fc
   repoURL: https://github.com/usemarble/marble-ts.git
   installationURL: https://github.com/usemarble/marble-ts
   published: true
 persistentEdits:
-  generation_id: 4f9d3bc4-df4e-40a2-9573-c509a5e8a24a
-  pristine_commit_hash: 9fc614f812b993f8ed2d22cb4a67b11a4b088575
-  pristine_tree_hash: efd3b64f9969cf20cdf7173e6e1f2b1ed350706a
+  generation_id: b1f4bf72-7ead-4ad1-a103-d3efba20da24
+  pristine_commit_hash: 1e2780b3255a0131e61e40bc4639a5cebbbcbb64
+  pristine_tree_hash: ad675a36c64b707287911890a993f41f611dde0f
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.14
-    core: 3.26.50
+    core: 3.26.51
     defaultEnabledRetries: 0.1.0
     devContainers: 2.90.1
     enumUnions: 0.1.0
@@ -376,8 +376,8 @@ trackedFiles:
     pristine_git_object: 22776b6d7e3cb7b0c7858f3cffa416cc055b9ca7
   docs/models/pagination.md:
     id: a9ff902f6a16
-    last_write_checksum: sha1:c7348b0c5ad7363f195d0571954613d31c357471
-    pristine_git_object: 0eb288fb329b615c04e3e16aa186d04cf1656b24
+    last_write_checksum: sha1:ee95fe57857fb7b81e24fd01ea103ce6292fe669
+    pristine_git_object: 62aff1ea4e19ddb1369229423d634d2fb3c4a79e
   docs/models/platform.md:
     id: a8d0f558209c
     last_write_checksum: sha1:8af4c5fe10402d4152405492573e051ac454a148
@@ -472,8 +472,8 @@ trackedFiles:
     pristine_git_object: 2452157403e0391923ae8109a84a5d8a601b611c
   docs/sdks/authors/README.md:
     id: 094549b98536
-    last_write_checksum: sha1:e5ebffc1a9ca2b936fa191eec940444f74291405
-    pristine_git_object: d3ea136b54dbca7ab418cb42968066ed02b6e398
+    last_write_checksum: sha1:144a6ae829531ebf321f556e9eda5ef5175a7ab7
+    pristine_git_object: 5b29746923421c6c95a93b9d2679ef79c298ebd6
   docs/sdks/categories/README.md:
     id: 2e253d7225b0
     last_write_checksum: sha1:8ec1c4aaa40a639ed1a28e2ee98767cc09eba40f
@@ -512,20 +512,20 @@ trackedFiles:
     pristine_git_object: e71dfe3f0a1d6fe1d85f98a70041a293f44a59d5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:2e7801848943355615570573e9a4734e07458c77
-    pristine_git_object: e4e1cc1fd92936255fc4c3b6c84c03f1285a584e
+    last_write_checksum: sha1:e6c3e11e59885878505b4c51398933693a2f72db
+    pristine_git_object: c56cb21a629f1b18a3f5ea0e4c158ce5bad27d6c
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:d36e185d9231d4bcf3f35680c28a33aebf61376a
-    pristine_git_object: b576bf5340bee71cc1e11422e465758c5d4d9472
+    last_write_checksum: sha1:fb0c8525ee9c1781d69a0fd3a91e88a04f37a894
+    pristine_git_object: bdac16dc22e7faa4b09521624b26caca7e3b59fc
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:0498cf94d5892376f01cc5ff8440e55590a229fd
     pristine_git_object: e5a9fd1f230e2fed6dd1153b2055add249b3818b
   src/funcs/authorsCreate.ts:
     id: 997d7f915b2f
-    last_write_checksum: sha1:f8fd95e0635f13ae01315f222af61870115a425d
-    pristine_git_object: ff7587fb068285b88b82d68b4fe2152420a07c77
+    last_write_checksum: sha1:66056ebbad7241afc731aa91bb05e9c61c591c23
+    pristine_git_object: 909959b134fb9dac55fa9df537894812cd3c5da7
   src/funcs/authorsDelete.ts:
     id: 6ed08ddf550f
     last_write_checksum: sha1:41eea119b663e6e7a104dbb5806d125f8bc0b029
@@ -644,8 +644,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:cfba4f38a9bbb6cb9ce7391d104199b8ca7aa735
-    pristine_git_object: 296d414dda6b98950c0dc727e17316330d497d62
+    last_write_checksum: sha1:0749e7397edfae98109d58d7e065c5f153f34e8b
+    pristine_git_object: bd36b42558b06d43d71f150911d979fd9c06e789
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -1028,8 +1028,8 @@ trackedFiles:
     pristine_git_object: 14ea58e3a5d339204c86889a3edffa1912cfa1a7
   src/sdk/authors.ts:
     id: 38d6c049db54
-    last_write_checksum: sha1:e21902ea6ec79cdb76564003f36ac40dfe40555a
-    pristine_git_object: 5828ffa6c92a44fb3898e1a546b70b69313ba8ab
+    last_write_checksum: sha1:49c72104da963324570f920a2a3c35115077617d
+    pristine_git_object: afbe7a6f2a3b3b9f6ae31acb03b2ca8f477e007a
   src/sdk/categories.ts:
     id: dd687ec18f95
     last_write_checksum: sha1:b51e969c6a756e0e6e25813931485c5a4bd541b2
@@ -1056,8 +1056,8 @@ trackedFiles:
     pristine_git_object: 91baaf42f13757348aa794e28d879aac8c364482
   src/types/async.ts:
     id: fac8da972f86
-    last_write_checksum: sha1:3ff07b3feaf390ec1aeb18ff938e139c6c4a9585
-    pristine_git_object: 689dba5de50e8769e5f3bb913e3f42a146d15bc1
+    last_write_checksum: sha1:675d04bb4b4081dc3482f18de98674f9b446e7b4
+    pristine_git_object: 1543b95cf7be9b5a871d7395f259dbd65331dc21
   src/types/blobs.ts:
     id: f8ab9b326c86
     last_write_checksum: sha1:fd681458b532138913c372b05b3e16407abaa7a1
@@ -1088,8 +1088,8 @@ trackedFiles:
     pristine_git_object: beb81e10f0b9eee2ed398a853fe6f737b743f818
   src/types/primitives.ts:
     id: 0cd7f4ac625d
-    last_write_checksum: sha1:eb4ba0aca0c19371b20a2681e995e79a9e4d1d7a
-    pristine_git_object: 1f5548ce2f444b4021025037886bbbce367e3c95
+    last_write_checksum: sha1:41d05ee5611e0455fe14bce85d4aa3dfae020d12
+    pristine_git_object: 236a0f12b5e400b3d6d5287f9aa808b765a2be5e
   src/types/rfcdate.ts:
     id: 9eb64906dcd6
     last_write_checksum: sha1:8e5f382e02fe21c2f2e24deb1b7bbf8cddd3dd16
@@ -1497,15 +1497,3 @@ examples:
         "500":
           application/json: {"error": "Internal server error", "message": "Failed to fetch resource"}
 examplesVersion: 1.0.2
-releaseNotes: |
-  ## Typescript SDK Changes:
-  * `marble.media.list()`: **Added**
-  * `marble.media.get()`: **Added**
-  * `marble.media.update()`: **Added**
-  * `marble.media.delete()`: **Added**
-  * `marble.media.upload()`: **Added**
-  * `marble.media.get/v1/media()`: **Removed** (Breaking ⚠️)
-  * `marble.media.get/v1/media/{id}()`: **Removed** (Breaking ⚠️)
-  * `marble.media.patch/v1/media/{id}()`: **Removed** (Breaking ⚠️)
-  * `marble.media.delete/v1/media/{id}()`: **Removed** (Breaking ⚠️)
-  * `marble.media.post/v1/media/upload()`: **Removed** (Breaking ⚠️)

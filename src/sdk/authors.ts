@@ -35,7 +35,7 @@ export class Authors extends ClientSDK {
    * Create author
    *
    * @remarks
-   * Create a new author. Requires a private API key. Hobby plan is limited to 1 author.
+   * Create a new author. Requires a private API key. Plan limits apply.
    */
   async create(
     request: models.CreateAuthorBody,
