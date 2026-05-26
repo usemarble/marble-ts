@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Create author
  *
  * @remarks
- * Create a new author. Requires a private API key. Hobby plan is limited to 1 author.
+ * Create a new author. Requires a private API key. Plan limits apply.
  */
 export function authorsCreate(
   client: MarbleCore,

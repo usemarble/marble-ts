@@ -1999,7 +1999,7 @@ paths:
       tags:
         - "Authors"
       summary: "Create author"
-      description: "Create a new author. Requires a private API key. Hobby plan is limited to 1 author."
+      description: "Create a new author. Requires a private API key. Plan limits apply."
       requestBody:
         required: true
         content:
