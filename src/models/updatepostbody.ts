@@ -4,12 +4,20 @@
 
 import * as z from "zod/v4-mini";
 import { ClosedEnum } from "../types/enums.js";
+import { smartUnion } from "../types/smartUnion.js";
 
 export const UpdatePostBodyStatus = {
   Published: "published",
   Draft: "draft",
 } as const;
 export type UpdatePostBodyStatus = ClosedEnum<typeof UpdatePostBodyStatus>;
+
+export type UpdatePostBodyFields =
+  | string
+  | number
+  | boolean
+  | Array<string>
+  | any;
 
 export type UpdatePostBody = {
   title?: string | undefined;
@@ -29,12 +37,46 @@ export type UpdatePostBody = {
   featured?: boolean | undefined;
   coverImage?: string | null | undefined;
   publishedAt?: Date | undefined;
+  /**
+   * Custom field values keyed by field key. Select values must use option values; multiselect values must be arrays of option values. Use null to clear optional fields.
+   */
+  fields?: {
+    [k: string]: string | number | boolean | Array<string> | any | null;
+  } | undefined;
 };
 
 /** @internal */
 export const UpdatePostBodyStatus$outboundSchema: z.ZodMiniEnum<
   typeof UpdatePostBodyStatus
 > = z.enum(UpdatePostBodyStatus);
+
+/** @internal */
+export type UpdatePostBodyFields$Outbound =
+  | string
+  | number
+  | boolean
+  | Array<string>
+  | any;
+
+/** @internal */
+export const UpdatePostBodyFields$outboundSchema: z.ZodMiniType<
+  UpdatePostBodyFields$Outbound,
+  UpdatePostBodyFields
+> = smartUnion([
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.string()),
+  z.any(),
+]);
+
+export function updatePostBodyFieldsToJSON(
+  updatePostBodyFields: UpdatePostBodyFields,
+): string {
+  return JSON.stringify(
+    UpdatePostBodyFields$outboundSchema.parse(updatePostBodyFields),
+  );
+}
 
 /** @internal */
 export type UpdatePostBody$Outbound = {
@@ -49,6 +91,9 @@ export type UpdatePostBody$Outbound = {
   featured?: boolean | undefined;
   coverImage?: string | null | undefined;
   publishedAt?: string | undefined;
+  fields?: {
+    [k: string]: string | number | boolean | Array<string> | any | null;
+  } | undefined;
 };
 
 /** @internal */
@@ -67,6 +112,20 @@ export const UpdatePostBody$outboundSchema: z.ZodMiniType<
   featured: z.optional(z.boolean()),
   coverImage: z.optional(z.nullable(z.string())),
   publishedAt: z.optional(z.pipe(z.date(), z.transform(v => v.toISOString()))),
+  fields: z.optional(
+    z.record(
+      z.string(),
+      z.nullable(
+        smartUnion([
+          z.string(),
+          z.number(),
+          z.boolean(),
+          z.array(z.string()),
+          z.any(),
+        ]),
+      ),
+    ),
+  ),
 });
 
 export function updatePostBodyToJSON(updatePostBody: UpdatePostBody): string {

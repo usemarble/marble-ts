@@ -4,7 +4,6 @@
 
 import * as z from "zod/v4-mini";
 import { MarbleCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
@@ -222,7 +221,9 @@ async function $do(
   } => {
     const page = request?.page ?? 1;
     const nextPage = page + 1;
-    const numPages = dlv(responseData, "pagination.totalPages");
+    const numPages =
+      (responseData as { pagination: { totalPages: unknown } }).pagination
+        .totalPages;
     if (typeof numPages !== "number" || numPages <= page) {
       return { next: () => null };
     }

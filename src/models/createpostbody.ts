@@ -4,12 +4,20 @@
 
 import * as z from "zod/v4-mini";
 import { ClosedEnum } from "../types/enums.js";
+import { smartUnion } from "../types/smartUnion.js";
 
 export const CreatePostBodyStatus = {
   Published: "published",
   Draft: "draft",
 } as const;
 export type CreatePostBodyStatus = ClosedEnum<typeof CreatePostBodyStatus>;
+
+export type CreatePostBodyFields =
+  | string
+  | number
+  | boolean
+  | Array<string>
+  | any;
 
 export type CreatePostBody = {
   title: string;
@@ -32,12 +40,46 @@ export type CreatePostBody = {
    * ISO 8601 datetime. Defaults to current time if omitted.
    */
   publishedAt?: Date | undefined;
+  /**
+   * Custom field values keyed by field key. Select values must use option values; multiselect values must be arrays of option values. Use null to clear optional fields.
+   */
+  fields?: {
+    [k: string]: string | number | boolean | Array<string> | any | null;
+  } | undefined;
 };
 
 /** @internal */
 export const CreatePostBodyStatus$outboundSchema: z.ZodMiniEnum<
   typeof CreatePostBodyStatus
 > = z.enum(CreatePostBodyStatus);
+
+/** @internal */
+export type CreatePostBodyFields$Outbound =
+  | string
+  | number
+  | boolean
+  | Array<string>
+  | any;
+
+/** @internal */
+export const CreatePostBodyFields$outboundSchema: z.ZodMiniType<
+  CreatePostBodyFields$Outbound,
+  CreatePostBodyFields
+> = smartUnion([
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.string()),
+  z.any(),
+]);
+
+export function createPostBodyFieldsToJSON(
+  createPostBodyFields: CreatePostBodyFields,
+): string {
+  return JSON.stringify(
+    CreatePostBodyFields$outboundSchema.parse(createPostBodyFields),
+  );
+}
 
 /** @internal */
 export type CreatePostBody$Outbound = {
@@ -52,6 +94,9 @@ export type CreatePostBody$Outbound = {
   featured: boolean;
   coverImage?: string | null | undefined;
   publishedAt?: string | undefined;
+  fields?: {
+    [k: string]: string | number | boolean | Array<string> | any | null;
+  } | undefined;
 };
 
 /** @internal */
@@ -70,6 +115,20 @@ export const CreatePostBody$outboundSchema: z.ZodMiniType<
   featured: z._default(z.boolean(), false),
   coverImage: z.optional(z.nullable(z.string())),
   publishedAt: z.optional(z.pipe(z.date(), z.transform(v => v.toISOString()))),
+  fields: z.optional(
+    z.record(
+      z.string(),
+      z.nullable(
+        smartUnion([
+          z.string(),
+          z.number(),
+          z.boolean(),
+          z.array(z.string()),
+          z.any(),
+        ]),
+      ),
+    ),
+  ),
 });
 
 export function createPostBodyToJSON(createPostBody: CreatePostBody): string {

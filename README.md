@@ -192,6 +192,14 @@ run();
 * [update](docs/sdks/categories/README.md#update) - Update category
 * [delete](docs/sdks/categories/README.md#delete) - Delete category
 
+### [Fields](docs/sdks/fields/README.md)
+
+* [getV1Fields](docs/sdks/fields/README.md#getv1fields) - List fields
+* [postV1Fields](docs/sdks/fields/README.md#postv1fields) - Create field
+* [getV1FieldsIdentifier](docs/sdks/fields/README.md#getv1fieldsidentifier) - Get field
+* [patchV1FieldsIdentifier](docs/sdks/fields/README.md#patchv1fieldsidentifier) - Update field
+* [deleteV1FieldsIdentifier](docs/sdks/fields/README.md#deletev1fieldsidentifier) - Delete field
+
 ### [Media](docs/sdks/media/README.md)
 
 * [list](docs/sdks/media/README.md#list) - List media assets
@@ -244,6 +252,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`categoriesGet`](docs/sdks/categories/README.md#get) - Get category
 - [`categoriesList`](docs/sdks/categories/README.md#list) - List categories
 - [`categoriesUpdate`](docs/sdks/categories/README.md#update) - Update category
+- [`fieldsDeleteV1FieldsIdentifier`](docs/sdks/fields/README.md#deletev1fieldsidentifier) - Delete field
+- [`fieldsGetV1Fields`](docs/sdks/fields/README.md#getv1fields) - List fields
+- [`fieldsGetV1FieldsIdentifier`](docs/sdks/fields/README.md#getv1fieldsidentifier) - Get field
+- [`fieldsPatchV1FieldsIdentifier`](docs/sdks/fields/README.md#patchv1fieldsidentifier) - Update field
+- [`fieldsPostV1Fields`](docs/sdks/fields/README.md#postv1fields) - Create field
 - [`mediaDelete`](docs/sdks/media/README.md#delete) - Delete media asset
 - [`mediaGet`](docs/sdks/media/README.md#get) - Get media asset
 - [`mediaList`](docs/sdks/media/README.md#list) - List media assets
@@ -547,11 +560,11 @@ run();
 
 
 **Inherit from [`MarbleError`](./src/models/errors/marbleerror.ts)**:
-* [`ErrorT`](./src/models/errors/errort.ts): Applicable to 16 of 25 methods.*
-* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 15 of 25 methods.*
-* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 15 of 25 methods.*
-* [`ConflictError`](./src/models/errors/conflicterror.ts): Status code `409`. Applicable to 8 of 25 methods.*
-* [`PageNotFoundError`](./src/models/errors/pagenotfounderror.ts): Applicable to 5 of 25 methods.*
+* [`ErrorT`](./src/models/errors/errort.ts): Applicable to 18 of 30 methods.*
+* [`ForbiddenError`](./src/models/errors/forbiddenerror.ts): Status code `403`. Applicable to 18 of 30 methods.*
+* [`NotFoundError`](./src/models/errors/notfounderror.ts): Status code `404`. Applicable to 18 of 30 methods.*
+* [`ConflictError`](./src/models/errors/conflicterror.ts): Status code `409`. Applicable to 10 of 30 methods.*
+* [`PageNotFoundError`](./src/models/errors/pagenotfounderror.ts): Applicable to 5 of 30 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
