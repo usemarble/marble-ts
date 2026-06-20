@@ -2,7 +2,7 @@ overlay: 1.0.0
 x-speakeasy-jsonpath: rfc9535
 info:
   title: Speakeasy Modifications
-  version: 0.0.8
+  version: 0.0.9
   x-speakeasy-metadata:
     after: ""
     before: ""
@@ -313,3 +313,48 @@ actions:
     x-speakeasy-metadata:
       created_at: 1778294466006
       type: user-edit
+  - target: $["paths"]["/v1/fields"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.fields.list()
+      before: sdk.Fields.get_/v1/fields()
+      created_at: 1781926171001
+      reviewed_at: 1781926171001
+      type: method-name
+  - target: $["paths"]["/v1/fields"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.fields.create()
+      before: sdk.fields.postV1Fields()
+      created_at: 1781926171002
+      reviewed_at: 1781926171002
+      type: method-name
+  - target: $["paths"]["/v1/fields/{identifier}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.fields.get()
+      before: sdk.Fields.get_/v1/fields/{identifier}()
+      created_at: 1781926171003
+      reviewed_at: 1781926171003
+      type: method-name
+  - target: $["paths"]["/v1/fields/{identifier}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.fields.update()
+      before: sdk.fields.patchV1FieldsIdentifier()
+      created_at: 1781926171004
+      reviewed_at: 1781926171004
+      type: method-name
+  - target: $["paths"]["/v1/fields/{identifier}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.fields.delete()
+      before: sdk.fields.deleteV1FieldsIdentifier()
+      created_at: 1781926171005
+      reviewed_at: 1781926171005
+      type: method-name
