@@ -4,6 +4,7 @@
 
 export * from "./deletev1authorsidentifier.js";
 export * from "./deletev1categoriesidentifier.js";
+export * from "./deletev1fieldsidentifier.js";
 export * from "./deletev1mediaid.js";
 export * from "./deletev1postsidentifier.js";
 export * from "./deletev1tagsidentifier.js";
@@ -11,6 +12,7 @@ export * from "./getv1authors.js";
 export * from "./getv1authorsidentifier.js";
 export * from "./getv1categories.js";
 export * from "./getv1categoriesidentifier.js";
+export * from "./getv1fieldsidentifier.js";
 export * from "./getv1media.js";
 export * from "./getv1mediaid.js";
 export * from "./getv1posts.js";
@@ -19,6 +21,7 @@ export * from "./getv1tags.js";
 export * from "./getv1tagsidentifier.js";
 export * from "./patchv1authorsidentifier.js";
 export * from "./patchv1categoriesidentifier.js";
+export * from "./patchv1fieldsidentifier.js";
 export * from "./patchv1mediaid.js";
 export * from "./patchv1postsidentifier.js";
 export * from "./patchv1tagsidentifier.js";

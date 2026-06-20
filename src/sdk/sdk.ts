@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Authors } from "./authors.js";
 import { Categories } from "./categories.js";
+import { Fields } from "./fields.js";
 import { Media } from "./media.js";
 import { Posts } from "./posts.js";
 import { Tags } from "./tags.js";
@@ -33,5 +34,10 @@ export class Marble extends ClientSDK {
   private _media?: Media;
   get media(): Media {
     return (this._media ??= new Media(this._options));
+  }
+
+  private _fields?: Fields;
+  get fields(): Fields {
+    return (this._fields ??= new Fields(this._options));
   }
 }
