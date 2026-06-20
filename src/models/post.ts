@@ -20,7 +20,7 @@ export const PostStatus = {
 } as const;
 export type PostStatus = OpenEnum<typeof PostStatus>;
 
-export type Fields = string | number | boolean | Array<string> | any;
+export type PostFields = string | number | boolean | Array<string> | any;
 
 export type Post = {
   id: string;
@@ -49,21 +49,22 @@ export const PostStatus$inboundSchema: z.ZodMiniType<PostStatus, unknown> =
   openEnums.inboundSchema(PostStatus);
 
 /** @internal */
-export const Fields$inboundSchema: z.ZodMiniType<Fields, unknown> = smartUnion([
-  types.string(),
-  types.number(),
-  types.boolean(),
-  z.array(types.string()),
-  z.any(),
-]);
+export const PostFields$inboundSchema: z.ZodMiniType<PostFields, unknown> =
+  smartUnion([
+    types.string(),
+    types.number(),
+    types.boolean(),
+    z.array(types.string()),
+    z.any(),
+  ]);
 
-export function fieldsFromJSON(
+export function postFieldsFromJSON(
   jsonString: string,
-): SafeParseResult<Fields, SDKValidationError> {
+): SafeParseResult<PostFields, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fields$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fields' from JSON`,
+    (x) => PostFields$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostFields' from JSON`,
   );
 }
 

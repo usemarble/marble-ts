@@ -34,7 +34,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.2.2
+  version: 1.3.0
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -50,6 +50,7 @@ typescript:
     license: MIT
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Speakeasy
   baseErrorName: MarbleError
   clientServerStatusCodesAsErrors: true
@@ -60,6 +61,7 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   envVarPrefix: MARBLE
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
   fixEnumNameSanitization: false
   flatAdditionalProperties: true
@@ -91,6 +93,8 @@ typescript:
   packageName: '@usemarble/sdk'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

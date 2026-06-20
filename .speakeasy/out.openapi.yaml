@@ -440,6 +440,26 @@ components:
           format: "date-time"
           example: "2024-01-15T10:00:00Z"
           description: "ISO 8601 datetime. Defaults to current time if omitted."
+        fields:
+          type: "object"
+          additionalProperties:
+            anyOf:
+              - type: "string"
+              - type: "number"
+              - type: "boolean"
+              - type: "array"
+                items:
+                  type: "string"
+              - nullable: true
+          description: "Custom field values keyed by field key. Select values must use option values; multiselect values must be arrays of option values. Use null to clear optional fields."
+          example:
+            release_date: "2024-01-15"
+            priority_score: 5
+            audience:
+              - "developers"
+              - "founders"
+            featured_customer: true
+            subtitle: null
       required:
         - "title"
         - "content"
@@ -539,6 +559,26 @@ components:
           type: "string"
           format: "date-time"
           example: "2024-02-01T10:00:00Z"
+        fields:
+          type: "object"
+          additionalProperties:
+            anyOf:
+              - type: "string"
+              - type: "number"
+              - type: "boolean"
+              - type: "array"
+                items:
+                  type: "string"
+              - nullable: true
+          description: "Custom field values keyed by field key. Select values must use option values; multiselect values must be arrays of option values. Use null to clear optional fields."
+          example:
+            release_date: "2024-01-15"
+            priority_score: 5
+            audience:
+              - "developers"
+              - "founders"
+            featured_customer: true
+            subtitle: null
     DeleteResponse:
       type: "object"
       properties:
@@ -1094,6 +1134,198 @@ components:
         alt:
           type: "string"
           example: "Dashboard screenshot"
+    FieldsListResponse:
+      type: "object"
+      properties:
+        fields:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Field"
+      required:
+        - "fields"
+    Field:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "cryitfjp7890yz12abcdefg"
+        key:
+          type: "string"
+          example: "audience"
+        name:
+          type: "string"
+          example: "Audience"
+        description:
+          type: "string"
+          nullable: true
+          example: "Who this post is for"
+        type:
+          $ref: "#/components/schemas/FieldType"
+        required:
+          type: "boolean"
+          example: false
+        position:
+          type: "integer"
+          example: 0
+        options:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/FieldOption"
+        createdAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-15T10:00:00Z"
+        updatedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-16T12:00:00Z"
+      required:
+        - "id"
+        - "key"
+        - "name"
+        - "description"
+        - "type"
+        - "required"
+        - "position"
+        - "options"
+        - "createdAt"
+        - "updatedAt"
+    FieldType:
+      type: "string"
+      enum:
+        - "text"
+        - "number"
+        - "boolean"
+        - "date"
+        - "richtext"
+        - "select"
+        - "multiselect"
+    FieldOption:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          example: "cryitfjp9012ab34cdefghij"
+        value:
+          type: "string"
+          example: "developers"
+        label:
+          type: "string"
+          example: "Developers"
+        position:
+          type: "integer"
+          example: 0
+        createdAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-15T10:00:00Z"
+        updatedAt:
+          type: "string"
+          format: "date-time"
+          example: "2024-01-16T12:00:00Z"
+      required:
+        - "id"
+        - "value"
+        - "label"
+        - "position"
+        - "createdAt"
+        - "updatedAt"
+    FieldResponse:
+      type: "object"
+      properties:
+        field:
+          $ref: "#/components/schemas/Field"
+      required:
+        - "field"
+    CreateFieldBody:
+      type: "object"
+      properties:
+        key:
+          type: "string"
+          minLength: 1
+          maxLength: 50
+          pattern: "^[a-z0-9_]+$"
+          example: "audience"
+        name:
+          type: "string"
+          minLength: 1
+          maxLength: 50
+          example: "Audience"
+        description:
+          type: "string"
+          maxLength: 280
+          example: "Who this post is for"
+        type:
+          $ref: "#/components/schemas/FieldType"
+        required:
+          type: "boolean"
+          example: false
+        options:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/FieldOptionInput"
+          maxItems: 100
+          description: "Required for select and multiselect fields. Not allowed for other field types."
+          example:
+            - value: "developers"
+              label: "Developers"
+            - value: "founders"
+              label: "Founders"
+      required:
+        - "key"
+        - "name"
+        - "type"
+    FieldOptionInput:
+      type: "object"
+      properties:
+        value:
+          type: "string"
+          minLength: 1
+          maxLength: 80
+          example: "developers"
+        label:
+          type: "string"
+          minLength: 1
+          maxLength: 80
+          example: "Developers"
+      required:
+        - "value"
+        - "label"
+    UpdateFieldBody:
+      type: "object"
+      properties:
+        key:
+          type: "string"
+          minLength: 1
+          maxLength: 50
+          pattern: "^[a-z0-9_]+$"
+          example: "audience"
+        name:
+          type: "string"
+          minLength: 1
+          maxLength: 50
+          example: "Audience"
+        description:
+          type: "string"
+          nullable: true
+          maxLength: 280
+          example: "Who this post is for"
+        type:
+          $ref: "#/components/schemas/FieldType"
+        required:
+          type: "boolean"
+          example: false
+        options:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/FieldOptionInput"
+          maxItems: 100
+          description: "Replacement option list. Only valid for select and multiselect fields."
+          example:
+            - value: "developers"
+              label: "Developers"
+            - value: "founders"
+              label: "Founders"
   parameters: {}
 paths:
   /v1/posts:
@@ -2437,3 +2669,199 @@ paths:
               schema:
                 $ref: "#/components/schemas/ServerError"
       x-speakeasy-name-override: upload
+  /v1/fields:
+    get:
+      tags:
+        - "Fields"
+      summary: "List fields"
+      description: "Get all custom field definitions for the workspace."
+      responses:
+        "200":
+          description: "List of custom field definitions"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FieldsListResponse"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: list
+    post:
+      tags:
+        - "Fields"
+      summary: "Create field"
+      description: "Create a custom field definition. Requires a private API key."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateFieldBody"
+      responses:
+        "201":
+          description: "Field created successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FieldResponse"
+        "400":
+          description: "Invalid request body"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "API key missing the required field write scope"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "409":
+          description: "Field with this key already exists"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: create
+  /v1/fields/{identifier}:
+    get:
+      tags:
+        - "Fields"
+      summary: "Get field"
+      description: "Get a single custom field definition by ID or key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "audience"
+            description: "Field ID or key"
+          required: true
+          description: "Field ID or key"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "The requested field definition"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FieldResponse"
+        "404":
+          description: "Field not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: get
+    patch:
+      tags:
+        - "Fields"
+      summary: "Update field"
+      description: "Update a custom field definition by ID or key. Type and options cannot be changed after values have been saved."
+      parameters:
+        - schema:
+            type: "string"
+            example: "audience"
+            description: "Field ID or key"
+          required: true
+          description: "Field ID or key"
+          name: "identifier"
+          in: "path"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateFieldBody"
+      responses:
+        "200":
+          description: "Field updated successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FieldResponse"
+        "400":
+          description: "Invalid request body or unsafe schema change"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: "API key missing the required field write scope"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Field not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "409":
+          description: "Field key conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Conflict"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: update
+    delete:
+      tags:
+        - "Fields"
+      summary: "Delete field"
+      description: "Delete a custom field definition by ID or key. Requires a private API key."
+      parameters:
+        - schema:
+            type: "string"
+            example: "audience"
+            description: "Field ID or key"
+          required: true
+          description: "Field ID or key"
+          name: "identifier"
+          in: "path"
+      responses:
+        "200":
+          description: "Field deleted successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteResponse"
+        "403":
+          description: "API key missing the required field write scope"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Forbidden"
+        "404":
+          description: "Field not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+        "500":
+          description: "Server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+      x-speakeasy-name-override: delete

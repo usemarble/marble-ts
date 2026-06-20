@@ -23,6 +23,16 @@ let value: PatchV1PostsIdentifierRequest = {
     featured: true,
     coverImage: "https://media.marblecms.com/new-cover.jpg",
     publishedAt: new Date("2024-02-01T10:00:00Z"),
+    fields: {
+      "release_date": "2024-01-15",
+      "priority_score": 5,
+      "audience": [
+        "developers",
+        "founders",
+      ],
+      "featured_customer": true,
+      "subtitle": "<value>",
+    },
   },
 };
 ```
