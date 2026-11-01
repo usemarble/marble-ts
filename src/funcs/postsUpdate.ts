@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Update post
  *
  * @remarks
- * Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key.
+ * Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key. To schedule a post, send status 'scheduled' with a future publishedAt.
  */
 export function postsUpdate(
   client: MarbleCore,

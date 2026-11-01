@@ -18,7 +18,7 @@ export class Posts extends ClientSDK {
    * List posts
    *
    * @remarks
-   * Get a paginated list of published posts with optional filtering
+   * Get a paginated list of published posts with optional filtering. Use status to read drafts or scheduled posts with a private key.
    */
   async list(
     request?: operations.GetV1PostsRequest | undefined,
@@ -35,7 +35,7 @@ export class Posts extends ClientSDK {
    * Create post
    *
    * @remarks
-   * Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used.
+   * Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used. To schedule a post, send status 'scheduled' and a future publishedAt.
    */
   async create(
     request: models.CreatePostBody,
@@ -69,7 +69,7 @@ export class Posts extends ClientSDK {
    * Update post
    *
    * @remarks
-   * Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key.
+   * Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key. To schedule a post, send status 'scheduled' with a future publishedAt.
    */
   async update(
     request: operations.PatchV1PostsIdentifierRequest,

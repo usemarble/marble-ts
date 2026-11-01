@@ -17,6 +17,7 @@ import { TagRef, TagRef$inboundSchema } from "./tagref.js";
 export const PostStatus = {
   Published: "published",
   Draft: "draft",
+  Scheduled: "scheduled",
 } as const;
 export type PostStatus = OpenEnum<typeof PostStatus>;
 

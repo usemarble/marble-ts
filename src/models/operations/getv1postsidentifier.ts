@@ -7,15 +7,16 @@ import { ClosedEnum } from "../../types/enums.js";
 import * as models from "../index.js";
 
 /**
- * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
  */
 export const GetV1PostsIdentifierStatus = {
   Published: "published",
   Draft: "draft",
+  Scheduled: "scheduled",
   All: "all",
 } as const;
 /**
- * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
  */
 export type GetV1PostsIdentifierStatus = ClosedEnum<
   typeof GetV1PostsIdentifierStatus
@@ -31,7 +32,7 @@ export type GetV1PostsIdentifierRequest = {
    */
   format?: models.ContentFormat | undefined;
   /**
-   * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+   * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
    */
   status?: GetV1PostsIdentifierStatus | undefined;
 };

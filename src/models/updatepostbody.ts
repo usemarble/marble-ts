@@ -6,10 +6,17 @@ import * as z from "zod/v4-mini";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
+/**
+ * Use 'scheduled' with a future publishedAt, sent or already stored, to go live at that time. Publishing a scheduled post early sets publishedAt to now unless you send one.
+ */
 export const UpdatePostBodyStatus = {
   Published: "published",
   Draft: "draft",
+  Scheduled: "scheduled",
 } as const;
+/**
+ * Use 'scheduled' with a future publishedAt, sent or already stored, to go live at that time. Publishing a scheduled post early sets publishedAt to now unless you send one.
+ */
 export type UpdatePostBodyStatus = ClosedEnum<typeof UpdatePostBodyStatus>;
 
 export type UpdatePostBodyFields =
@@ -25,6 +32,9 @@ export type UpdatePostBody = {
   description?: string | undefined;
   slug?: string | undefined;
   categoryId?: string | undefined;
+  /**
+   * Use 'scheduled' with a future publishedAt, sent or already stored, to go live at that time. Publishing a scheduled post early sets publishedAt to now unless you send one.
+   */
   status?: UpdatePostBodyStatus | undefined;
   /**
    * Array of tag IDs. Replaces all existing tags when provided.
@@ -36,6 +46,9 @@ export type UpdatePostBody = {
   authors?: Array<string> | undefined;
   featured?: boolean | undefined;
   coverImage?: string | null | undefined;
+  /**
+   * ISO 8601 datetime. May end in Z or an offset such as +01:00. With neither, as in 2026-11-01T09:00:00, it is read in the workspace timezone. A local time that daylight saving skips returns 400.
+   */
   publishedAt?: Date | undefined;
   /**
    * Custom field values keyed by field key. Select values must use option values; multiselect values must be arrays of option values. Use null to clear optional fields.

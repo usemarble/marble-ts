@@ -37,7 +37,7 @@ import {
  * List posts
  *
  * @remarks
- * Get a paginated list of published posts with optional filtering
+ * Get a paginated list of published posts with optional filtering. Use status to read drafts or scheduled posts with a private key.
  */
 export function postsList(
   client: MarbleCore,
