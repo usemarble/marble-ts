@@ -13,5 +13,5 @@ let value: PostStatus = "published";
 ## Values
 
 ```typescript
-"published" | "draft" | Unrecognized<string>
+"published" | "draft" | "scheduled" | Unrecognized<string>
 ```

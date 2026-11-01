@@ -1,5 +1,7 @@
 # CreatePostBodyStatus
 
+Use 'scheduled' with a future publishedAt to go live at that time. A 'published' post is live immediately, even with a future publishedAt.
+
 ## Example Usage
 
 ```typescript
@@ -11,5 +13,5 @@ let value: CreatePostBodyStatus = "draft";
 ## Values
 
 ```typescript
-"published" | "draft"
+"published" | "draft" | "scheduled"
 ```

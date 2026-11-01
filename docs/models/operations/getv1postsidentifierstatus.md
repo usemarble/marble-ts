@@ -1,6 +1,6 @@
 # GetV1PostsIdentifierStatus
 
-Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: GetV1PostsIdentifierStatus = "published";
 ## Values
 
 ```typescript
-"published" | "draft" | "all"
+"published" | "draft" | "scheduled" | "all"
 ```

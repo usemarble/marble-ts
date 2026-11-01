@@ -12,6 +12,9 @@ export type UpdatePostResponsePost = {
   id: string;
   slug: string;
   title: string;
+  /**
+   * One of published, draft, or scheduled.
+   */
   status: string;
   featured: boolean;
   publishedAt: string;
