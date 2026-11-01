@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  * Create post
  *
  * @remarks
- * Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used.
+ * Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used. To schedule a post, send status 'scheduled' and a future publishedAt.
  */
 export function postsCreate(
   client: MarbleCore,

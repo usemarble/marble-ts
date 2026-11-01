@@ -35,15 +35,16 @@ export const Featured = {
 export type Featured = ClosedEnum<typeof Featured>;
 
 /**
- * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
  */
 export const GetV1PostsStatus = {
   Published: "published",
   Draft: "draft",
+  Scheduled: "scheduled",
   All: "all",
 } as const;
 /**
- * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+ * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
  */
 export type GetV1PostsStatus = ClosedEnum<typeof GetV1PostsStatus>;
 
@@ -89,7 +90,7 @@ export type GetV1PostsRequest = {
    */
   featured?: Featured | undefined;
   /**
-   * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both.
+   * Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts.
    */
   status?: GetV1PostsStatus | undefined;
 };

@@ -45,6 +45,7 @@ components:
           enum:
             - "published"
             - "draft"
+            - "scheduled"
           example: "published"
         featured:
           type: "boolean"
@@ -341,6 +342,7 @@ components:
             status:
               type: "string"
               example: "draft"
+              description: "One of published, draft, or scheduled."
             featured:
               type: "boolean"
               example: false
@@ -411,7 +413,9 @@ components:
           enum:
             - "published"
             - "draft"
+            - "scheduled"
           example: "draft"
+          description: "Use 'scheduled' with a future publishedAt to go live at that time. A 'published' post is live immediately, even with a future publishedAt."
         tags:
           type: "array"
           items:
@@ -439,7 +443,7 @@ components:
           type: "string"
           format: "date-time"
           example: "2024-01-15T10:00:00Z"
-          description: "ISO 8601 datetime. Defaults to current time if omitted."
+          description: "ISO 8601 datetime. Defaults to current time if omitted. May end in Z or an offset such as +01:00. With neither, as in 2026-11-01T09:00:00, it is read in the workspace timezone. A local time that daylight saving skips returns 400."
         fields:
           type: "object"
           additionalProperties:
@@ -485,6 +489,7 @@ components:
             status:
               type: "string"
               example: "published"
+              description: "One of published, draft, or scheduled."
             featured:
               type: "boolean"
               example: true
@@ -532,7 +537,9 @@ components:
           enum:
             - "published"
             - "draft"
+            - "scheduled"
           example: "published"
+          description: "Use 'scheduled' with a future publishedAt, sent or already stored, to go live at that time. Publishing a scheduled post early sets publishedAt to now unless you send one."
         tags:
           type: "array"
           items:
@@ -559,6 +566,7 @@ components:
           type: "string"
           format: "date-time"
           example: "2024-02-01T10:00:00Z"
+          description: "ISO 8601 datetime. May end in Z or an offset such as +01:00. With neither, as in 2026-11-01T09:00:00, it is read in the workspace timezone. A local time that daylight saving skips returns 400."
         fields:
           type: "object"
           additionalProperties:
@@ -1333,7 +1341,7 @@ paths:
       tags:
         - "Posts"
       summary: "List posts"
-      description: "Get a paginated list of published posts with optional filtering"
+      description: "Get a paginated list of published posts with optional filtering. Use status to read drafts or scheduled posts with a private key."
       parameters:
         - schema:
             type: "integer"
@@ -1447,12 +1455,13 @@ paths:
             enum:
               - "published"
               - "draft"
+              - "scheduled"
               - "all"
             default: "published"
             example: "published"
-            description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+            description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts."
           required: false
-          description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+          description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts."
           name: "status"
           in: "query"
       responses:
@@ -1492,7 +1501,7 @@ paths:
       tags:
         - "Posts"
       summary: "Create post"
-      description: "Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used."
+      description: "Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used. To schedule a post, send status 'scheduled' and a future publishedAt."
       requestBody:
         required: true
         content:
@@ -1557,12 +1566,13 @@ paths:
             enum:
               - "published"
               - "draft"
+              - "scheduled"
               - "all"
             default: "published"
             example: "published"
-            description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+            description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts."
           required: false
-          description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both."
+          description: "Filter by post status. Use 'published' for live posts, 'draft' for unpublished posts, or 'all' for both. Use 'scheduled' for posts waiting to go live. 'all' never includes scheduled posts."
           name: "status"
           in: "query"
       responses:
@@ -1589,7 +1599,7 @@ paths:
       tags:
         - "Posts"
       summary: "Update post"
-      description: "Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key."
+      description: "Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key. To schedule a post, send status 'scheduled' with a future publishedAt."
       parameters:
         - schema:
             type: "string"

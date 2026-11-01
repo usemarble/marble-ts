@@ -6,10 +6,17 @@ import * as z from "zod/v4-mini";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
+/**
+ * Use 'scheduled' with a future publishedAt to go live at that time. A 'published' post is live immediately, even with a future publishedAt.
+ */
 export const CreatePostBodyStatus = {
   Published: "published",
   Draft: "draft",
+  Scheduled: "scheduled",
 } as const;
+/**
+ * Use 'scheduled' with a future publishedAt to go live at that time. A 'published' post is live immediately, even with a future publishedAt.
+ */
 export type CreatePostBodyStatus = ClosedEnum<typeof CreatePostBodyStatus>;
 
 export type CreatePostBodyFields =
@@ -25,6 +32,9 @@ export type CreatePostBody = {
   description: string;
   slug: string;
   categoryId: string;
+  /**
+   * Use 'scheduled' with a future publishedAt to go live at that time. A 'published' post is live immediately, even with a future publishedAt.
+   */
   status: CreatePostBodyStatus;
   /**
    * Array of tag IDs to attach to the post
@@ -37,7 +47,7 @@ export type CreatePostBody = {
   featured?: boolean | undefined;
   coverImage?: string | null | undefined;
   /**
-   * ISO 8601 datetime. Defaults to current time if omitted.
+   * ISO 8601 datetime. Defaults to current time if omitted. May end in Z or an offset such as +01:00. With neither, as in 2026-11-01T09:00:00, it is read in the workspace timezone. A local time that daylight saving skips returns 400.
    */
   publishedAt?: Date | undefined;
   /**
