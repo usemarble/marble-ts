@@ -18,12 +18,12 @@ let value: UpdatePostResponsePost = {
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              | Example                  |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `id`                     | *string*                 | :heavy_check_mark:       | N/A                      | cryitfjp5678mn09qrstuvwx |
-| `slug`                   | *string*                 | :heavy_check_mark:       | N/A                      | updated-post-slug        |
-| `title`                  | *string*                 | :heavy_check_mark:       | N/A                      | Updated Post Title       |
-| `status`                 | *string*                 | :heavy_check_mark:       | N/A                      | published                |
-| `featured`               | *boolean*                | :heavy_check_mark:       | N/A                      | true                     |
-| `publishedAt`            | *string*                 | :heavy_check_mark:       | N/A                      | 2024-02-01T10:00:00.000Z |
-| `updatedAt`              | *string*                 | :heavy_check_mark:       | N/A                      | 2024-02-01T12:00:00.000Z |
+| Field                                  | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `id`                                   | *string*                               | :heavy_check_mark:                     | N/A                                    | cryitfjp5678mn09qrstuvwx               |
+| `slug`                                 | *string*                               | :heavy_check_mark:                     | N/A                                    | updated-post-slug                      |
+| `title`                                | *string*                               | :heavy_check_mark:                     | N/A                                    | Updated Post Title                     |
+| `status`                               | *string*                               | :heavy_check_mark:                     | One of published, draft, or scheduled. | published                              |
+| `featured`                             | *boolean*                              | :heavy_check_mark:                     | N/A                                    | true                                   |
+| `publishedAt`                          | *string*                               | :heavy_check_mark:                     | N/A                                    | 2024-02-01T10:00:00.000Z               |
+| `updatedAt`                            | *string*                               | :heavy_check_mark:                     | N/A                                    | 2024-02-01T12:00:00.000Z               |

@@ -18,12 +18,12 @@ let value: CreatePostResponsePost = {
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  | Example                      |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `id`                         | *string*                     | :heavy_check_mark:           | N/A                          | cryitfjp5678mn09qrstuvwx     |
-| `slug`                       | *string*                     | :heavy_check_mark:           | N/A                          | getting-started-with-nextjs  |
-| `title`                      | *string*                     | :heavy_check_mark:           | N/A                          | Getting Started with Next.js |
-| `status`                     | *string*                     | :heavy_check_mark:           | N/A                          | draft                        |
-| `featured`                   | *boolean*                    | :heavy_check_mark:           | N/A                          | false                        |
-| `publishedAt`                | *string*                     | :heavy_check_mark:           | N/A                          | 2024-01-15T10:00:00.000Z     |
-| `createdAt`                  | *string*                     | :heavy_check_mark:           | N/A                          | 2024-01-15T10:00:00.000Z     |
+| Field                                  | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `id`                                   | *string*                               | :heavy_check_mark:                     | N/A                                    | cryitfjp5678mn09qrstuvwx               |
+| `slug`                                 | *string*                               | :heavy_check_mark:                     | N/A                                    | getting-started-with-nextjs            |
+| `title`                                | *string*                               | :heavy_check_mark:                     | N/A                                    | Getting Started with Next.js           |
+| `status`                               | *string*                               | :heavy_check_mark:                     | One of published, draft, or scheduled. | draft                                  |
+| `featured`                             | *boolean*                              | :heavy_check_mark:                     | N/A                                    | false                                  |
+| `publishedAt`                          | *string*                               | :heavy_check_mark:                     | N/A                                    | 2024-01-15T10:00:00.000Z               |
+| `createdAt`                            | *string*                               | :heavy_check_mark:                     | N/A                                    | 2024-01-15T10:00:00.000Z               |

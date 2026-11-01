@@ -12,7 +12,7 @@
 
 ## list
 
-Get a paginated list of published posts with optional filtering
+Get a paginated list of published posts with optional filtering. Use status to read drafts or scheduled posts with a private key.
 
 ### Example Usage
 
@@ -128,7 +128,7 @@ run();
 
 ## create
 
-Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used.
+Create a new post. Requires a private API key. Category is required. If authors are not provided, the first workspace author is used. To schedule a post, send status 'scheduled' and a future publishedAt.
 
 ### Example Usage
 
@@ -328,7 +328,7 @@ run();
 
 ## update
 
-Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key.
+Update an existing post by ID or slug. All fields are optional — only provided fields are updated. Requires a private API key. To schedule a post, send status 'scheduled' with a future publishedAt.
 
 ### Example Usage
 
